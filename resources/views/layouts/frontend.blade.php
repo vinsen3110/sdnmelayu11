@@ -49,11 +49,10 @@
             <p class="text-md  mb-0 text-primary " style="font-size: 20px; "></i>SDN NEGERI MELAYU 11 </p>
         </a>
         <!-- Tambahkan class custom-navbar-toggler -->
-<button class="navbar-toggler custom-navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-    <span class="fw-bold" style="color:white">
-        <i class="fa-solid fa-bars me-2"></i> Menu
-    </span>
+<button class="navbar-toggler custom-navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="fw-bold" style="color:rgb(0, 0, 0)">☰</span>
 </button>
+
 
         <div class="collapse navbar-collapse" id="navbarCollapse" style="justify-content: end">
             <div class="navbar-nav justify-content-end py-0">

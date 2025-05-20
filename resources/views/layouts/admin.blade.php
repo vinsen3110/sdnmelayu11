@@ -9,12 +9,12 @@
     />
     <link
       rel="icon"
-      href="assets/img/kaiadmin/favicon.ico"
+      href="{{asset('admin/assets/img/kaiadmin/favicon.ico')}}"
       type="image/x-icon"
     />
 
     <!-- Fonts and icons -->
-    <script src="{{asset('ta/assets/js/plugin/webfont/webfont.min.js')}}"></script>
+    <script src="{{asset('admin/assets/js/plugin/webfont/webfont.min.js')}}"></script>
     <script>
       WebFont.load({
         google: { families: ["Public Sans:300,400,500,600,700"] },
@@ -25,7 +25,7 @@
             "Font Awesome 5 Brands",
             "simple-line-icons",
           ],
-          urls: ["assets/css/fonts.min.css"],
+          urls: ["{{asset('admin/assets/css/fonts.min.css')}}"],
         },
         active: function () {
           sessionStorage.fonts = true;
@@ -34,12 +34,12 @@
     </script>
 
     <!-- CSS Files -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="assets/css/plugins.min.css" />
-    <link rel="stylesheet" href="assets/css/kaiadmin.min.css" />
+    <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/css/plugins.min.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/css/kaiadmin.min.css')}}" />
 
     <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link rel="stylesheet" href="assets/css/demo.css" />
+    <link rel="stylesheet" href="{{asset('assets/css/demo.css')}}" />
   </head>
   <body>
     <div class="wrapper">
@@ -50,7 +50,7 @@
           <div class="logo-header" data-background-color="dark">
             <a href="index.html" class="logo">
               <img
-                src="assets/img/kaiadmin/logo_light.svg"
+                src="{{asset('assets/img/kaiadmin/logo_light.svg')}}"
                 alt="navbar brand"
                 class="navbar-brand"
                 height="20"
@@ -75,16 +75,12 @@
             <ul class="nav nav-secondary">
               <li class="nav-item active">
                 <a
-                  data-bs-toggle="collapse"
-                  href="#dashboard"
-                  class="collapsed"
-                  aria-expanded="false"
+                  href="{{route('dashboard')}}"
                 >
                   <i class="fas fa-home"></i>
                   <p>Dashboard</p>
-                  <span class="caret"></span>
                 </a>
-                <div class="collapse" id="dashboard">
+                {{-- <div class="collapse" id="dashboard">
                   <ul class="nav nav-collapse">
                     <li>
                       <a href="../demo1/index.html">
@@ -92,7 +88,7 @@
                       </a>
                     </li>
                   </ul>
-                </div>
+                </div> --}}
               </li>
               <li class="nav-section">
                 <span class="sidebar-mini-icon">
@@ -101,60 +97,10 @@
                 <h4 class="text-section">Components</h4>
               </li>
               <li class="nav-item">
-                <a data-bs-toggle="collapse" href="#base">
+                <a href="{{route ('ekskul')}}">
                   <i class="fas fa-layer-group"></i>
-                  <p>Base</p>
-                  <span class="caret"></span>
+                  <p>EKSKUL</p>
                 </a>
-                <div class="collapse" id="base">
-                  <ul class="nav nav-collapse">
-                    <li>
-                      <a href="components/avatars.html">
-                        <span class="sub-item">Avatars</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="components/buttons.html">
-                        <span class="sub-item">Buttons</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="components/gridsystem.html">
-                        <span class="sub-item">Grid System</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="components/panels.html">
-                        <span class="sub-item">Panels</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="components/notifications.html">
-                        <span class="sub-item">Notifications</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="components/sweetalert.html">
-                        <span class="sub-item">Sweet Alert</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="components/font-awesome-icons.html">
-                        <span class="sub-item">Font Awesome Icons</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="components/simple-line-icons.html">
-                        <span class="sub-item">Simple Line Icons</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="components/typography.html">
-                        <span class="sub-item">Typography</span>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
               </li>
               <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#sidebarLayouts">
@@ -356,7 +302,8 @@
           </div>
           <!-- Navbar Header -->
           <nav
-            class="navbar navbar-header navbar-header-transparent navbar-expand-lg border-bottom">
+            class="navbar navbar-header navbar-header-transparent navbar-expand-lg border-bottom"
+          >
             <div class="container-fluid">
               <nav
                 class="navbar navbar-header-left navbar-expand-lg navbar-form nav-search p-0 d-none d-lg-flex"
@@ -709,8 +656,9 @@
           <!-- End Navbar -->
         </div>
 
-        @yield('content')
-        <footer class="footer">
+@yield('content')
+
+ <footer class="footer">
           <div class="container-fluid d-flex justify-content-between">
             <nav class="pull-left">
               <ul class="nav">
@@ -935,41 +883,41 @@
       <!-- End Custom template -->
     </div>
     <!--   Core JS Files   -->
-    <script src="{{asset('ta/assets/js/core/jquery-3.7.1.min.js')}}"></script>
-    <script src="{{asset('ta/assets/js/core/popper.min.js')}}"></script>
-    <script src="{{asset('ta/assets/js/core/bootstrap.min.js')}}"></script>
+    <script src="{{asset('assets/js/core/jquery-3.7.1.min.js')}}"></script>
+    <script src="{{asset('assets/js/core/popper.min.js')}}"></script>
+    <script src="{{asset('assets/js/core/bootstrap.min.js')}}"></script>
 
     <!-- jQuery Scrollbar -->
-    <script src="{{asset('ta/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js')}}"></script>
+    <script src="{{asset('assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js')}}"></script>
 
     <!-- Chart JS -->
-    <script src="{{asset('ta/assets/js/plugin/chart.js/chart.min.js')}}"></script>
+    <script src="{{asset('assets/js/plugin/chart.js/chart.min.js')}}"></script>
 
     <!-- jQuery Sparkline -->
-    <script src="{{asset('ta/assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js')}}"></script>
+    <script src="{{asset('assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js')}}"></script>
 
     <!-- Chart Circle -->
-    <script src="{{asset('ta/assets/js/plugin/chart-circle/circles.min.js')}}"></script>
+    <script src="{{asset('assets/js/plugin/chart-circle/circles.min.js')}}"></script>
 
     <!-- Datatables -->
-    <script src="{{asset('ta/assets/js/plugin/datatables/datatables.min.js')}}"></script>
+    <script src="{{asset('assets/js/plugin/datatables/datatables.min.js')}}"></script>
 
     <!-- Bootstrap Notify -->
-    <script src="{{asset('ta/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js')}}"></script>
+    <script src="{{asset('assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js')}}"></script>
 
     <!-- jQuery Vector Maps -->
-    <script src="{{asset('ta/assets/js/plugin/jsvectormap/jsvectormap.min.js')}}"></script>
-    <script src="{{asset('ta/assets/js/plugin/jsvectormap/world.js')}}"></script>
+    <script src="{{asset('assets/js/plugin/jsvectormap/jsvectormap.min.js')}}"></script>
+    <script src="{{asset('assets/js/plugin/jsvectormap/world.js')}}"></script>
 
     <!-- Sweet Alert -->
-    <script src="{{asset('ta/assets/js/plugin/sweetalert/sweetalert.min.js')}}"></script>
+    <script src="{{asset('assets/js/plugin/sweetalert/sweetalert.min.js')}}"></script>
 
     <!-- Kaiadmin JS -->
-    <script src="{{asset('ta/assets/js/kaiadmin.min.js')}}"></script>
+    <script src="{{asset('assets/js/kaiadmin.min.js')}}"></script>
 
     <!-- Kaiadmin DEMO methods, don't include it in your project! -->
-    <script src="{{asset('ta/assets/js/setting-demo.js')}}"></script>
-    <script src="{{asset('ta/assets/js/demo.js')}}"></script>
+    <script src="{{asset('assets/js/setting-demo.js')}}"></script>
+    <script src="{{asset('assets/js/demo.js')}}"></script>
     <script>
       $("#lineChart").sparkline([102, 109, 120, 99, 110, 105, 115], {
         type: "line",

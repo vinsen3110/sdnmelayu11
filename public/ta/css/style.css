@@ -4,24 +4,11 @@
     --light: #F0FBFC;
     --dark: #181d38;
 }
-.responsive-font {
-    font-size: 14px;
-  }
+
 .fw-medium {
     font-weight: 600 !important;
 }
 
-.navbar-toggler {
-    padding: 10px 20px;
-    border: 1px solid var(--bs-primary);
-    color: var(--bs-primary);
-    border-radius: 5px;
-    
-}
-.navbar-toggler{
-    color:  white;
-    background-color:  var(--bs-primary);;
-}
 .fw-semi-bold {
     font-weight: 700 !important;
 }
@@ -112,24 +99,8 @@
 .navbar-light .navbar-nav .nav-link.active {
     color: var(--primary);
 }
-@media (max-width: 767.98px) {
-    .custom-navbar-toggler {
-        position: fixed;
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 1050;
-        background-color: #06BBCC;
-        color: white;
-        border-radius: 8px;
-        padding: 8px 16px;
-    }
-}
 
 @media (max-width: 991.98px) {
-    .responsive-font {
-        font-size: 12px;
-      }
     .navbar-light .navbar-nav .nav-link  {
         margin-right: 0;
         padding: 10px 0;
@@ -156,9 +127,6 @@
 }
 
 @media (min-width: 992px) {
-    .responsive-font {
-        font-size: 12px;
-      }
     .navbar .nav-item .dropdown-menu {
         display: block;
         margin-top: 0;
@@ -192,11 +160,7 @@
 
 /*** Header carousel ***/
 @media (max-width: 768px) {
-    .responsive-font {
-        font-size: 12px;
-      }
     .header-carousel .owl-carousel-item {
-        width: 100% !important;
         position: relative;
         min-height: 500px;
     }
@@ -208,76 +172,30 @@
         object-fit: cover;
     }
 }
-/* Untuk tampilan desktop */
-/* Untuk tampilan desktop */
-@media (min-width: 768px) {
-    .header-carousel .owl-nav {
-        position: absolute;
-        top: 50%;
-        left: 0;
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        transform: translateY(-50%);
-        padding: 0 20px;
-        z-index: 1000;
-    }
 
-    .header-carousel .owl-nav .owl-prev,
-    .header-carousel .owl-nav .owl-next {
-        width: 45px;
-        height: 45px;
-        background-color: #06BBCC;
-        color: white;
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 20px;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-        transition: background 0.3s;
-    }
-
-    .header-carousel .owl-nav .owl-prev:hover,
-    .header-carousel .owl-nav .owl-next:hover {
-        background-color: #0595a8;
-    }
+.header-carousel .owl-nav {
+    position: absolute;
+    top: 50%;
+    right: 8%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
 }
 
-/* Untuk tampilan mobile */
-@media (max-width: 767.98px) {
-    .header-carousel .owl-nav {
-        position: absolute;
-        bottom: 15px;
-        right: 15px;
-        display: flex;
-        flex-direction: row;
-        gap: 10px;
-        z-index: 1000;
-    }
-
-    .header-carousel .owl-nav .owl-prev,
-    .header-carousel .owl-nav .owl-next {
-        width: 40px;
-        height: 40px;
-        background-color: #06BBCC;
-        color: white;
-        border-radius: 8px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 18px;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    }
-
-    .header-carousel .owl-nav .owl-prev:hover,
-    .header-carousel .owl-nav .owl-next:hover {
-        background-color: #0595a8;
-    }
+.header-carousel .owl-nav .owl-prev,
+.header-carousel .owl-nav .owl-next {
+    margin: 7px 0;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    background: transparent;
+    border: 1px solid #FFFFFF;
+    font-size: 22px;
+    transition: .5s;
 }
-
-
-
 
 .header-carousel .owl-nav .owl-prev:hover,
 .header-carousel .owl-nav .owl-next:hover {
@@ -407,9 +325,6 @@
 }
 
 @media (min-width: 768px) {
-    .responsive-font {
-        font-size: 12px;
-      }
     .testimonial-carousel::before,
     .testimonial-carousel::after {
         width: 200px;
@@ -417,9 +332,6 @@
 }
 
 @media (min-width: 992px) {
-    .responsive-font {
-        font-size: 18px;
-      }
     .testimonial-carousel::before,
     .testimonial-carousel::after {
         width: 300px;
@@ -526,4 +438,18 @@
     margin-right: 0;
     padding-right: 0;
     border-right: none;
+}
+
+@media (max-width: 768px) {
+  .custom-navbar-toggler {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    background-color: #007bff; /* atau warna yang kamu mau */
+    color: white;
+    border-radius: 8px;
+    padding: 10px 15px;
+  }
 }
