@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\EkskulController;
 use App\Http\Controllers\AuthController;
-
+use App\Http\Controllers\FasilitasController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,11 +22,18 @@ Route::get('/berita', [HomeController::class, 'berita'])->name('berita');
 Route::get('/visimisi', [HomeController::class, 'visimisi'])->name('visimisi');
 Route::get('/strukturorganisasi', [HomeController::class, 'strukturorganisasi'])->name('strukturorganisasi');
 Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard'); 
+//ekskul
 Route::get('/admin/ekskul', [EkskulController::class, 'index'])->name('ekskul');
 Route::post('/admin/ekskul', [EkskulController::class, 'store'])->name('ekskul.store');
 Route::get('/admin/ekskul/{id}/edit', [EkskulController::class, 'edit'])->name('ekskul.edit');
 Route::delete('/admin/ekskul/{id}', [EkskulController::class, 'destroy'])->name('ekskul.destroy');
 Route::put('/admin/ekskul/{id}', [EkskulController::class, 'update'])->name('ekskul.update');
+//fasilitas
+Route::get('/admin/fasilitas', [FasilitasController::class, 'index'])->name('fasilitas');
+Route::post('/admin/fasilitas', [FasilitasController::class, 'store'])->name('fasilitas.store');
+Route::get('/admin/fasilitas/{id}/edit', [FasilitasController::class, 'edit'])->name('fasilitas.edit');
+Route::delete('/admin/fasilitas/{id}', [FasilitasController::class, 'destroy'])->name('fasilitas.destroy');
+Route::put('/admin/fasilitas/{id}', [FasilitasController::class, 'update'])->name('fasilitas.update');
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
