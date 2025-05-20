@@ -140,7 +140,7 @@
                     <div class="row g-3">
                         <div class="col-lg-12 col-md-12 wow zoomIn" data-wow-delay="0.1s">
                             <a class="position-relative d-block overflow-hidden" href="">
-                                <img class="img-fluid" src="img/cat-1.jpg" alt="">
+                                <img class="img-fluid" src="{{asset('ta/img/cat-1.jpg')}}" alt="">
                                 <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin: 1px;">
                                     <h5 class="m-0">Web Design</h5>
                                     <small class="text-primary">49 Courses</small>

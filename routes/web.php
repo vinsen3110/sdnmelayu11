@@ -21,15 +21,15 @@ Route::get('/', [HomeController::class, 'index'])->name('homepage');
 Route::get('/berita', [HomeController::class, 'berita'])->name('berita');
 Route::get('/visimisi', [HomeController::class, 'visimisi'])->name('visimisi');
 Route::get('/strukturorganisasi', [HomeController::class, 'strukturorganisasi'])->name('strukturorganisasi');
-Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard'); 
+Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
 //ekskul
-Route::get('/admin/ekskul', [EkskulController::class, 'index'])->name('ekskul');
+Route::get('/admin/ekskul', [EkskulController::class, 'index'])->name('ekskul')->middleware('auth');
 Route::post('/admin/ekskul', [EkskulController::class, 'store'])->name('ekskul.store');
 Route::get('/admin/ekskul/{id}/edit', [EkskulController::class, 'edit'])->name('ekskul.edit');
 Route::delete('/admin/ekskul/{id}', [EkskulController::class, 'destroy'])->name('ekskul.destroy');
 Route::put('/admin/ekskul/{id}', [EkskulController::class, 'update'])->name('ekskul.update');
 //fasilitas
-Route::get('/admin/fasilitas', [FasilitasController::class, 'index'])->name('fasilitas');
+Route::get('/admin/fasilitas', [FasilitasController::class, 'index'])->name('fasilitas')->middleware('auth');
 Route::post('/admin/fasilitas', [FasilitasController::class, 'store'])->name('fasilitas.store');
 Route::get('/admin/fasilitas/{id}/edit', [FasilitasController::class, 'edit'])->name('fasilitas.edit');
 Route::delete('/admin/fasilitas/{id}', [FasilitasController::class, 'destroy'])->name('fasilitas.destroy');
