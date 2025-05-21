@@ -46,7 +46,10 @@
         <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5 mb-1">
             <img class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2"
                         style="height: 60px; width: 60px;" src="{{ asset('ta/img/logo.png') }}" alt="">
-            <p class="text-md  mb-0 text-primary " style="font-size: 20px; "></i>SDN NEGERI MELAYU 11 </p>
+            <p class="text-md mb-0 text-primary" style="font-size: 15px;">
+  SDN NEGERI MELAYU 11<br>BANJARMASIN
+</p>
+
         </a>
         <!-- Tambahkan class custom-navbar-toggler -->
 <button class="navbar-toggler custom-navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
