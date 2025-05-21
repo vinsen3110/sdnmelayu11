@@ -56,62 +56,53 @@
 </div>
 <!-- Carousel End -->
 
-<<!-- Service Start -->
+
 <!-- Service Start -->
 <div class="container-xxl py-5">
     <div class="container">
-        <div class="row g-4">
+        <div class="row g-4 justify-content-center">
 
             <!-- Visi & Misi -->
-            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="col-lg-3 col-sm-6 mb-4 mx-3 wow fadeInUp" data-wow-delay="0.1s">
                 <a href="{{ route('visimisi') }}" style="text-decoration: none; color: inherit;">
                     <div class="service-item text-center pt-3 h-100">
                         <div class="p-4">
                             <i class="fa fa-3x fa-bullseye text-primary mb-4"></i>
                             <h5 class="mb-3">Visi & Misi</h5>
-                            <p>"Mewujudkan sekolah religius yang membentuk pelajar berkompetensi global, mandiri, dan peduli sosial-lingkungan."</p>
+                            <p>Langkah dan Tujuan sekolah untuk membentuk karakter siswa, berkompetensi global, mandiri, dan peduli sosial serta lingkungan.</p>
                         </div>
                     </div>
                 </a>
             </div>
 
             <!-- Struktur Organisasi -->
-            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
+            <div class="col-lg-3 col-sm-6 mb-4 mx-3 wow fadeInUp" data-wow-delay="0.1s">
                 <a href="{{ route('strukturorganisasi') }}" style="text-decoration: none; color: inherit;">
                     <div class="service-item text-center pt-3 h-100">
                         <div class="p-4">
                             <i class="fa fa-3x fa-users text-primary mb-4"></i>
                             <h5 class="mb-3">Struktur Organisasi</h5>
-                            <p>Struktur kepengurusan sekolah yang mendukung visi misi pendidikan.</p>
+                            <p>Struktur resmi sekolah yang mengatur peran dan tanggung jawab dalam mendukung operasional dan tujuan pendidikan.</p>
                         </div>
                     </div>
                 </a>
             </div>
 
-            <!-- Book Library -->
-            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
+            <!-- Pengumuman PPDB -->
+            <div class="col-lg-3 col-sm-6 mb-4 mx-3 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="service-item text-center pt-3 h-100">
                     <div class="p-4">
-                        <i class="fa fa-3x fa-book text-primary mb-4"></i>
-                        <h5 class="mb-3">Book Library</h5>
-                        <p>Koleksi buku digital dan fisik untuk mendukung pembelajaran siswa.</p>
+                        <i class="fa fa-3x fa-bullhorn text-primary mb-4"></i>
+                        <h5 class="mb-3">Pengumuman PPDB</h5>
+                        <p>Informasi resmi mengenai jadwal, persyaratan, alur pendaftaran, dan ketentuan seleksi penerimaan peserta didik baru.</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Online Classes -->
-            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
-                <div class="service-item text-center pt-3 h-100">
-                    <div class="p-4">
-                        <i class="fa fa-3x fa-globe text-primary mb-4"></i>
-                        <h5 class="mb-3">Online Classes</h5>
-                        <p>Platform pembelajaran daring untuk siswa secara fleksibel dan interaktif.</p>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </div>
+<!-- Service End -->
 
 
 
