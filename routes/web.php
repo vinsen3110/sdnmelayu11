@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\EkskulController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FasilitasController;
+use App\Http\Controllers\PrestasiController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,6 +35,12 @@ Route::post('/admin/fasilitas', [FasilitasController::class, 'store'])->name('fa
 Route::get('/admin/fasilitas/{id}/edit', [FasilitasController::class, 'edit'])->name('fasilitas.edit');
 Route::delete('/admin/fasilitas/{id}', [FasilitasController::class, 'destroy'])->name('fasilitas.destroy');
 Route::put('/admin/fasilitas/{id}', [FasilitasController::class, 'update'])->name('fasilitas.update');
+//Prestasi
+Route::get('/admin/prestasi', [PrestasiController::class, 'index'])->name('prestasi')->middleware('auth');
+Route::post('/admin/prestasi', [PrestasiController::class, 'store'])->name('prestasi.store');
+Route::get('/admin/prestasi/{id}/edit', [PrestasiController::class, 'edit'])->name('prestasi.edit');
+Route::delete('/admin/prestasi/{id}', [PrestasiController::class, 'destroy'])->name('prestasi.destroy');
+Route::put('/admin/prestasi/{id}', [PrestasiController::class, 'update'])->name('prestasi.update');
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);

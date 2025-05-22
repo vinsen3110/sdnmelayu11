@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  </head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>SDN Melayu 11 BJM - Admin Dashboard</title>
     <meta
@@ -101,53 +103,23 @@
               </li>
               <li class="nav-item">
                 <a href="{{route ('ekskul')}}">
-                  <i class="fas fa-layer-group"></i>
-                  <p>EKSKUL</p>
+                  <i class="fas fa-users"></i>
+                     EKSKUL
                 </a>
               </li>
             <li class="nav-item">
                 <a href="{{route ('fasilitas')}}">
-                  <i class="fas fa-layer-group"></i>
-                  <p>FASILITAS</p>
+                 <i class="fas fa-building"></i>
+                    FASILITAS
                 </a>
               </li>
-              <li class="nav-item">
-                <a data-bs-toggle="collapse" href="#forms">
-                  <i class="fas fa-pen-square"></i>
-                  <p>Forms</p>
-                  <span class="caret"></span>
+               <li class="nav-item">
+                <a href="{{route ('prestasi')}}">
+                 <i class="fas fa-trophy"></i>
+                    PRESTASI
                 </a>
-                <div class="collapse" id="forms">
-                  <ul class="nav nav-collapse">
-                    <li>
-                      <a href="forms/forms.html">
-                        <span class="sub-item">Basic Form</span>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
               </li>
-              <li class="nav-item">
-                <a data-bs-toggle="collapse" href="#tables">
-                  <i class="fas fa-table"></i>
-                  <p>Tables</p>
-                  <span class="caret"></span>
-                </a>
-                <div class="collapse" id="tables">
-                  <ul class="nav nav-collapse">
-                    <li>
-                      <a href="tables/tables.html">
-                        <span class="sub-item">Basic Table</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="tables/datatables.html">
-                        <span class="sub-item">Datatables</span>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </li>
+           
               
             </ul>
           </div>
@@ -480,22 +452,13 @@
 
                 <li class="nav-item topbar-user dropdown hidden-caret">
                   <a
-                    class="dropdown-toggle profile-pic"
-                    data-bs-toggle="dropdown"
-                    href="#"
-                    aria-expanded="false"
-                  >
-                    <div class="avatar-sm">
-                      <img
-                        src="assets/img/profile.jpg"
-                        alt="..."
-                        class="avatar-img rounded-circle"
-                      />
-                    </div>
-                    <span class="profile-username">
-                      <span class="op-7">Hi,</span>
-                      <span class="fw-bold">Hizrian</span>
-                    </span>
+                    class="dropdown-toggle profile-pic" data-bs-toggle="dropdown" href="#" aria-expanded="false">
+                 <div class="avatar-sm d-flex align-items-center justify-content-center">
+                    <i class="fas fa-user fa-lg"></i>
+                 </div>
+                       <span class="profile-username">
+                       <span class="fw-bold">Hi Admin</span>
+                   </span>
                   </a>
                   <ul class="dropdown-menu dropdown-user animated fadeIn">
                     <div class="dropdown-user-scroll scrollbar-outer">
