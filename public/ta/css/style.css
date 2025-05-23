@@ -155,8 +155,30 @@
         transition: .5s;
         opacity: 1;
     }
+    /* Hapus padding besar default */
+.navbar-light .navbar-nav .nav-link {
+    margin-right: 30px;
+    padding: 10px 15px; /* kecil agar tidak terlalu tinggi */
+    color: var(--dark);
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+    border-radius: 8px;
 }
 
+/* Warna saat hover */
+.navbar-light .navbar-nav .nav-link:hover {
+    background-color: #e0f0ff;
+    color: var(--primary);
+}
+
+/* Warna saat halaman aktif */
+.navbar-light .navbar-nav .nav-link.active {
+    background-color: #cce5ff;
+    color: var(--primary) !important;
+}
+    
+}
+/* Navbar end */
 
 /* === General Carousel Styles === */
 .header-carousel .owl-nav {
@@ -312,6 +334,21 @@
 .service-item:hover * {
     color: var(--light) !important;
 }
+    .text-lightblue {
+        color: #5bc0de;
+    }
+
+    .facility-item {
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .facility-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    }
+
+
+
 
 
 /*** Categories & Courses ***/
