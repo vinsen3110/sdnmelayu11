@@ -62,9 +62,7 @@
                 <a href="{{ route('homepage') }}"
                     class="nav-item nav-link ">Home</a>
                 <a href=""
-                    class="nav-item nav-link ">Profile</a>
-                <a href=""
-                    class="nav-item nav-link ">Berita</a>
+
                 <!-- Dropdown: Profil Sekolah -->
 <div class="nav-item dropdown">
     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Profil Sekolah</a>
@@ -79,7 +77,7 @@
 
 <!-- Dropdown: Pages -->
 <div class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Informasi</a>
     <div class="dropdown-menu fade-down m-0">
         <a href="{{ route('visimisi') }}" class="dropdown-item">Visi & Misi</a>
         <a href="{{ route('strukturorganisasi') }}" class="dropdown-item">Struktur Organisasi</a>

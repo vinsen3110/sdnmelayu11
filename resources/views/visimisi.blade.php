@@ -1,35 +1,29 @@
 @extends('layouts.frontend')
-  @section('content')
-  <!-- Header Start -->
-  <div class="container-fluid bg-primary py-5 mb-5 page-header">
-    <div class="container py-5">
-        <div class="row justify-content-center">
-            <div class="col-lg-10 text-center">
-                <h1 class="display-3 text-white animated slideInDown">VISI MISI</h1>
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb justify-content-center">
-                        <li class="breadcrumb-item"><a class="text-white" href="#">SD NEGERI MELAYU 11 BANJARMASIN</a></li>
-                    </ol>
-                </nav>
-            </div>
+@section('content')
+
+<!-- Header Start -->
+<div class="container-fluid p-0 mb-5" style="position: relative; background: rgb(53, 113, 148); height: 150px;">
+    <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center">
+        <div class="text-center">
+            <h1 class="display-5 text-white animated slideInDown">VISI & MISI</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb justify-content-center">
+                    <li class="breadcrumb-item"><a class="text-white" href="#">SD NEGERI MELAYU 11 BANJARMASIN</a></li>
+                </ol>
+            </nav>
         </div>
     </div>
 </div>
 <!-- Header End -->
 
-
-<!-- 404 Start -->
-<div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
-    <div class="container text-center">
-        <div class="row justify-content-center">
-            <div class="col-lg-6">
-                <h1 class="display-1">404</h1>
-                <h1 class="mb-4">Page Not Found</h1>
-                <p class="mb-4">We’re sorry, the page you have looked for does not exist in our website! Maybe go to our home page or try to use a search?</p>
-                <a class="btn btn-primary rounded-pill py-3 px-5" href="">Go Back To Home</a>
-            </div>
+<!-- Visi Misi Image Start -->
+<div class="container text-center mb-5">
+    <div class="row justify-content-center">
+         <div class="col-lg-6 col-md-8 wow fadeInUp d-flex justify-content-center" data-wow-delay="0.1s">
+            <img src="{{ asset('ta/img/visimisi.jpg') }}" alt="" class="img-fluid rounded shadow"
+                style="max-width: 500px;">
         </div>
     </div>
 </div>
-<!-- 404 End -->
+<!-- Visi Misi Image End -->
 @endsection

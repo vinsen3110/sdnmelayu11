@@ -176,7 +176,14 @@
     background-color: #cce5ff;
     color: var(--primary) !important;
 }
-    
+    .welcome-box {
+    background-color: rgb(43, 114, 149);
+    border-radius: 10px;
+    padding: 20px;
+    display: inline-block; /* agar lebar menyesuaikan konten */
+    color: white;
+}
+
 }
 /* Navbar end */
 
@@ -252,7 +259,6 @@
         height: 300px;
     }
 }
-
 
 
 
@@ -348,7 +354,19 @@
     }
 
 
+.zoom-container {
+    overflow: hidden;
+    cursor: zoom-in;
+}
 
+.zoom-container img {
+    transition: transform 0.3s ease;
+}
+
+.zoom-container:hover img {
+    transform: scale(1.5); /* Ubah ukuran zoom sesuai keinginan */
+    cursor: zoom-out;
+}
 
 
 /*** Categories & Courses ***/

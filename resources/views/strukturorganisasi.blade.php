@@ -1,35 +1,77 @@
 @extends('layouts.frontend')
   @section('content')
-  <!-- Header Start -->
-  <div class="container-fluid bg-primary py-5 mb-5 page-header">
-    <div class="container py-5">
-        <div class="row justify-content-center">
-            <div class="col-lg-10 text-center">
-                <h1 class="display-3 text-white animated slideInDown">SRUKTUR ORGANISASI</h1>
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb justify-content-center">
-                        <li class="breadcrumb-item"><a class="text-white" href="#">SD NEGERI MELAYU 11 BANJARMASIN</a></li>
-                    </ol>
-                </nav>
-            </div>
+
+<!-- Header Start -->
+<div class="container-fluid p-0 mb-5" style="position: relative; background: rgb(53, 113, 148); height: 150px;">
+    <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center">
+        <div class="text-center">
+            <h1 class="display-5 text-white animated slideInDown">STRUKTUR ORGANISASI</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb justify-content-center">
+                    <li class="breadcrumb-item"><a class="text-white" href="#">SD NEGERI MELAYU 11 BANJARMASIN</a></li>
+                </ol>
+            </nav>
         </div>
     </div>
 </div>
 <!-- Header End -->
 
-
-<!-- 404 Start -->
-<div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
-    <div class="container text-center">
-        <div class="row justify-content-center">
-            <div class="col-lg-6">
-                <h1 class="display-1">404</h1>
-                <h1 class="mb-4">Page Not Found</h1>
-                <p class="mb-4">We’re sorry, the page you have looked for does not exist in our website! Maybe go to our home page or try to use a search?</p>
-                <a class="btn btn-primary rounded-pill py-3 px-5" href="">Go Back To Home</a>
+<!-- Struktur Organisasi Image Start -->
+<div class="container text-center mb-5">
+    <div class="row justify-content-center">
+        <div class="col-12 d-flex justify-content-center">
+            <div class="zoom-wrapper position-relative overflow-hidden">
+                <img src="{{ asset('ta/img/image.png') }}" alt="Struktur Organisasi"
+                    style="width: 800px; height: auto;" 
+                    class="img-fluid rounded shadow zoomable-img">
             </div>
         </div>
     </div>
 </div>
-<!-- 404 End -->
+<!-- Struktur Organisasi Image End -->
+
+
+<!-- CSS -->
+<style>
+    .zoomable-img {
+        transition: transform 0.3s ease;
+        cursor: zoom-in;
+        transform-origin: center center;
+    }
+
+    .zoomable-img.zoomed {
+        transform: scale(2); /* Ubah skala sesuai kebutuhan */
+        cursor: zoom-out;
+    }
+</style>
+
+<!-- JavaScript -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const img = document.querySelector('.zoomable-img');
+
+        img.addEventListener('click', function (e) {
+            const rect = this.getBoundingClientRect();
+
+            // Posisi klik relatif terhadap gambar
+            const offsetX = e.clientX - rect.left;
+            const offsetY = e.clientY - rect.top;
+
+            // Hitung persentase posisi klik
+            const xPercent = (offsetX / rect.width) * 100;
+            const yPercent = (offsetY / rect.height) * 100;
+
+            // Toggle zoom
+            if (!this.classList.contains('zoomed')) {
+                this.style.transformOrigin = `${xPercent}% ${yPercent}%`;
+                this.classList.add('zoomed');
+            } else {
+                this.style.transformOrigin = `center center`;
+                this.classList.remove('zoomed');
+            }
+        });
+    });
+</script>
+
+
 @endsection

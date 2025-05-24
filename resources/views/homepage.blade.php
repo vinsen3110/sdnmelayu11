@@ -2,18 +2,16 @@
 @section('content')
     <!-- Carousel Start -->
 <div class="container-fluid p-0 mb-5">
-    <div class="owl-carousel header-carousel position-relative ">
-        
+    <div class="owl-carousel header-carousel position-relative">
+
         <!-- Slide 1 -->
         <div class="owl-carousel-item position-relative">
             <img class="img-fluid carousel-image" src="{{ asset('ta/img/kelas.jpg') }}" alt="">
-            <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(53, 113, 148, 0.438)">
-                <div class="container">
-                    <div class="row justify-content-start">
-                        <div class="col-sm-10 col-lg-8">
-                            <h5 class="text-primary text-uppercase mb-10 animated slideInDown">SELAMAT DATANG DI WEBSITE RESMI</h5>
-                            <h1 class="display-3 text-white animated slideInDown">SDN Melayu 11 Banjarmasin</h1>
-                        </div>
+            <div class="position-absolute top-0 start-0 w-100 h-100" style="background: rgba(53, 113, 148, 0.438);">
+                <div class="position-absolute bottom-0 start-0 w-100">
+                    <div style="background: rgb(43, 114, 149); padding: 20px 40px;">
+                        <h5 class="text-white text-uppercase mb-2">SELAMAT DATANG DI WEBSITE RESMI</h5>
+                        <h2 class="text-white fw-bold">SDN MELAYU 11 BANJARMASIN</h2>
                     </div>
                 </div>
             </div>
@@ -22,28 +20,24 @@
         <!-- Slide 2 -->
         <div class="owl-carousel-item position-relative">
             <img class="img-fluid carousel-image" src="{{ asset('ta/img/ptk-2.jpg') }}" alt="">
-            <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(53, 113, 148, 0.438)">
-                <div class="container">
-                    <div class="row justify-content-start">
-                        <div class="col-sm-10 col-lg-8">
-                            <h5 class="text-primary text-uppercase mb-3 animated slideInDown">SELAMAT DATANG DI WEBSITE RESMI</h5>
-                            <h1 class="display-3 text-white animated slideInDown">SDN Melayu 11 Banjarmasin</h1>
-                        </div>
+            <div class="position-absolute top-0 start-0 w-100 h-100" style="background: rgba(53, 113, 148, 0.438);">
+                <div class="position-absolute bottom-0 start-0 w-100">
+                    <div style="background: rgb(43, 114, 149); padding: 20px 40px;">
+                        <h5 class="text-white text-uppercase mb-2">SELAMAT DATANG DI WEBSITE RESMI</h5>
+                        <h2 class="text-white fw-bold">SDN MELAYU 11 BANJARMASIN</h2>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Slide 3 Baru -->
+        <!-- Slide 3 -->
         <div class="owl-carousel-item position-relative">
             <img class="img-fluid carousel-image" src="{{ asset('ta/img/homepage-1.jpg') }}" alt="">
-            <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(53, 113, 148, 0.438)">
-                <div class="container">
-                    <div class="row justify-content-start">
-                        <div class="col-sm-10 col-lg-8">
-                            <h5 class="text-primary text-uppercase mb-3 animated slideInDown">SELAMAT DATANG DI WEBSITE RESMI</h5>
-                            <h1 class="display-3 text-white animated slideInDown">SDN Melayu 11 Banjarmasin</h1>
-                        </div>
+            <div class="position-absolute top-0 start-0 w-100 h-100" style="background: rgba(53, 113, 148, 0.438);">
+                <div class="position-absolute bottom-0 start-0 w-100">
+                    <div style="background: rgb(43, 114, 149); padding: 20px 40px;">
+                        <h5 class="text-white text-uppercase mb-2">SELAMAT DATANG DI WEBSITE RESMI</h5>
+                        <h2 class="text-white fw-bold">SDN MELAYU 11 BANJARMASIN</h2>
                     </div>
                 </div>
             </div>
@@ -51,6 +45,7 @@
     </div>
 </div>
 <!-- Carousel End -->
+
 
 
 <!-- Service Start -->
@@ -100,52 +95,11 @@
 </div>
 <!-- Service End -->
 
-
-
-    <!-- About Start -->
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="row g-5">
-                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
-                    <div class="position-relative h-100">
-                        <img class="img-fluid position-absolute w-100 h-100" src="{{asset('ta/img/logo.png')}}" alt="" style="object-fit: cover;">
-                    </div>
-                </div>
-                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <h6 class="section-title bg-white text-start text-primary pe-3">Tentang Sekolah Kami</h6>
-                    <h1 class="mb-4">SD Negeri Melayu 11</h1>
-                    <p class="mb-4">Merupakan sekolah dasar negeri memiliki Akreditasi B yang beralamatkan di Jln. Kampung Melayu Darat RT.09 No.27, Kelurahan Melayu, Kecamatan Banjarmasin Tengah. Sekolah ini beroperasi sejak tanggal 1 Januari 1978.
-                                    Status kepemilikan sekolah ini adalah Pemerintah Daerah, dengan bentuk pendidikan jenjang SD.</p>
-                    <p class="mb-4">Hingga tahun 2025, sekolah ini memiliki luas bangunan 1038 m² dengan 1 ruang kepala sekolah, 1 ruang guru, 6 ruang kelas, 1 perpustakaan, 1 ruang UKS, 3 toilet, dan 1 ruang bangunan.
-                                    Untuk mendukung pembelajaran, tersedia :</p>
-                    <div class="row gy-2 gx-4 mb-4">
-                        <div class="col-sm-6">
-                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>17 Unit Laptop</p>
-                        </div>
-                        <div class="col-sm-6">
-                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>1 Unit LCD Proyektor</p>
-                        </div>
-                        <div class="col-sm-6">
-                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>1 Unit Sound System</p>
-                        </div>
-                        <div class="col-sm-6">
-                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>2 Unit Printer</p>
-                        </div>
-                    </div>
-                    <a class="btn btn-primary py-3 px-5 mt-2" href="">Read More</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- About End -->
-
-
 <!-- Data Sekolah Start -->
 <section class="py-5" style="background-color: #2BB3B1;">
     <div class="container text-center">
         <h2 class="text-white mb-5">DATA SEKOLAH</h2>
         <div class="row justify-content-center" style="background-color: #062743; padding: 40px 20px; border-radius: 10px;">
-
             @php
                 $facilities = [
                     ['icon' => 'fa-certificate', 'title' => 'Akreditasi', 'desc' => 'A'],
@@ -157,8 +111,8 @@
                 ];
             @endphp
 
-            @foreach($facilities as $facility)
-                <div class="col-md-2 col-6 mb-2 d-flex">
+            @foreach($facilities as $index => $facility)
+                <div class="col-md-2 col-6 mb-2 d-flex wow fadeInUp" data-wow-delay="{{ 0.1 + ($index * 0.1) }}s">
                     <div class="d-flex flex-column justify-content-center align-items-center w-100" style="height: 100%;">
                         <i class="fa {{ $facility['icon'] }} fa-3x text-white mb-2"></i>
                         <p class="text-center mb-0">
@@ -168,8 +122,36 @@
                     </div>
                 </div>
             @endforeach
+        </div>
+    </div>
 </section>
 <!-- Data Sekolah End -->
 
+<!-- About Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
+                <div class="position-relative h-100">
+                    <img class="img-fluid position-absolute w-100 h-100" src="{{asset('ta/img/logo.png')}}" alt="" style="object-fit: cover;">
+                </div>
+            </div>
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
+                <h6 class="section-title bg-white text-start text-primary pe-3">Tentang Sekolah Kami</h6>
+                <h1 class="mb-4">SD Negeri Melayu 11</h1>
+                <p class="mb-4">Merupakan sekolah dasar negeri memiliki Akreditasi B yang beralamatkan di Jln. Kampung Melayu Darat RT.09 No.27, Kelurahan Melayu, Kecamatan Banjarmasin Tengah. Sekolah ini beroperasi sejak tanggal 1 Januari 1978. Status kepemilikan sekolah ini adalah Pemerintah Daerah, dengan bentuk pendidikan jenjang SD.</p>
+                <p class="mb-4">Hingga tahun 2025, sekolah ini memiliki luas bangunan 1038 m² dengan 1 ruang kepala sekolah, 1 ruang guru, 6 ruang kelas, 1 perpustakaan, 1 ruang UKS, 3 toilet, dan 1 ruang bangunan. Untuk mendukung pembelajaran, tersedia :</p>
+                <div class="row gy-2 gx-4 mb-4">
+                    <div class="col-sm-6"><p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>17 Unit Laptop</p></div>
+                    <div class="col-sm-6"><p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>1 Unit LCD Proyektor</p></div>
+                    <div class="col-sm-6"><p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>1 Unit Sound System</p></div>
+                    <div class="col-sm-6"><p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>2 Unit Printer</p></div>
+                </div>
+                <a class="btn btn-primary py-3 px-5 mt-2" href="">Read More</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- About End -->
+
 @endsection
-   
