@@ -119,8 +119,12 @@
                     PRESTASI
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{route ('berita')}}">
+                 <i class="fas fa-newspaper"></i>
+                    BERITA
+                </a>
            
-              
             </ul>
           </div>
         </div>

@@ -44,7 +44,7 @@ Route::get('/admin/prestasi/{id}/edit', [PrestasiController::class, 'edit'])->na
 Route::delete('/admin/prestasi/{id}', [PrestasiController::class, 'destroy'])->name('prestasi.destroy');
 Route::put('/admin/prestasi/{id}', [PrestasiController::class, 'update'])->name('prestasi.update');
 //Berita
-Route::get('/admin/berita', [BeritaController::class, 'index'])->name('berita.index');
+Route::get('/admin/berita', [BeritaController::class, 'index'])->name('berita')->middleware('auth');
 Route::post('/admin/berita', [BeritaController::class, 'store'])->name('berita.store');
 Route::get('/admin/berita/{id}/edit', [BeritaController::class, 'edit'])->name('berita.edit');
 Route::put('/admin/berita/{id}', [BeritaController::class, 'update'])->name('berita.update');

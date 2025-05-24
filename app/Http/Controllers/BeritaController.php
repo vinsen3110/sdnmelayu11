@@ -11,7 +11,7 @@ class BeritaController extends Controller
     public function index()
     {
         $berita = Berita::all();  // variabel plural tetap "berita"
-        return view('berita.index', compact('berita'));
+        return view('admin.adm_berita', compact('berita'));
     }
 
     public function store(Request $request)

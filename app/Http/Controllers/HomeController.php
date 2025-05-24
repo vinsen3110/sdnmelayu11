@@ -10,7 +10,7 @@ class HomeController extends Controller
         return view('homepage');
     }
 
-    public function berita() {
+    public function berita() { 
         return view('berita');
     }
     public function visimisi() {
