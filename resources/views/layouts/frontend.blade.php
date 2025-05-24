@@ -79,11 +79,9 @@
 <div class="nav-item dropdown">
     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Informasi</a>
     <div class="dropdown-menu fade-down m-0">
-        <a href="{{ route('visimisi') }}" class="dropdown-item">Visi & Misi</a>
-        <a href="{{ route('strukturorganisasi') }}" class="dropdown-item">Struktur Organisasi</a>
-        <a href="#" class="dropdown-item">Fasilitas Sekolah</a>
+        <a href="{{ route('berita') }}" class="dropdown-item">Berita</a>
+        <a href="{{ route('pengumumanppdb') }}" class="dropdown-item">Pengumuman PPDB</a>
         <a href="#" class="dropdown-item">Prestasi Siswa</a>
-        <a href="#" class="dropdown-item">Kegiatan</a>
     </div>
 </div>
 
