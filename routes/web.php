@@ -8,6 +8,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FasilitasController;
 use App\Http\Controllers\PrestasiController;
 use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\PengumumanController;
+
 
 
 /*
@@ -24,6 +26,7 @@ Route::get('/', [HomeController::class, 'index'])->name('homepage');
 Route::get('/berita', [HomeController::class, 'berita'])->name('berita');
 Route::get('/visimisi', [HomeController::class, 'visimisi'])->name('visimisi');
 Route::get('/strukturorganisasi', [HomeController::class, 'strukturorganisasi'])->name('strukturorganisasi');
+Route::get('/pengumumanppdb', [HomeController::class, 'pengumumanppdb'])->name('pengumumanppdb');
 Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
 //ekskul
 Route::get('/admin/ekskul', [EkskulController::class, 'index'])->name('ekskul')->middleware('auth');

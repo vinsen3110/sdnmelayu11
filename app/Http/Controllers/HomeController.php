@@ -19,4 +19,7 @@ class HomeController extends Controller
     public function strukturorganisasi() {
         return view('strukturorganisasi');
     }
+    public function pengumumanppdb() {
+        return view('pengumumanppdb');
+    }
 }
