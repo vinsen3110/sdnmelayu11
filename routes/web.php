@@ -1,6 +1,5 @@
 <?php
 
-
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -8,6 +7,9 @@ use App\Http\Controllers\EkskulController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FasilitasController;
 use App\Http\Controllers\PrestasiController;
+use App\Http\Controllers\BeritaController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -41,6 +43,12 @@ Route::post('/admin/prestasi', [PrestasiController::class, 'store'])->name('pres
 Route::get('/admin/prestasi/{id}/edit', [PrestasiController::class, 'edit'])->name('prestasi.edit');
 Route::delete('/admin/prestasi/{id}', [PrestasiController::class, 'destroy'])->name('prestasi.destroy');
 Route::put('/admin/prestasi/{id}', [PrestasiController::class, 'update'])->name('prestasi.update');
+//Berita
+Route::get('/admin/berita', [BeritaController::class, 'index'])->name('berita.index');
+Route::post('/admin/berita', [BeritaController::class, 'store'])->name('berita.store');
+Route::get('/admin/berita/{id}/edit', [BeritaController::class, 'edit'])->name('berita.edit');
+Route::put('/admin/berita/{id}', [BeritaController::class, 'update'])->name('berita.update');
+Route::delete('/admin/berita/{id}', [BeritaController::class, 'destroy'])->name('berita.destroy');
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);

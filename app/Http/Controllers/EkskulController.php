@@ -12,7 +12,7 @@ class EkskulController extends Controller
     public function index()
     {
         $ekskul = Ekskul::all();
-        return view('admin.ekskul', compact('ekskul'));
+        return view('admin.adm_ekskul', compact('ekskul'));
     }
 
     // Menyimpan data ekskul baru
