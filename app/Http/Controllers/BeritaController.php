@@ -20,9 +20,8 @@ class BeritaController extends Controller
             'judul_berita' => 'required|string|max:255',
             'foto' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
             'jam' => 'required',
-            'tanggal' => 'required|numeric|min:1|max:31',
-            'bulan' => 'required|numeric|min:1|max:12',
-            'tahun' => 'required|numeric',
+            'tanggal' => 'required|date',
+            
         ]);
 
         $path = null;
@@ -35,11 +34,10 @@ class BeritaController extends Controller
             'foto' => $path,
             'jam' => $request->jam,
             'tanggal' => $request->tanggal,
-            'bulan' => $request->bulan,
-            'tahun' => $request->tahun,
+            
         ]);
 
-        return redirect()->route('berita.index')->with('success', 'Berita berhasil ditambahkan.');
+        return redirect()->route('berita')->with('success', 'Berita berhasil ditambahkan.');
     }
 
     public function edit($id)
@@ -56,9 +54,8 @@ class BeritaController extends Controller
             'judul_berita' => 'required|string|max:255',
             'foto' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
             'jam' => 'required',
-            'tanggal' => 'required|numeric|min:1|max:31',
-            'bulan' => 'required|numeric|min:1|max:12',
-            'tahun' => 'required|numeric',
+            'tanggal' => 'required|date',
+            
         ]);
 
         if ($request->hasFile('foto')) {
@@ -71,11 +68,10 @@ class BeritaController extends Controller
         $berita->judul_berita = $request->judul_berita;
         $berita->jam = $request->jam;
         $berita->tanggal = $request->tanggal;
-        $berita->bulan = $request->bulan;
-        $berita->tahun = $request->tahun;
+        
         $berita->save();
 
-        return redirect()->route('berita.index')->with('success', 'Berita berhasil diperbarui.');
+        return redirect()->route('berita')->with('success', 'Berita berhasil diperbarui.');
     }
 
     public function destroy($id)
@@ -86,6 +82,6 @@ class BeritaController extends Controller
         }
         $berita->delete();
 
-        return redirect()->route('berita.index')->with('success', 'Berita berhasil dihapus.');
+        return redirect()->route('berita')->with('success', 'Berita berhasil dihapus.');
     }
 }

@@ -16,7 +16,6 @@ class Berita extends Model
         'foto',
         'jam',
         'tanggal',
-        'bulan',
-        'tahun',
+       
     ];
 }

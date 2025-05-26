@@ -23,10 +23,11 @@ use App\Http\Controllers\PengumumanController;
 |
 */
 Route::get('/', [HomeController::class, 'index'])->name('homepage');
-Route::get('/berita', [HomeController::class, 'berita'])->name('berita');
+Route::get('/beritasekolah', [HomeController::class, 'beritasekolah'])->name('beritasekolah');
 Route::get('/visimisi', [HomeController::class, 'visimisi'])->name('visimisi');
 Route::get('/strukturorganisasi', [HomeController::class, 'strukturorganisasi'])->name('strukturorganisasi');
 Route::get('/pengumumanppdb', [HomeController::class, 'pengumumanppdb'])->name('pengumumanppdb');
+Route::get('/prestasisiswa', [HomeController::class, 'prestasisiswa'])->name('prestasisiswa');
 Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
 //ekskul
 Route::get('/admin/ekskul', [EkskulController::class, 'index'])->name('ekskul')->middleware('auth');
@@ -48,7 +49,7 @@ Route::delete('/admin/prestasi/{id}', [PrestasiController::class, 'destroy'])->n
 Route::put('/admin/prestasi/{id}', [PrestasiController::class, 'update'])->name('prestasi.update');
 //Berita
 Route::get('/admin/berita', [BeritaController::class, 'index'])->name('berita')->middleware('auth');
-Route::post('/admin/berita', [BeritaController::class, 'store'])->name('berita.store');
+Route::post('/admin/berita/store', [BeritaController::class, 'store'])->name('berita.store');
 Route::get('/admin/berita/{id}/edit', [BeritaController::class, 'edit'])->name('berita.edit');
 Route::put('/admin/berita/{id}', [BeritaController::class, 'update'])->name('berita.update');
 Route::delete('/admin/berita/{id}', [BeritaController::class, 'destroy'])->name('berita.destroy');

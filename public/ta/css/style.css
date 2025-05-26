@@ -367,6 +367,12 @@
     transform: scale(1.5); /* Ubah ukuran zoom sesuai keinginan */
     cursor: zoom-out;
 }
+.container-fluid.footer {
+  max-width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
 
 
 /*** Categories & Courses ***/

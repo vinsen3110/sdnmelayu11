@@ -1,6 +1,8 @@
 @extends('layouts.frontend')
+
 @section('content')
-    <!-- Carousel Start -->
+
+<!-- Carousel Start -->
 <div class="container-fluid p-0 mb-5">
     <div class="owl-carousel header-carousel position-relative">
 
@@ -42,11 +44,10 @@
                 </div>
             </div>
         </div>
+
     </div>
 </div>
 <!-- Carousel End -->
-
-
 
 <!-- Service Start -->
 <div class="container-xxl py-5">
@@ -67,7 +68,7 @@
             </div>
 
             <!-- Struktur Organisasi -->
-            <div class="col-lg-3 col-sm-6 mb-4 mx-3 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="col-lg-3 col-sm-6 mb-4 mx-3 wow fadeInUp" data-wow-delay="0.2s">
                 <a href="{{ route('strukturorganisasi') }}" style="text-decoration: none; color: inherit;">
                     <div class="service-item text-center pt-3 h-100">
                         <div class="p-4">
@@ -80,14 +81,16 @@
             </div>
 
             <!-- Pengumuman PPDB -->
-            <div class="col-lg-3 col-sm-6 mb-4 mx-3 wow fadeInUp" data-wow-delay="0.1s">
-                <div class="service-item text-center pt-3 h-100">
-                    <div class="p-4">
-                        <i class="fa fa-3x fa-bullhorn text-primary mb-4"></i>
-                        <h5 class="mb-3">Pengumuman PPDB</h5>
-                        <p>Informasi resmi mengenai jadwal, persyaratan, alur pendaftaran, dan ketentuan seleksi penerimaan peserta didik baru.</p>
+            <div class="col-lg-3 col-sm-6 mb-4 mx-3 wow fadeInUp" data-wow-delay="0.3s">
+                <a href="{{ route('pengumumanppdb') }}" style="text-decoration: none; color: inherit;">
+                    <div class="service-item text-center pt-3 h-100">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-bullhorn text-primary mb-4"></i>
+                            <h5 class="mb-3">Pengumuman PPDB</h5>
+                            <p>Informasi terkait Penerimaan Peserta Didik Baru tahun ajaran terbaru.</p>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
 
         </div>
@@ -113,7 +116,7 @@
 
             @foreach($facilities as $index => $facility)
                 <div class="col-md-2 col-6 mb-2 d-flex wow fadeInUp" data-wow-delay="{{ 0.1 + ($index * 0.1) }}s">
-                    <div class="d-flex flex-column justify-content-center align-items-center w-100" style="height: 100%;">
+                    <div class="d-flex flex-column justify-content-center align-items-center w-100">
                         <i class="fa {{ $facility['icon'] }} fa-3x text-white mb-2"></i>
                         <p class="text-center mb-0">
                             <strong style="color: #5cd1ff;">{{ $facility['title'] }}</strong><br>
@@ -130,24 +133,25 @@
 <!-- About Start -->
 <div class="container-xxl py-5">
     <div class="container">
-        <div class="row g-5">
-            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
-                <div class="position-relative h-100">
-                    <img class="img-fluid position-absolute w-100 h-100" src="{{asset('ta/img/logo.png')}}" alt="" style="object-fit: cover;">
-                </div>
+        <div class="row g-5 align-items-center">
+            <!-- Gambar Logo -->
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                <img class="img-fluid" src="{{ asset('ta/img/logo.png') }}" alt="Logo SDN Melayu 11">
             </div>
+
+            <!-- Deskripsi Sekolah -->
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
                 <h6 class="section-title bg-white text-start text-primary pe-3">Tentang Sekolah Kami</h6>
                 <h1 class="mb-4">SD Negeri Melayu 11</h1>
-                <p class="mb-4">Merupakan sekolah dasar negeri memiliki Akreditasi B yang beralamatkan di Jln. Kampung Melayu Darat RT.09 No.27, Kelurahan Melayu, Kecamatan Banjarmasin Tengah. Sekolah ini beroperasi sejak tanggal 1 Januari 1978. Status kepemilikan sekolah ini adalah Pemerintah Daerah, dengan bentuk pendidikan jenjang SD.</p>
-                <p class="mb-4">Hingga tahun 2025, sekolah ini memiliki luas bangunan 1038 m² dengan 1 ruang kepala sekolah, 1 ruang guru, 6 ruang kelas, 1 perpustakaan, 1 ruang UKS, 3 toilet, dan 1 ruang bangunan. Untuk mendukung pembelajaran, tersedia :</p>
+                <p class="mb-4">Merupakan sekolah dasar negeri memiliki Akreditasi B yang beralamatkan di Jln. Kampung Melayu Darat RT.09 No.27, Kelurahan Melayu, Kecamatan Banjarmasin Tengah. Sekolah ini beroperasi sejak tanggal 1 Januari 1978.</p>
+                <p class="mb-4">Hingga tahun 2025, sekolah ini memiliki luas bangunan 1038 m² dengan 1 ruang kepala sekolah, 1 ruang guru, 6 ruang kelas, 1 perpustakaan, 1 ruang UKS, 3 toilet, dan 1 ruang bangunan. Untuk mendukung pembelajaran, tersedia:</p>
                 <div class="row gy-2 gx-4 mb-4">
                     <div class="col-sm-6"><p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>17 Unit Laptop</p></div>
                     <div class="col-sm-6"><p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>1 Unit LCD Proyektor</p></div>
                     <div class="col-sm-6"><p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>1 Unit Sound System</p></div>
                     <div class="col-sm-6"><p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>2 Unit Printer</p></div>
                 </div>
-                <a class="btn btn-primary py-3 px-5 mt-2" href="">Read More</a>
+                <a class="btn btn-primary py-3 px-5 mt-2" href="#">Read More</a>
             </div>
         </div>
     </div>

@@ -16,9 +16,7 @@ return new class extends Migration
         $table->string('judul_berita');
         $table->string('foto')->nullable();
         $table->time('jam');
-        $table->unsignedTinyInteger('tanggal');
-        $table->unsignedTinyInteger('bulan');
-        $table->unsignedSmallInteger('tahun');
+        $table->date('tanggal');
         $table->timestamps();
     });
 }

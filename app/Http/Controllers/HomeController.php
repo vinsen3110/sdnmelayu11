@@ -10,8 +10,8 @@ class HomeController extends Controller
         return view('homepage');
     }
 
-    public function berita() { 
-        return view('berita');
+    public function beritasekolah() { 
+        return view('beritasekolah');
     }
     public function visimisi() {
         return view('visimisi');
@@ -21,5 +21,8 @@ class HomeController extends Controller
     }
     public function pengumumanppdb() {
         return view('pengumumanppdb');
+    }
+    public function prestasisiswa() {
+        return view('prestasisiswa');
     }
 }
