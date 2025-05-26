@@ -57,7 +57,8 @@
             class="navbar-brand"
             height="35"
         />
-        <span class="ms-2 text-white fw-bold" style="font-size: 12px;">SDN MELAYU 11 BJM</span>
+        <span class="ms-2 text-white fw-bold" style="font-size: 12px;">
+          SDN MELAYU 11 BJM</span>
  <!-- ← Tambah teks di sini -->
     </a>
     <div class="nav-toggle ms-auto">
@@ -101,30 +102,29 @@
                 </span>
                 <h4 class="text-section">Components</h4>
               </li>
-              <li class="nav-item">
-                <a href="{{route ('ekskul')}}">
+              <li class="nav-item {{ request()->is('admin/ekskul*') ? 'active' : '' }}">
+                <a href="{{ url('admin/ekskul') }}" class="nav-link {{ request()->is('admin/ekskul*') ? 'active' : '' }}">
                   <i class="fas fa-users"></i>
-                     EKSKUL
-                </a>
+                  <p>Ekskul</p>
+               </a>
               </li>
-            <li class="nav-item">
-                <a href="{{route ('fasilitas')}}">
-                 <i class="fas fa-building"></i>
-                    FASILITAS
+              <li class="nav-item {{ request()->is('admin/fasilitas*') ? 'active' : '' }}">
+                <a href="{{ url('admin/fasilitas') }}" class="nav-link {{ request()->is('admin/fasilitas*') ? 'active' : '' }}">
+                   <i class="fas fa-building"></i>
+                   <p>FASILITAS</p>
                 </a>
-              </li>
-               <li class="nav-item">
-                <a href="{{route ('prestasi')}}">
+              <li class="nav-item {{ request()->is('admin/prestasi*') ? 'active' : '' }}">
+               <a href="{{ url('admin/prestasi') }}" class="nav-link {{ request()->is('admin/prestasi*') ? 'active' : '' }}">
                  <i class="fas fa-trophy"></i>
-                    PRESTASI
-                </a>
+                 <p>PRESTASI</p>
+              </a>
               </li>
-              <li class="nav-item">
-                <a href="{{route ('berita')}}">
+              <li class="nav-item {{ request()->is('admin/berita*') ? 'active' : '' }}">
+               <a href="{{ url('admin/berita') }}" class="nav-link {{ request()->is('admin/berita*') ? 'active' : '' }}">
                  <i class="fas fa-newspaper"></i>
-                    BERITA
-                </a>
-           
+                 <p>Berita</p>
+               </a>
+              </li>
             </ul>
           </div>
         </div>
