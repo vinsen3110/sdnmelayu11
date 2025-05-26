@@ -88,86 +88,60 @@
     <!-- Navbar End -->
 @yield('content')
 
- <!-- Footer Start -->
- <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
-    <div class="container py-5">
-        <div class="row g-5">
-            <div class="col-lg-3 col-md-6">
-                <h4 class="text-white mb-3">Quick Link</h4>
-                <a class="btn btn-link" href="">About Us</a>
-                <a class="btn btn-link" href="">Contact Us</a>
-                <a class="btn btn-link" href="">Privacy Policy</a>
-                <a class="btn btn-link" href="">Terms & Condition</a>
-                <a class="btn btn-link" href="{{route('login')}}">Login</a>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <h4 class="text-white mb-3">Contact</h4>
-                <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
-                <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
-                <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@example.com</p>
-                <div class="d-flex pt-2">
-                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
-                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
+<!-- Footer Start -->
+<div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container py-3">
+        <div class="row g-5 align-items-start">
+            <!-- Kiri: Logo & Nama Sekolah -->
+            <div class="col-lg-6 col-md-12">
+                <div class="d-flex align-items-center mb-2">
+                    <img src="{{ asset('ta/img/logo.png') }}" alt="Logo" style="height: 60px; width: 60px; margin-right: 15px;">
+                    <h2 class="text-white mb-0" style="font-weight: 800;">SDN MELAYU 11</h2>
                 </div>
+                <p class="text-light mb-2">Sekolah yang membentuk karakter siswa, berkompetensi global, mandiri, peduli sosial dan peduli lingkungan.</p>
             </div>
-            <div class="col-lg-3 col-md-6">
-                <h4 class="text-white mb-3">Gallery</h4>
-                <div class="row g-2 pt-2">
-                    <div class="col-4">
-                        <img class="img-fluid bg-light p-1" src="img/course-1.jpg" alt="">
+
+            <!-- Kanan: Quick Link & Contact -->
+            <div class="col-lg-6 col-md-12">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <h5 class="text-white mb-2">Quick Link</h5>
+                        <a class="btn btn-link" href="#">Tentang Kami</a>
+                        <a class="btn btn-link" href="#">Kontak</a>
+                        <a class="btn btn-link" href="#">Privacy Policy</a>
+                        <a class="btn btn-link" href="#">Terms & Condition</a>
+                        <a class="btn btn-link" href="{{ route('login') }}">Login</a>
                     </div>
-                    <div class="col-4">
-                        <img class="img-fluid bg-light p-1" src="img/course-2.jpg" alt="">
+                    <div class="col-md-6">
+                        <h5 class="text-white mb-2">Contact</h5>
+                        <p class="mb-1"><i class="fa fa-map-marker-alt me-2"></i>Jl. Kp. Melayu Darat No.23, RT.9, Banjarmasin</p>
+                        <p class="mb-1"><i class="fa fa-phone-alt me-2"></i>+012 345 67890</p>
+                        <p class="mb-2"><i class="fa fa-envelope me-2"></i>info@example.com</p>
+                        <div class="d-flex pt-1">
+                            <a class="btn btn-outline-light btn-social me-1" href="#"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-outline-light btn-social me-1" href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-light btn-social me-1" href="#"><i class="fab fa-youtube"></i></a>
+                            <a class="btn btn-outline-light btn-social" href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
                     </div>
-                    <div class="col-4">
-                        <img class="img-fluid bg-light p-1" src="img/course-3.jpg" alt="">
-                    </div>
-                    <div class="col-4">
-                        <img class="img-fluid bg-light p-1" src="img/course-2.jpg" alt="">
-                    </div>
-                    <div class="col-4">
-                        <img class="img-fluid bg-light p-1" src="img/course-3.jpg" alt="">
-                    </div>
-                    <div class="col-4">
-                        <img class="img-fluid bg-light p-1" src="img/course-1.jpg" alt="">
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <h4 class="text-white mb-3">Newsletter</h4>
-                <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
-                <div class="position-relative mx-auto" style="max-width: 400px;">
-                    <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
-                    <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="container">
-        <div class="copyright">
-            <div class="row">
-                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                    &copy; <a class="border-bottom" href="#">Your Site Name</a>, All Right Reserved.
 
-                    <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                    Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a><br><br>
-                    Distributed By <a class="border-bottom" href="https://themewagon.com">ThemeWagon</a>
+        <!-- Copyright -->
+        <div class="copyright mt-3 border-top pt-3">
+            <div class="row d-flex align-items-center justify-content-between">
+                <div class="col-md-6 text-center text-md-start mb-2 mb-md-0">
+                    <a class="border-bottom" href="#">Maisya Alifa</a> &copy;  All Right Reserved.
                 </div>
                 <div class="col-md-6 text-center text-md-end">
-                    <div class="footer-menu">
-                        <a href="">Home</a>
-                        <a href="">Cookies</a>
-                        <a href="">Help</a>
-                        <a href="">FQAs</a>
-                    </div>
+                    Designed By <a class="border-bottom" href="#">HTML Maisya</a> |
+                    Distributed By <a class="border-bottom" href="#">Maisya Alifa</a>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<!-- Footer End -->
+        <!-- Footer End -->
+
 
 
 <!-- Back to Top -->
