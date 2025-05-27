@@ -31,6 +31,10 @@
     <link href="{{ asset('ta/css/style.css') }}" rel="stylesheet">
 </head>
 
+@section('content')
+<!-- Tambahkan ini di dalam section atau di layout -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <body>
     <!-- Spinner Start -->
     <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">

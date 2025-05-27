@@ -99,28 +99,30 @@
 <!-- Service End -->
 
 <!-- Data Sekolah Start -->
-<section class="py-5" style="background-color: #2BB3B1;">
+<section class="py-5" style="background-color: #357194">
     <div class="container text-center">
         <h2 class="text-white mb-5">DATA SEKOLAH</h2>
-        <div class="row justify-content-center" style="background-color: #062743; padding: 40px 20px; border-radius: 10px;">
+            <div class="row justify-content-center gap-3 mx-auto px-3 py-3"
+                style="background-color:#ffffff; border-radius: 30px; max-width: 100%; width: 95%;">
+
+
             @php
                 $facilities = [
                     ['icon' => 'fa-certificate', 'title' => 'Akreditasi', 'desc' => 'A'],
                     ['icon' => 'fa-universal-access', 'title' => 'Sekolah Inklusi', 'desc' => '10 orang'],
                     ['icon' => 'fa-leaf', 'title' => 'Sekolah Adiwiyata', 'desc' => 'Nasional'],
-                    ['icon' => 'fa-chalkboard-teacher', 'title' => 'Pendidik & Tenaga Kependidikan', 'desc' => '13 orang'],
-                    ['icon' => 'fa-user-graduate', 'title' => 'Siswa', 'desc' => '89 orang'],
+                    ['icon' => 'fa-book', 'title' => 'Kurikulum', 'desc' => 'Merdeka'],
                     ['icon' => 'fa-trophy', 'title' => 'Prestasi', 'desc' => '50+'],
                 ];
             @endphp
 
             @foreach($facilities as $index => $facility)
-                <div class="col-md-2 col-6 mb-2 d-flex wow fadeInUp" data-wow-delay="{{ 0.1 + ($index * 0.1) }}s">
+                <div class="col-md-2 col-6 mb-4 px-2 d-flex wow fadeInUp" data-wow-delay="{{ 0.1 + ($index * 0.1) }}s">
                     <div class="d-flex flex-column justify-content-center align-items-center w-100">
-                        <i class="fa {{ $facility['icon'] }} fa-3x text-white mb-2"></i>
-                        <p class="text-center mb-0">
-                            <strong style="color: #5cd1ff;">{{ $facility['title'] }}</strong><br>
-                            <span class="text-white">{{ $facility['desc'] }}</span>
+                        <i class="fa {{ $facility['icon'] }} fa-4x mb-3" style="color: #000000;"></i>
+                        <p class="text-center mb-0" style="color: #000000;">
+                            <strong>{{ $facility['title'] }}</strong><br>
+                            <span>{{ $facility['desc'] }}</span>
                         </p>
                     </div>
                 </div>
@@ -129,6 +131,8 @@
     </div>
 </section>
 <!-- Data Sekolah End -->
+    
+
 
 <!-- About Start -->
 <div class="container-xxl py-5">
@@ -157,5 +161,106 @@
     </div>
 </div>
 <!-- About End -->
+
+<!-- Diagram Data PTK dan Siswa Start -->
+<section class="py-5" style="background-color : white;">
+    <div class="container">
+        <h2 class="text-white text-center mb-5" style="background-color: #357194; padding: 12px 40px; border-radius: 100px;">
+             DATA PTK DAN SISWA
+        </h2>
+        <div class="row justify-content-center text-center">
+            <!-- Diagram PTK -->
+            <div class="col-md-6 d-flex flex-column align-items-center">
+                <h5 class="mb-4">Data PTK</h5>
+                <canvas id="ptkChart" width="350" height="350" style="display: block; margin: 0 auto;"></canvas>
+            </div>
+
+            <!-- Diagram Siswa -->
+            <div class="col-md-6 d-flex flex-column align-items-center">
+                <h5 class="mb-4">Data Siswa</h5>
+                <canvas id="siswaChart" width="350" height="350" style="display: block; margin: 0 auto;"></canvas>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Diagram Data PTK dan Siswa End -->
+
+<!-- Script Chart.js -->
+<script>
+    // Chart PTK
+    const ctxPTK = document.getElementById('ptkChart').getContext('2d');
+    new Chart(ctxPTK, {
+    type: 'doughnut',
+    data: {
+        labels: ['Guru (8)', 'Tenaga Kependidikan (5)'],
+        datasets: [{
+            data: [8, 5],
+            backgroundColor: ['#36A2EB', '#FF6384'],
+            hoverOffset: 10
+        }]
+    },
+    options: {
+        responsive: false,
+        animation: {
+            duration: 2000  // durasi animasi jadi 2 detik
+        },
+        plugins: {
+            legend: {
+                position: 'bottom'
+            }
+        }
+    }
+});
+
+
+    // Chart Siswa
+    const ctxSiswa = document.getElementById('siswaChart').getContext('2d');
+    new Chart(ctxSiswa, {
+        type: 'doughnut',
+        data: {
+            labels: ['Laki-laki (50)', 'Perempuan (39)'],
+            datasets: [{
+                data: [50, 39],
+                backgroundColor: ['#4BC0C0', '#FFCE56'],
+                hoverOffset: 10
+            }]
+        },
+        options: {
+            responsive: false,
+            plugins: {
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }
+    });
+</script>
+
+{{-- resources/views/homepage.blade.php --}}
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2 class="mb-4">Berita</h2>
+        <div class="row">
+            @foreach($berita as $item)
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <img src="{{ asset('storage/' . $item->gambar) }}" class="card-img-top" alt="Thumbnail">
+                        <div class="card-body">
+                            <span class="badge bg-success mb-2">Berita</span>
+                            <p class="text-muted"><i class="bi bi-calendar"></i> {{ $item->created_at->format('Y-m-d H:i:s') }}</p>
+                            <h5 class="card-title">{{ $item->judul }}</h5>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+        {{-- HAPUS BAGIAN INI: --}}
+        {{-- <div class="d-flex justify-content-center mt-4">
+            {{ $berita->links() }}
+        </div> --}}
+    </div>
+</section>
+
+
 
 @endsection

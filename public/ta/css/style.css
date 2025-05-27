@@ -395,7 +395,15 @@
 .team-item:hover img {
     transform: scale(1.1);
 }
-
+.title-custom {
+      display: inline-block;
+      background-color: #357194;
+      color: white;
+      padding: 0.3em 1.2em;
+      border-radius: 25px;
+      font-weight: 700;
+      font-size: 2rem;
+    }
 
 /*** Testimonial ***/
 .testimonial-carousel::before {
@@ -468,6 +476,7 @@
     background: var(--primary);
     border-color: var(--primary);
 }
+
 
 
 /*** Footer ***/
