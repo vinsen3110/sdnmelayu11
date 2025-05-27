@@ -7,11 +7,11 @@
                 <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
                     <div class="course-item">
                         <img class="img-fluid"
-                            src="{{ $item->foto != null ? asset('storage/foto/' . $item->foto) : asset('img/foto-tidak-ada.png') }}"
-                            alt="Card image cap" />
+                            src="{{ $item->foto != null ? asset('storage/foto_berita/' . $item->foto) : asset('img/foto-tidak-ada.png') }}"
+                            alt="" />
                         <div class="course-content">
-                            <h3>{{ $item->judul }}</h3>
-                            <p class="description">{{ $item->deskripsi }}</p>
+                            <h3>{{ $item->judul_berita}}</h3>
+                           
                         </div>
                     </div>
                 </div> <!-- End Course Item-->
