@@ -10,7 +10,7 @@ class BeritaController extends Controller
 {
     public function index()
     {
-        $berita = Berita::all();  // variabel plural tetap "berita"
+        $berita = Berita::all();
         return view('admin.adm_berita', compact('berita'));
     }
 
@@ -21,7 +21,6 @@ class BeritaController extends Controller
             'foto' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
             'jam' => 'required',
             'tanggal' => 'required|date',
-            
         ]);
 
         $path = null;
@@ -34,7 +33,6 @@ class BeritaController extends Controller
             'foto' => $path,
             'jam' => $request->jam,
             'tanggal' => $request->tanggal,
-            
         ]);
 
         return redirect()->route('berita')->with('success', 'Berita berhasil ditambahkan.');
@@ -55,7 +53,6 @@ class BeritaController extends Controller
             'foto' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
             'jam' => 'required',
             'tanggal' => 'required|date',
-            
         ]);
 
         if ($request->hasFile('foto')) {
@@ -68,7 +65,6 @@ class BeritaController extends Controller
         $berita->judul_berita = $request->judul_berita;
         $berita->jam = $request->jam;
         $berita->tanggal = $request->tanggal;
-        
         $berita->save();
 
         return redirect()->route('berita')->with('success', 'Berita berhasil diperbarui.');

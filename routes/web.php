@@ -42,7 +42,7 @@ Route::get('/admin/fasilitas/{id}/edit', [FasilitasController::class, 'edit'])->
 Route::delete('/admin/fasilitas/{id}', [FasilitasController::class, 'destroy'])->name('fasilitas.destroy');
 Route::put('/admin/fasilitas/{id}', [FasilitasController::class, 'update'])->name('fasilitas.update');
 //Prestasi
-Route::get('/admin/prestasi', [PrestasiController::class, 'index'])->name('prestasi')->middleware('auth');
+Route::get('/admin/prestasi', [PrestasiController::class, 'index'])->name('prestasi.index')->middleware('auth');
 Route::post('/admin/prestasi', [PrestasiController::class, 'store'])->name('prestasi.store');
 Route::get('/admin/prestasi/{id}/edit', [PrestasiController::class, 'edit'])->name('prestasi.edit');
 Route::delete('/admin/prestasi/{id}', [PrestasiController::class, 'destroy'])->name('prestasi.destroy');
@@ -52,7 +52,7 @@ Route::get('/admin/berita', [BeritaController::class, 'index'])->name('berita')-
 Route::post('/admin/berita/store', [BeritaController::class, 'store'])->name('berita.store');
 Route::get('/admin/berita/{id}/edit', [BeritaController::class, 'edit'])->name('berita.edit');
 Route::put('/admin/berita/{id}', [BeritaController::class, 'update'])->name('berita.update');
-Route::delete('/admin/berita/{id}', [BeritaController::class, 'destroy'])->name('berita.destroy');
+Route::delete('/admin/berita/{id}', [BeritaController::class, 'destroy'])->name('berita.hapus');
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);

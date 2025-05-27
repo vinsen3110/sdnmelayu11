@@ -12,19 +12,18 @@
   }
 </style>
   <div class="container">
-    <button type="submit">Logout</button>
+   
           <div class="page-inner">
             <div
-              class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4"
-            >
+              class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
               <div>
                 <h3 class="fw-bold mb-3">Dashboard</h3>
-                <h6 class="op-7 mb-2">SD Negeri Melayu 11 Banjarmasin</h6>
+                <h6 class="op-7 mb-2">
+                   Selamat datang di,<br>
+                   SD Negeri Melayu 11 Banjarmasin
+                </h6>
               </div>
-              <div class="ms-md-auto py-2 py-md-0">
-                <a href="#" class="btn btn-label-info btn-round me-2">Manage</a>
-                <a href="#" class="btn btn-primary btn-round">Add Customer</a>
-              </div>
+              
             </div>
             <div class="row">
               <div class="col-sm-6 col-md-3">
@@ -40,7 +39,7 @@
                       </div>
                       <div class="col col-stats ms-3 ms-sm-0">
                         <div class="numbers">
-                          <p class="card-category">Ekstrakulikuler</p>
+                          <p class="card-category">Ekskul</p>
                           <h4 class="card-title">5</h4>
                         </div>
                       </div>

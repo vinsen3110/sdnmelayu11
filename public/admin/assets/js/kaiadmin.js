@@ -1,7 +1,7 @@
 "use strict";
 
-var logoHeaderContent = $('.sidebar .logo-header').html();
-$('.main-header .logo-header').html(logoHeaderContent);
+//var logoHeaderContent = $('.sidebar .logo-header').html();
+//$('.main-header .logo-header').html(logoHeaderContent);
 
 $(".nav-search .input-group > input").focus(function(e){
 	$(this).parents().eq(2).addClass("focus");
