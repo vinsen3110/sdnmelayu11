@@ -12,7 +12,7 @@
     <!-- Tombol Tambah -->
     <button style="margin-left:20px;" class="btn btn-primary mb-3" data-bs-toggle="modal"
         data-bs-target="#tambahEkskulModal">
-        Tambah Ekskul
+        <i class="fas fa-plus me-2"></i>Tambah Ekskul
     </button>
 
     <!-- Tabel Ekskul -->

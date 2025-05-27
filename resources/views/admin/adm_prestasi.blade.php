@@ -1,11 +1,15 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="container mt-5">
-    <h2 class="mb-4">Daftar Prestasi</h2>
+<div class="container py-4">
+    <h2 style="margin-left:20px;" class="mb-4">Daftar Prestasi</h2>
+
 
     <!-- Button Tambah -->
-    <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#tambahModal">Tambah Prestasi</button>
+    <button style="margin-left:20px;" class="btn btn-primary mb-3" data-bs-toggle="modal"
+        data-bs-target="#tambahEkskulModal">
+        <i class="fas fa-plus me-2"></i>Tambah Prestasi
+    </button>
 
     <!-- Tabel Prestasi -->
     <table class="table table-bordered">
