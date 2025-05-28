@@ -11,7 +11,7 @@
                             alt="Card image cap" />
                         <div class="course-content">
                             <h3>{{ $item->judul }}</h3>
-                            <p class="description">{{ $item->deskripsi }}</p>
+                           
                         </div>
                     </div>
                 </div> <!-- End Course Item-->
