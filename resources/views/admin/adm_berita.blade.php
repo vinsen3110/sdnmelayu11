@@ -14,7 +14,7 @@
     {{-- Tombol Tambah --}}
      <button style="margin-left:20px;" class="btn btn-primary mb-3" data-bs-toggle="modal"
         data-bs-target="#tambahModal">
-        <i class="fas fa-plus me-2"></i>Tambah Prestasi
+        <i class="fas fa-plus me-2"></i>Tambah Berita 
     </button>
 
     {{-- Tabel --}}
