@@ -244,7 +244,8 @@
             @foreach($berita as $item)
                 <div class="col-md-4 mb-4">
                     <div class="card h-100">
-                        <img src="{{ asset('storage/' . $item->gambar) }}" class="card-img-top" alt="Thumbnail">
+                        <img src="{{ $item->foto ? Storage::url($item->foto) : asset('img/foto-tidak-ada.png') }}" 
+                             class="card-img-top" alt="Thumbnail">
                         <div class="card-body">
                             <span class="badge bg-success mb-2">Berita</span>
                             <p class="text-muted"><i class="bi bi-calendar"></i> {{ $item->created_at->format('Y-m-d H:i:s') }}</p>
@@ -254,12 +255,12 @@
                 </div>
             @endforeach
         </div>
-        {{-- HAPUS BAGIAN INI: --}}
         {{-- <div class="d-flex justify-content-center mt-4">
             {{ $berita->links() }}
         </div> --}}
     </div>
 </section>
+
 
 
 

@@ -27,7 +27,7 @@ class BeritaController extends Controller
         if ($request->hasFile('foto')) {
             $path = $request->file('foto')->store('public/foto_berita');
         }
-
+        
         Berita::create([
             'judul_berita' => $request->judul_berita,
             'foto' => $path,
