@@ -4,7 +4,6 @@
 <div class="container py-4">
     <h2 style="margin-left:20px;" class="mb-4">Daftar Berita</h2>
 
-
     {{-- Flash Message --}}
     @if (session('success'))
         <div class="alert alert-success">
@@ -13,9 +12,9 @@
     @endif
 
     {{-- Tombol Tambah --}}
-    <button style="margin-left:20px;" class="btn btn-primary mb-3" data-bs-toggle="modal"
-        data-bs-target="#tambahEkskulModal">
-        <i class="fas fa-plus me-2"></i>Tambah Berita
+     <button style="margin-left:20px;" class="btn btn-primary mb-3" data-bs-toggle="modal"
+        data-bs-target="#tambahModal">
+        <i class="fas fa-plus me-2"></i>Tambah Prestasi
     </button>
 
     {{-- Tabel --}}

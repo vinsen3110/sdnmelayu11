@@ -3,10 +3,9 @@
 <div class="container py-4">
     <h2 style="margin-left:20px;" class="mb-4">Daftar Fasilitas</h2>
 
-
     <!-- Button Tambah -->
     <button style="margin-left:20px;" class="btn btn-primary mb-3" data-bs-toggle="modal"
-        data-bs-target="#tambahEkskulModal">
+        data-bs-target="#tambahModal">
         <i class="fas fa-plus me-2"></i>Tambah Fasilitas
     </button>
 
