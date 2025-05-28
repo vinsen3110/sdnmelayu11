@@ -1,8 +1,8 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="container mt-5">
-    <h2 class="mb-4">Daftar Berita</h2>
+<div class="container py-4">
+    <h2 style="margin-left:20px;" class="mb-4">Daftar Berita</h2>
 
     {{-- Flash Message --}}
     @if (session('success'))
@@ -12,8 +12,9 @@
     @endif
 
     {{-- Tombol Tambah --}}
-    <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#tambahModal">
-        Tambah 
+     <button style="margin-left:20px;" class="btn btn-primary mb-3" data-bs-toggle="modal"
+        data-bs-target="#tambahModal">
+        <i class="fas fa-plus me-2"></i>Tambah Prestasi
     </button>
 
     {{-- Tabel --}}

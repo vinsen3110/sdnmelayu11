@@ -7,7 +7,7 @@
                 <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
                     <div class="course-item">
                         <img class="img-fluid"
-                            src="{{ $item->foto != null ? asset('storage/foto_berita/' . $item->foto) : asset('img/foto-tidak-ada.png') }}"
+                            src="{{ $item->foto != null ? asset('storage/app/'.$item->foto) : asset('img/foto-tidak-ada.png') }}"
                             alt="" />
                         <div class="course-content">
                             <h3>{{ $item->judul_berita}}</h3>
