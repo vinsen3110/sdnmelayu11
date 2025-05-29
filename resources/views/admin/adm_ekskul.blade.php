@@ -2,20 +2,21 @@
 
 @section('content')
 <div class="container py-4">
-    <h2 style="margin-left:20px;" class="mb-4">Daftar Ekskul</h2>
+    <h2 class="mb-4 ms-3">Daftar Ekskul</h2>
 
-    <!-- Notifikasi sukses -->
+    {{-- Notifikasi sukses --}}
     @if (session('success'))
-        <div class="alert alert-success">{{ session('success') }}</div>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('success') }}
+        </div>
     @endif
 
-    <!-- Tombol Tambah -->
-    <button style="margin-left:20px;" class="btn btn-primary mb-3" data-bs-toggle="modal"
-        data-bs-target="#tambahEkskulModal">
+    {{-- Tombol Tambah --}}
+    <button class="btn btn-primary mb-3 ms-3" data-bs-toggle="modal" data-bs-target="#tambahEkskulModal">
         <i class="fas fa-plus me-2"></i>Tambah Ekskul
     </button>
 
-    <!-- Tabel Ekskul -->
+    {{-- Tabel Ekskul --}}
     <div class="table-responsive">
         <table class="table table-hover align-middle">
             <thead class="bg-light">
@@ -43,13 +44,12 @@
                             @endif
                         </td>
                         <td>
-                            <!-- Tombol Edit -->
-                            <a href="#" class="btn btn-sm btn-primary me-1" data-bs-toggle="modal"
-                                data-bs-target="#editEkskulModal{{ $item->id }}">
-                                <i class="fas fa-edit"></i> Edit
-                            </a>
+                            {{-- Tombol Edit --}}
+                            <button class="btn btn-sm btn-primary me-1" data-bs-toggle="modal" data-bs-target="#editEkskulModal{{ $item->id }}">
+                                <i class="fas fa-edit me-1"></i> Edit
+                            </button>
 
-                            <!-- Modal Edit (HARUS DI DALAM LOOP) -->
+                            {{-- Modal Edit --}}
                             <div class="modal fade" id="editEkskulModal{{ $item->id }}" tabindex="-1" aria-labelledby="editEkskulLabel{{ $item->id }}" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <form action="{{ route('ekskul.update', $item->id) }}" method="POST" enctype="multipart/form-data" class="modal-content">
@@ -88,7 +88,9 @@
                                                 <label class="form-label">Foto Ekskul (opsional)</label>
                                                 <input type="file" name="foto" class="form-control" accept="image/*">
                                                 @if($item->foto)
-                                                    <small class="text-muted d-block mt-2">Foto saat ini: <img src="{{ asset('storage/ekskul/' . $item->foto) }}" width="50"></small>
+                                                    <small class="text-muted d-block mt-2">Foto saat ini:
+                                                        <img src="{{ asset('storage/ekskul/' . $item->foto) }}" width="50">
+                                                    </small>
                                                 @endif
                                             </div>
                                         </div>
@@ -100,14 +102,32 @@
                                 </div>
                             </div>
 
-                            <!-- Tombol Hapus -->
-                            <form action="{{ route('ekskul.destroy', $item->id) }}" method="POST" style="display:inline-block;" onsubmit="return confirm('Yakin ingin menghapus data ini?')">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-danger">
-                                    <i class="fas fa-trash"></i> Hapus
-                                </button>
-                            </form>
+                            {{-- Tombol Hapus --}}
+                            <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#hapusEkskulModal{{ $item->id }}">
+                                <i class="fas fa-trash me-1"></i> Hapus
+                            </button>
+
+                            {{-- Modal Konfirmasi Hapus --}}
+                            <div class="modal fade" id="hapusEkskulModal{{ $item->id }}" tabindex="-1" aria-labelledby="hapusEkskulLabel{{ $item->id }}" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <form action="{{ route('ekskul.destroy', $item->id) }}" method="POST" class="modal-content">
+                                        @csrf
+                                        @method('DELETE')
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="hapusEkskulLabel{{ $item->id }}">Konfirmasi Hapus</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Yakin ingin menghapus ekskul <strong>{{ $item->nama_ekskul }}</strong>?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                            <button type="submit" class="btn btn-danger">Hapus</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
                         </td>
                     </tr>
                 @empty
@@ -120,10 +140,10 @@
     </div>
 </div>
 
-<!-- Modal Tambah Ekskul -->
+{{-- Modal Tambah Ekskul --}}
 <div class="modal fade" id="tambahEkskulModal" tabindex="-1" aria-labelledby="tambahEkskulLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <form action="{{ route('ekskul.store') }}" method="POST" enctype="multipart/form-data" class="modal-content">
+        <form id="formTambahEkskul" action="{{ route('ekskul.store') }}" method="POST" enctype="multipart/form-data" class="modal-content">
             @csrf
             <div class="modal-header">
                 <h5 class="modal-title" id="tambahEkskulLabel">Tambah Ekskul</h5>
@@ -131,44 +151,80 @@
             </div>
             <div class="modal-body">
                 <div class="mb-3">
-                    <label for="namaEkskul" class="form-label">Nama Ekskul</label>
+                    <label class="form-label">Nama Ekskul</label>
                     <input type="text" name="nama_ekskul" class="form-control" required>
                 </div>
                 <div class="mb-3">
-                    <label for="pembina" class="form-label">Pembina</label>
+                    <label class="form-label">Pembina</label>
                     <input type="text" name="pembina" class="form-control" required>
                 </div>
                 <div class="mb-3">
-                    <label for="hariKegiatan" class="form-label">Hari Kegiatan</label>
+                    <label class="form-label">Hari Kegiatan</label>
                     <select name="hari_kegiatan" class="form-select" required>
                         <option value="">Pilih Hari</option>
-                        <option>Senin</option>
-                        <option>Selasa</option>
-                        <option>Rabu</option>
-                        <option>Kamis</option>
-                        <option>Jumat</option>
-                        <option>Sabtu</option>
-                        <option>Minggu</option>
+                        @foreach(['Senin','Selasa','Rabu','Kamis','Jumat','Sabtu','Minggu'] as $hari)
+                            <option value="{{ $hari }}">{{ $hari }}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="mb-3">
-                    <label for="waktuKegiatan" class="form-label">Waktu Kegiatan</label>
+                    <label class="form-label">Waktu Kegiatan</label>
                     <input type="time" name="waktu_kegiatan" class="form-control" required>
                 </div>
                 <div class="mb-3">
-                    <label for="deskripsi" class="form-label">Deskripsi Ekskul</label>
+                    <label class="form-label">Deskripsi</label>
                     <textarea name="deskripsi" class="form-control" rows="3" required></textarea>
                 </div>
                 <div class="mb-3">
-                    <label for="foto" class="form-label">Foto Ekskul</label>
+                    <label class="form-label">Foto Ekskul</label>
                     <input type="file" name="foto" class="form-control" accept="image/*">
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                <button type="submit" class="btn btn-primary">Simpan</button>
+                {{-- Tombol ini tidak langsung submit form --}}
+                <button type="button" class="btn btn-primary" id="btnKonfirmasiUpload">Simpan</button>
             </div>
         </form>
     </div>
 </div>
+{{-- Modal Konfirmasi Simpan --}}
+<div class="modal fade" id="konfirmasiSimpanModal" tabindex="-1" aria-labelledby="konfirmasiSimpanLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Konfirmasi Simpan</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+            </div>
+            <div class="modal-body">
+                Apakah Anda yakin ingin menyimpan data ekskul ini?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                <button type="button" class="btn btn-success" id="konfirmasiSubmitBtn">Ya, Simpan</button>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
+
+@push('scripts')
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const btnKonfirmasi = document.getElementById('btnKonfirmasiUpload');
+        const formTambah = document.getElementById('formTambahEkskul');
+        const submitBtn = document.getElementById('konfirmasiSubmitBtn');
+
+        // Saat klik "Simpan" pertama kali, munculkan modal konfirmasi
+        btnKonfirmasi?.addEventListener('click', () => {
+            const modal = new bootstrap.Modal(document.getElementById('konfirmasiSimpanModal'));
+            modal.show();
+        });
+
+        // Saat klik "Ya, Simpan" di modal konfirmasi, submit form
+        submitBtn?.addEventListener('click', () => {
+            formTambah.submit();
+        });
+    });
+</script>
+@endpush

@@ -39,17 +39,20 @@
                         @endif
                     </td>
                     <td>
-                        <!-- Tombol Edit -->
-                        <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#editModal{{ $item->id_prestasi }}">Edit</button>
+                        <!-- Tombol Edit (warna biru dengan ikon) -->
+<button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editModal{{ $item->id_prestasi }}">
+    <i class="fas fa-edit me-1"></i> Edit
+</button>
 
-                        <!-- Tombol Hapus -->
-                        <form action="{{ route('prestasi.destroy', $item->id_prestasi) }}" method="POST" style="display:inline-block;" onsubmit="return confirm('Yakin ingin menghapus data ini?')">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-sm btn-danger">
-                                Hapus
-                            </button>
-                        </form>
+<!-- Tombol Hapus (warna merah dengan ikon) -->
+<form action="{{ route('prestasi.destroy', $item->id_prestasi) }}" method="POST" style="display:inline-block;" onsubmit="return confirm('Yakin ingin menghapus data ini?')">
+    @csrf
+    @method('DELETE')
+    <button type="submit" class="btn btn-sm btn-danger">
+        <i class="fas fa-trash-alt me-1"></i> Hapus
+    </button>
+</form>
+
                     </td>
                 </tr>
 

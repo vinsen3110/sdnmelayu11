@@ -1,5 +1,4 @@
 @extends('layouts.admin')
-
 @section('content')
 <div class="container py-4">
     <h2 style="margin-left:20px;" class="mb-4">Daftar Berita</h2>
@@ -12,7 +11,7 @@
     @endif
 
     {{-- Tombol Tambah --}}
-     <button style="margin-left:20px;" class="btn btn-primary mb-3" data-bs-toggle="modal"
+    <button style="margin-left:20px;" class="btn btn-primary mb-3" data-bs-toggle="modal"
         data-bs-target="#tambahModal">
         <i class="fas fa-plus me-2"></i>Tambah Berita 
     </button>
@@ -39,15 +38,23 @@
                     <td>{{ $item->jam }}</td>
                     <td>{{ $item->tanggal }}</td>
                     <td>
-                        <button class="btn btn-success btn-sm" data-bs-toggle="modal"
-                            data-bs-target="#editModal{{ $item->id }}">Edit</button>
+                    <!-- Tombol Edit -->
+                    <a href="{{ route('berita.edit', $item->id) }}" class="btn btn-primary btn-sm">
+                    <i class="fas fa-edit me-1"></i> Edit
+                    </a>
 
-                        <form action="{{ route('berita.hapus', $item->id) }}" method="POST"
-                              class="d-inline" onsubmit="return confirm('Hapus berita ini?')">
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn btn-danger btn-sm">Hapus</button>
-                        </form>
+                    <!-- Tombol Hapus (warna merah) -->
+                    <form id="formDelete{{ $item->id }}" action="{{ route('berita.hapus', $item->id) }}" method="POST" class="d-inline">
+                      @csrf
+                      @method('DELETE')
+                     <button type="button" class="btn btn-danger btn-sm"
+                        data-bs-toggle="modal"
+                        data-bs-target="#confirmDeleteModal"
+                        data-form-id="formDelete{{ $item->id }}">
+                        <i class="fas fa-trash-alt me-1"></i> Hapus
+                    </button>
+                    </form>
+
                     </td>
                 </tr>
             @endforeach
@@ -58,7 +65,7 @@
 {{-- Modal Tambah --}}
 <div class="modal fade" id="tambahModal" tabindex="-1" aria-labelledby="tambahModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <form method="POST" action="{{ route('berita.store') }}" enctype="multipart/form-data">
+        <form id="formTambah" method="POST" action="{{ route('berita.store') }}" enctype="multipart/form-data">
             @csrf
             <div class="modal-content">
                 <div class="modal-header">
@@ -86,7 +93,10 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Tambah</button>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#confirmModal" data-form-id="formTambah">
+                        Tambah
+                    </button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
                 </div>
             </div>
@@ -99,7 +109,7 @@
 <div class="modal fade" id="editModal{{ $item->id }}" tabindex="-1"
     aria-labelledby="editModalLabel{{ $item->id }}" aria-hidden="true">
     <div class="modal-dialog">
-        <form method="POST" action="{{ route('berita.update', $item->id) }}" enctype="multipart/form-data">
+        <form id="formEdit{{ $item->id }}" method="POST" action="{{ route('berita.update', $item->id) }}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="modal-content">
@@ -134,7 +144,10 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-success">Simpan</button>
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                            data-bs-target="#confirmModal" data-form-id="formEdit{{ $item->id }}">
+                        Simpan
+                    </button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
                 </div>
             </div>
@@ -142,4 +155,72 @@
     </div>
 </div>
 @endforeach
+
+{{-- Modal Konfirmasi Simpan --}}
+<div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Konfirmasi Simpan</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                Apakah Anda yakin ingin menyimpan data ini?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                <button type="button" class="btn btn-primary" id="btnConfirmSimpan">Yakin Simpan</button>
+            </div>
+        </div>
+    </div>
+</div>
+{{-- Modal Konfirmasi Hapus --}}
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Konfirmasi Hapus</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+            </div>
+            <div class="modal-body">
+                Apakah Anda yakin ingin menghapus data ini? Tindakan ini tidak dapat dibatalkan.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                <button type="button" class="btn btn-danger" id="btnConfirmHapus">Yakin Hapus</button>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
+
+@push('scripts')
+<script>
+    let formToSubmit = null;
+
+    // Tangkap form ID saat modal simpan muncul
+    document.getElementById('confirmModal')?.addEventListener('show.bs.modal', function (event) {
+        const button = event.relatedTarget;
+        const formId = button.getAttribute('data-form-id');
+        formToSubmit = document.getElementById(formId);
+    });
+
+    // Tangkap form ID saat modal hapus muncul
+    document.getElementById('confirmDeleteModal')?.addEventListener('show.bs.modal', function (event) {
+        const button = event.relatedTarget;
+        const formId = button.getAttribute('data-form-id');
+        formToSubmit = document.getElementById(formId);
+    });
+
+    // Submit form simpan
+    document.getElementById('btnConfirmSimpan')?.addEventListener('click', function () {
+        if (formToSubmit) formToSubmit.submit();
+    });
+
+    // Submit form hapus
+    document.getElementById('btnConfirmHapus')?.addEventListener('click', function () {
+        if (formToSubmit) formToSubmit.submit();
+    });
+</script>
+@endpush
+
