@@ -49,6 +49,34 @@
 </div>
 <!-- Carousel End -->
 
+<!-- Sambutan Kepala Sekolah Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <!-- Foto Kepala Sekolah -->
+            <div class="col-lg-5 mb-4 mb-lg-0">
+                <div class="position-relative rounded overflow-hidden shadow" style="height: 100%;">
+                    <img src="{{ asset('ta/img/ptk.jpg') }}" alt="Kepala Sekolah" class="w-100 h-100 object-fit-cover" style="object-fit: cover;">
+                    <div class="position-absolute bottom-0 w-100 p-3" style="background-color: rgb(43, 114, 149);">
+                        <h5 class="mb-0 text-white">H. Marzuki Miad, M.Pd.</h5>
+                        <small class="text-white">Kepala Sekolah</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sambutan Teks -->
+            <div class="col-lg-7 ps-lg-4">
+                <h4 class="text-dark mb-3">Sambutan Kepala Sekolah</h4>
+                <p class="mb-3">Assalamu’alaikum Warahmatullahi Wabarakaatuh.</p>
+                <p>Salam sejahtera untuk kita semua. Selamat datang di website SD Negeri Melayu 11. Website ini dibangun sebagai media informasi dan komunikasi sekolah, agar selaras dengan perkembangan teknologi serta memudahkan masyarakat dalam mencari informasi terkait sekolah kami.</p>
+                <a href="#" class="btn btn-warning text-white mt-2">Selengkapnya</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Sambutan Kepala Sekolah End -->
+
+
 <!-- Service Start -->
 <div class="container-xxl py-5">
     <div class="container">
@@ -138,9 +166,22 @@
 <div class="container-xxl py-5">
     <div class="container">
         <div class="row g-5 align-items-center">
-            <!-- Gambar Logo -->
+            <!-- Kolase 4 Foto -->
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                <img class="img-fluid" src="{{ asset('ta/img/logo.png') }}" alt="Logo SDN Melayu 11">
+                <div class="row g-2">
+                    <div class="col-6">
+                        <img class="img-fluid w-100 rounded" src="{{ asset('ta/img/lomba-1.jpg') }}" alt="Kolase 1">
+                    </div>
+                    <div class="col-6">
+                        <img class="img-fluid w-100 rounded" src="{{ asset('ta/img/perpus.jpg') }}" alt="Kolase 2">
+                    </div>
+                    <div class="col-6">
+                        <img class="img-fluid w-100 rounded" src="{{ asset('ta/img/kantin.jpg') }}" alt="Kolase 3">
+                    </div>
+                    <div class="col-6">
+                        <img class="img-fluid w-100 rounded" src="{{ asset('ta/img/kelas-2.jpg') }}" alt="Kolase 4">
+                    </div>
+                </div>
             </div>
 
             <!-- Deskripsi Sekolah -->
@@ -162,21 +203,24 @@
 </div>
 <!-- About End -->
 
+
+
 <!-- Diagram Data PTK dan Siswa Start -->
 <section class="py-5" style="background-color : white;">
     <div class="container">
-        <h2 class="text-white text-center mb-5" style="background-color: #357194; padding: 12px 40px; border-radius: 100px;">
+        <h2 class="text-white text-center mb-5 wow fadeInUp" data-wow-delay="0.1s"
+            style="background-color: #357194; padding: 12px 40px; border-radius: 100px;">
              DATA PTK DAN SISWA
         </h2>
         <div class="row justify-content-center text-center">
             <!-- Diagram PTK -->
-            <div class="col-md-6 d-flex flex-column align-items-center">
+            <div class="col-md-6 d-flex flex-column align-items-center wow fadeInUp" data-wow-delay="0.2s">
                 <h5 class="mb-4">Data PTK</h5>
                 <canvas id="ptkChart" width="350" height="350" style="display: block; margin: 0 auto;"></canvas>
             </div>
 
             <!-- Diagram Siswa -->
-            <div class="col-md-6 d-flex flex-column align-items-center">
+            <div class="col-md-6 d-flex flex-column align-items-center wow fadeInUp" data-wow-delay="0.3s">
                 <h5 class="mb-4">Data Siswa</h5>
                 <canvas id="siswaChart" width="350" height="350" style="display: block; margin: 0 auto;"></canvas>
             </div>
@@ -190,28 +234,27 @@
     // Chart PTK
     const ctxPTK = document.getElementById('ptkChart').getContext('2d');
     new Chart(ctxPTK, {
-    type: 'doughnut',
-    data: {
-        labels: ['Guru (8)', 'Tenaga Kependidikan (5)'],
-        datasets: [{
-            data: [8, 5],
-            backgroundColor: ['#36A2EB', '#FF6384'],
-            hoverOffset: 10
-        }]
-    },
-    options: {
-        responsive: false,
-        animation: {
-            duration: 2000  // durasi animasi jadi 2 detik
+        type: 'doughnut',
+        data: {
+            labels: ['Guru (8)', 'Tenaga Kependidikan (5)'],
+            datasets: [{
+                data: [8, 5],
+                backgroundColor: ['#36A2EB', '#FF6384'],
+                hoverOffset: 10
+            }]
         },
-        plugins: {
-            legend: {
-                position: 'bottom'
+        options: {
+            responsive: false,
+            animation: {
+                duration: 2000
+            },
+            plugins: {
+                legend: {
+                    position: 'bottom'
+                }
             }
         }
-    }
-});
-
+    });
 
     // Chart Siswa
     const ctxSiswa = document.getElementById('siswaChart').getContext('2d');
@@ -236,6 +279,7 @@
     });
 </script>
 
+
 {{-- resources/views/homepage.blade.php --}}
 <section class="py-5 bg-light">
     <div class="container">
@@ -249,7 +293,7 @@
                         <div class="card-body">
                             <span class="badge bg-success mb-2">Berita</span>
                             <p class="text-muted"><i class="bi bi-calendar"></i> {{ $item->created_at->format('Y-m-d H:i:s') }}</p>
-                            <h5 class="card-title">{{ $item->judul }}</h5>
+                            <h5 class="card-title">{{ $item->judul_berita }}</h5>
                         </div>
                     </div>
                 </div>

@@ -77,12 +77,12 @@
         <a href="#" class="dropdown-item">Kegiatan</a>
     </div>
 </div>
-
+        <a href="{{ route('beritasekolah') }}" class="nav-item nav-link">Berita</a>
 <!-- Dropdown: Pages -->
 <div class="nav-item dropdown">
     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Informasi</a>
     <div class="dropdown-menu fade-down m-0">
-        <a href="{{ route('beritasekolah') }}" class="dropdown-item">Berita</a>
+        
         <a href="{{ route('pengumumanppdb') }}" class="dropdown-item">Pengumuman PPDB</a>
         <a href="{{ route('prestasisiswa') }}" class="dropdown-item">Prestasi Siswa</a>
     </div>
@@ -91,6 +91,69 @@
     </nav>
     <!-- Navbar End -->
 @yield('content')
+
+<!-- WhatsApp Floating Button Start -->
+<style>
+    .wa-chat-container {
+        position: fixed;
+        right: 20px;
+        bottom: 25px;
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        font-family: Arial, sans-serif;
+    }
+
+    .wa-chat-text {
+        background: white;
+        padding: 8px 12px;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        font-size: 13px;
+        margin-right: 8px;
+        color: #000;
+        line-height: 1.3;
+    }
+
+    .wa-chat-text strong {
+        font-weight: 600;
+        color: #2e7d32;
+    }
+
+    .wa-chat-icon img {
+        width: 55px;
+        height: 55px;
+        border-radius: 50%;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+
+    @media (max-width: 768px) {
+        .wa-chat-text {
+            font-size: 12px;
+            padding: 6px 10px;
+        }
+
+        .wa-chat-icon img {
+            width: 50px;
+            height: 50px;
+        }
+    }
+</style>
+
+<div class="wa-chat-container">
+    <div class="wa-chat-text">
+        Perlu bantuan?<br><strong>Chat dengan kami</strong>
+    </div>
+    <div class="wa-chat-icon">
+        <a href="https://wa.me/6281234567890" target="_blank" title="Hubungi kami via WhatsApp">
+            <img src="https://img.icons8.com/color/96/000000/whatsapp.png" alt="WhatsApp">
+        </a>
+    </div>
+</div>
+<!-- WhatsApp Floating Button End -->
+
+
+
 
 <!-- Footer Start -->
 <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
@@ -148,8 +211,6 @@
 
 
 
-<!-- Back to Top -->
-<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
 
 
 <!-- JavaScript Libraries -->
