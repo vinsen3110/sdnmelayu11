@@ -39,13 +39,14 @@
                     <td>{{ $item->tanggal }}</td>
                     <td>
                     <!-- Tombol Edit -->
-                    <a href="{{ route('berita.edit', $item->id) }}" class="btn btn-primary btn-sm">
+                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal"
+                    data-bs-target="#editModal{{ $item->id }}">
                     <i class="fas fa-edit me-1"></i> Edit
-                    </a>
+                    </button>
 
                     <!-- Tombol Hapus -->
                     <button type="button" class="btn btn-danger btn-sm"
-                     onclick="konfirmasiHapus('{{ route('berita.hapus', $item->id) }}')">
+                    onclick="konfirmasiHapus('{{ route('berita.hapus', $item->id) }}')">
                     <i class="fas fa-trash-alt me-1"></i> Hapus
                     </button>
                     </td>
@@ -86,10 +87,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#confirmModal" data-form-id="formTambah">
-                        Tambah
-                    </button>
+                    <<button type="submit" class="btn btn-primary">Tambah</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
                 </div>
             </div>
@@ -137,10 +135,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                            data-bs-target="#confirmModal" data-form-id="formEdit{{ $item->id }}">
-                        Simpan
-                    </button>
+                    <button type="submit" class="btn btn-success">Simpan</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
                 </div>
             </div>
@@ -180,10 +175,12 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-        <form id="formHapus" method="POST">
+        <form id="formHapus" method="POST" action="">
           @csrf
           @method('DELETE')
-          <button type="button" class="btn btn-danger" id="btnConfirmHapus">Hapus</button>
+          <button type="submit" class="btn btn-danger btn-sm">
+            <i class="fas fa-trash-alt me-1"></i> Hapus
+          </button>
         </form>
       </div>
     </div>
@@ -206,36 +203,26 @@
 <script>
     let formToSubmit = null;
 
-    // Tangkap form ID saat modal simpan muncul
+    // === Untuk Modal Konfirmasi Simpan ===
     document.getElementById('confirmModal')?.addEventListener('show.bs.modal', function (event) {
         const button = event.relatedTarget;
         const formId = button.getAttribute('data-form-id');
         formToSubmit = document.getElementById(formId);
     });
 
-    // Tangkap form ID saat modal hapus muncul
-    document.getElementById('confirmDeleteModal')?.addEventListener('show.bs.modal', function (event) {
-        const button = event.relatedTarget;
-        const formId = button.getAttribute('data-form-id');
-        formToSubmit = document.getElementById(formId);
-    });
-
-    // Submit form simpan
+    // Tombol submit konfirmasi simpan
     document.getElementById('btnConfirmSimpan')?.addEventListener('click', function () {
         if (formToSubmit) formToSubmit.submit();
     });
 
-    // Submit form hapus
-    document.getElementById('btnConfirmHapus')?.addEventListener('click', function () {
-        if (formToSubmit) formToSubmit.submit();
-    });
-
+    // === Fungsi Konfirmasi Hapus ===
     function konfirmasiHapus(url) {
         const form = document.getElementById('formHapus');
-        form.action = url;
+        form.action = url; // set URL DELETE
         const hapusModal = new bootstrap.Modal(document.getElementById('hapusModal'));
         hapusModal.show();
     }
 </script>
 @endpush
+
 

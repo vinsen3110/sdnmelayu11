@@ -40,7 +40,7 @@
                             @endif
                         @endforeach
                     <td>
-                    <!-- Tombol Edit (Biru) -->
+                    <!-- Tombol Edit  -->
                     <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editModal{{ $item->id }}">
                         <i class="fas fa-edit me-1"></i> Edit
                     </button>
@@ -196,24 +196,27 @@
 
 
 @endsection
+
 @push('script')
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function () {
     const btnTriggerKonfirmasi = document.getElementById('btnKonfirmasiSimpanFasilitas');
     const btnSubmitForm = document.getElementById('btn-konfirmasi-simpan');
     const form = document.getElementById('formTambahFasilitas');
 
-    // Saat tombol Tambah diklik
-    btnTriggerKonfirmasi.addEventListener('click', function () {
-      const modalKonfirmasi = new bootstrap.Modal(document.getElementById('konfirmasiSimpanModal'));
-      modalKonfirmasi.show();
-    });
+    if (btnTriggerKonfirmasi && btnSubmitForm && form) {
+        btnTriggerKonfirmasi.addEventListener('click', function () {
+            const modalKonfirmasi = new bootstrap.Modal(document.getElementById('konfirmasiSimpanModal'));
+            modalKonfirmasi.show();
+        });
 
-    // Saat tombol Yakin Simpan diklik
-    btnSubmitForm.addEventListener('click', function () {
-      form.submit();
-    });
-  });
+        btnSubmitForm.addEventListener('click', function () {
+            form.submit();
+        });
+    } else {
+        console.warn('Element tidak ditemukan: Periksa ID tombol atau modal di Blade.');
+    }
+});
 </script>
 @endpush
-    
+
