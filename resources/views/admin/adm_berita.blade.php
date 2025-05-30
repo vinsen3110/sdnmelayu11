@@ -43,18 +43,11 @@
                     <i class="fas fa-edit me-1"></i> Edit
                     </a>
 
-                    <!-- Tombol Hapus (warna merah) -->
-                    <form id="formDelete{{ $item->id }}" action="{{ route('berita.hapus', $item->id) }}" method="POST" class="d-inline">
-                      @csrf
-                      @method('DELETE')
-                     <button type="button" class="btn btn-danger btn-sm"
-                        data-bs-toggle="modal"
-                        data-bs-target="#confirmDeleteModal"
-                        data-form-id="formDelete{{ $item->id }}">
-                        <i class="fas fa-trash-alt me-1"></i> Hapus
+                    <!-- Tombol Hapus -->
+                    <button type="button" class="btn btn-danger btn-sm"
+                     onclick="konfirmasiHapus('{{ route('berita.hapus', $item->id) }}')">
+                    <i class="fas fa-trash-alt me-1"></i> Hapus
                     </button>
-                    </form>
-
                     </td>
                 </tr>
             @endforeach
@@ -174,24 +167,39 @@
         </div>
     </div>
 </div>
-{{-- Modal Konfirmasi Hapus --}}
-<div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Konfirmasi Hapus</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
-            </div>
-            <div class="modal-body">
-                Apakah Anda yakin ingin menghapus data ini? Tindakan ini tidak dapat dibatalkan.
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                <button type="button" class="btn btn-danger" id="btnConfirmHapus">Yakin Hapus</button>
-            </div>
-        </div>
+<!-- Modal Konfirmasi Hapus -->
+<div class="modal fade modal-top" id="hapusModal" tabindex="-1" aria-labelledby="hapusModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Konfirmasi Hapus</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Apakah Anda yakin ingin menghapus data ini?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+        <form id="formHapus" method="POST">
+          @csrf
+          @method('DELETE')
+          <button type="button" class="btn btn-danger" id="btnConfirmHapus">Hapus</button>
+        </form>
+      </div>
     </div>
+  </div>
 </div>
+@push('styles')
+<style>
+.modal-top .modal-dialog {
+    top: 10%;
+    margin: 0 auto;
+    position: absolute;
+    transform: translateY(0%);
+}
+</style>
+@endpush
+
 @endsection
 
 @push('scripts')
@@ -221,6 +229,13 @@
     document.getElementById('btnConfirmHapus')?.addEventListener('click', function () {
         if (formToSubmit) formToSubmit.submit();
     });
+
+    function konfirmasiHapus(url) {
+        const form = document.getElementById('formHapus');
+        form.action = url;
+        const hapusModal = new bootstrap.Modal(document.getElementById('hapusModal'));
+        hapusModal.show();
+    }
 </script>
 @endpush
 

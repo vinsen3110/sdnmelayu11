@@ -150,6 +150,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
             </div>
             <div class="modal-body">
+                <!-- Input fields seperti nama_ekskul, pembina, dll -->
                 <div class="mb-3">
                     <label class="form-label">Nama Ekskul</label>
                     <input type="text" name="nama_ekskul" class="form-control" required>
@@ -182,18 +183,18 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                {{-- Tombol ini tidak langsung submit form --}}
                 <button type="button" class="btn btn-primary" id="btnKonfirmasiUpload">Simpan</button>
             </div>
         </form>
     </div>
 </div>
-{{-- Modal Konfirmasi Simpan --}}
-<div class="modal fade" id="konfirmasiSimpanModal" tabindex="-1" aria-labelledby="konfirmasiSimpanLabel" aria-hidden="true">
+
+{{-- Modal Konfirmasi Simpan Ekskul --}}
+<div class="modal fade" id="konfirmasiSimpanModalEkskul" tabindex="-1" aria-labelledby="konfirmasiSimpanLabelEkskul" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Konfirmasi Simpan</h5>
+                <h5 class="modal-title" id="konfirmasiSimpanLabelEkskul">Konfirmasi Simpan</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
             </div>
             <div class="modal-body">
@@ -201,11 +202,30 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                <button type="button" class="btn btn-success" id="konfirmasiSubmitBtn">Ya, Simpan</button>
+                <button type="button" class="btn btn-primary" id="btnSubmitEkskul">Yakin Simpan</button>
             </div>
         </div>
     </div>
 </div>
+{{-- Modal Konfirmasi Simpan Ekskul (di luar modal utama) --}}
+<div class="modal fade" id="konfirmasiSimpanModalEkskul" tabindex="-1" aria-labelledby="konfirmasiSimpanLabelEkskul" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="konfirmasiSimpanLabelEkskul">Konfirmasi Simpan</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+            </div>
+            <div class="modal-body">
+                Apakah Anda yakin ingin menyimpan data ekskul ini?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                <button type="button" class="btn btn-primary" id="btnSubmitEkskul">Yakin Simpan</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 @endsection
 
 @push('scripts')
@@ -224,6 +244,28 @@
         // Saat klik "Ya, Simpan" di modal konfirmasi, submit form
         submitBtn?.addEventListener('click', () => {
             formTambah.submit();
+        });
+    });
+
+     document.addEventListener('DOMContentLoaded', function () {
+        const btnKonfirmasiUpload = document.getElementById('btnKonfirmasiUpload');
+        const modalTambahEkskul = new bootstrap.Modal(document.getElementById('tambahEkskulModal'));
+        const modalKonfirmasi = new bootstrap.Modal(document.getElementById('konfirmasiSimpanModalEkskul'));
+        const btnSubmitEkskul = document.getElementById('btnSubmitEkskul');
+        const formEkskul = document.getElementById('formTambahEkskul');
+
+        btnKonfirmasiUpload?.addEventListener('click', () => {
+            // Tutup modal form ekskul terlebih dahulu
+            modalTambahEkskul.hide();
+
+            // Tampilkan modal konfirmasi setelah jeda agar tidak tabrakan transisi
+            setTimeout(() => {
+                modalKonfirmasi.show();
+            }, 300);
+        });
+
+        btnSubmitEkskul?.addEventListener('click', () => {
+            formEkskul.submit();
         });
     });
 </script>

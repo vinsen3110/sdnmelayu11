@@ -2,7 +2,6 @@
 <html lang="en">
   <head>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-  </head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>SDN Melayu 11 BJM - Admin Dashboard</title>
     <meta
@@ -39,7 +38,8 @@
     <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}" />
     <link rel="stylesheet" href="{{asset('assets/css/plugins.min.css')}}" />
     <link rel="stylesheet" href="{{asset('assets/css/kaiadmin.min.css')}}" />
-
+  </head>
+  <head>
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link rel="stylesheet" href="{{asset('assets/css/demo.css')}}" />
   </head>
@@ -113,6 +113,7 @@
                    <i class="fas fa-building"></i>
                    <p>FASILITAS</p>
                 </a>
+                </li>
               <li class="nav-item {{ request()->is('admin/prestasi*') ? 'active' : '' }}">
                <a href="{{ url('admin/prestasi') }}" class="nav-link {{ request()->is('admin/prestasi*') ? 'active' : '' }}">
                  <i class="fas fa-trophy"></i>
@@ -445,6 +446,6 @@
         fillColor: "rgba(255, 165, 52, .14)",
       });
     </script>
-    @stack('scripts')
+    @stack('script')
   </body>
 </html>
