@@ -73,7 +73,7 @@
     <div class="dropdown-menu fade-down m-0">
         <a href="{{ route('visimisi') }}" class="dropdown-item">Visi & Misi</a>
         <a href="{{ route('strukturorganisasi') }}" class="dropdown-item">Struktur Organisasi</a>
-        <a href="#" class="dropdown-item">Fasilitas Sekolah</a>
+        <a href="{{ route('fasilitassekolah') }}" class="dropdown-item">Fasilitas Sekolah</a>
         <a href="#" class="dropdown-item">Kegiatan</a>
     </div>
 </div>
@@ -87,7 +87,7 @@
         <a href="{{ route('prestasisiswa') }}" class="dropdown-item">Prestasi Siswa</a>
     </div>
 </div>
-        <a href="" class="nav-item nav-link">Contact</a>
+        <a href="{{ route('kontak') }}" class="nav-item nav-link">Kontak</a>
     </nav>
     <!-- Navbar End -->
 @yield('content')

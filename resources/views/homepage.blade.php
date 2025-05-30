@@ -54,19 +54,17 @@
     <div class="container">
         <div class="row align-items-center">
             <!-- Foto Kepala Sekolah -->
-            <div class="col-lg-5 mb-4 mb-lg-0">
-                <div class="position-relative rounded overflow-hidden shadow" style="height: 100%;">
-                    <img src="{{ asset('ta/img/ptk.jpg') }}" alt="Kepala Sekolah" class="w-100 h-100 object-fit-cover" style="object-fit: cover;">
-                    <div class="position-absolute bottom-0 w-100 p-3" style="background-color: rgb(43, 114, 149);">
-                        <h5 class="mb-0 text-white">H. Marzuki Miad, M.Pd.</h5>
-                        <small class="text-white">Kepala Sekolah</small>
-                    </div>
+            <div class="col-lg-4 mb-4 mb-lg-0 text-center">
+                <img src="{{ asset('ta/img/kepsek.png') }}" alt="Kepala Sekolah" class="img-fluid" style="max-width: 300px; height: auto; border-radius: 8px;">
+                <div class="mt-2">
+                    <h5 class="mb-0 text-dark">HJ. Khairiah S.pd.</h5>
+                    <small class="text-muted">Kepala Sekolah</small>
                 </div>
             </div>
 
             <!-- Sambutan Teks -->
-            <div class="col-lg-7 ps-lg-4">
-                <h4 class="text-dark mb-3">Sambutan Kepala Sekolah</h4>
+            <div class="col-lg-8 ps-lg-4">
+                <h4 class="text-start" style="color: black; font-weight: bold;">Sambutan Kepala Sekolah</h4>
                 <p class="mb-3">Assalamu’alaikum Warahmatullahi Wabarakaatuh.</p>
                 <p>Salam sejahtera untuk kita semua. Selamat datang di website SD Negeri Melayu 11. Website ini dibangun sebagai media informasi dan komunikasi sekolah, agar selaras dengan perkembangan teknologi serta memudahkan masyarakat dalam mencari informasi terkait sekolah kami.</p>
                 <a href="#" class="btn btn-warning text-white mt-2">Selengkapnya</a>
@@ -75,6 +73,7 @@
     </div>
 </div>
 <!-- Sambutan Kepala Sekolah End -->
+
 
 
 <!-- Service Start -->
@@ -186,7 +185,7 @@
 
             <!-- Deskripsi Sekolah -->
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
-                <h6 class="section-title bg-white text-start text-primary pe-3">Tentang Sekolah Kami</h6>
+                <h4 class="text-start" style="color: black; font-weight: bold;">Tentang Sekolah Kami</h4>
                 <h1 class="mb-4">SD Negeri Melayu 11</h1>
                 <p class="mb-4">Merupakan sekolah dasar negeri memiliki Akreditasi B yang beralamatkan di Jln. Kampung Melayu Darat RT.09 No.27, Kelurahan Melayu, Kecamatan Banjarmasin Tengah. Sekolah ini beroperasi sejak tanggal 1 Januari 1978.</p>
                 <p class="mb-4">Hingga tahun 2025, sekolah ini memiliki luas bangunan 1038 m² dengan 1 ruang kepala sekolah, 1 ruang guru, 6 ruang kelas, 1 perpustakaan, 1 ruang UKS, 3 toilet, dan 1 ruang bangunan. Untuk mendukung pembelajaran, tersedia:</p>
@@ -280,32 +279,89 @@
 </script>
 
 
-{{-- resources/views/homepage.blade.php --}}
-<section class="py-5 bg-light">
+<!-- Berita -->
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+<section class="py-5">
     <div class="container">
         <h2 class="mb-4">Berita</h2>
-        <div class="row">
-            @foreach($berita as $item)
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100">
-                        <img src="{{ $item->foto ? Storage::url($item->foto) : asset('img/foto-tidak-ada.png') }}" 
-                             class="card-img-top" alt="Thumbnail">
-                        <div class="card-body">
-                            <span class="badge bg-success mb-2">Berita</span>
-                            <p class="text-muted"><i class="bi bi-calendar"></i> {{ $item->created_at->format('Y-m-d H:i:s') }}</p>
-                            <h5 class="card-title">{{ $item->judul_berita }}</h5>
+
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                @foreach($berita->take(6) as $item)
+                    <div class="swiper-slide">
+                        <div class="card h-100" style="width: 320px;">
+                            <img src="{{ $item->foto ? Storage::url($item->foto) : asset('img/foto-tidak-ada.png') }}" 
+                                 class="card-img-top" style="height: 200px; object-fit: cover;" alt="Thumbnail">
+                            <div class="card-body">
+                                <span class="badge bg-success mb-2">Berita</span>
+                                <p class="text-muted mb-1"><i class="bi bi-calendar"></i> {{ $item->created_at->format('Y-m-d H:i:s') }}</p>
+                                <h5 class="card-title">{{ $item->judul_berita }}</h5>
+                            </div>
                         </div>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
+            </div>
+            <div class="swiper-pagination mt-4"></div>
         </div>
-        {{-- <div class="d-flex justify-content-center mt-4">
-            {{ $berita->links() }}
-        </div> --}}
     </div>
 </section>
 
+<!-- Tambahkan Swiper JS -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
+<!-- Inisialisasi Swiper -->
+<script>
+    const swiper = new Swiper('.mySwiper', {
+        slidesPerView: 3,
+        spaceBetween: 30,
+        loop: true,
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        breakpoints: {
+            0: {
+                slidesPerView: 1,
+            },
+            768: {
+                slidesPerView: 2,
+            },
+            992: {
+                slidesPerView: 3,
+            },
+        },
+    });
+</script>
+
+<style>
+    .swiper {
+        width: 100%;
+        padding-bottom: 50px; /* jarak ke pagination dots */
+    }
+
+    .swiper-slide {
+        display: flex;
+        justify-content: center;
+    }
+
+    .swiper-pagination {
+        margin-top: 10px; /* jarak dots */
+    }
+
+    .card {
+        width: 320px;
+    }
+
+    .card-img-top {
+        height: 200px;
+        object-fit: cover;
+    }
+</style>
 
 
 @endsection

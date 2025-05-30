@@ -8,7 +8,7 @@ use App\Models\Berita;
 class HomeController extends Controller
 {
     public function index() {
-        $berita = Berita::latest()->take(3)->get(); // 3 berita terbaru di homepage
+        $berita = Berita::latest()->take(6)->get(); // 3 berita terbaru di homepage
         return view('homepage', compact('berita'));
     }
 
@@ -31,5 +31,11 @@ class HomeController extends Controller
 
     public function prestasisiswa() {
         return view('prestasisiswa');
+    }
+    public function kontak() {
+        return view('kontak');
+    }
+    public function fasilitassekolah() {
+        return view('fasilitassekolah');
     }
 }

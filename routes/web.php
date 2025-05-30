@@ -9,6 +9,7 @@ use App\Http\Controllers\FasilitasController;
 use App\Http\Controllers\PrestasiController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\PengumumanController;
+use App\Http\Controllers\KontakController;
 
 
 
@@ -27,6 +28,8 @@ Route::get('/beritasekolah', [HomeController::class, 'beritasekolah'])->name('be
 Route::get('/visimisi', [HomeController::class, 'visimisi'])->name('visimisi');
 Route::get('/strukturorganisasi', [HomeController::class, 'strukturorganisasi'])->name('strukturorganisasi');
 Route::get('/pengumumanppdb', [HomeController::class, 'pengumumanppdb'])->name('pengumumanppdb');
+Route::get('/kontak', [HomeController::class, 'kontak'])->name('kontak');
+Route::get('/fasilitassekolah', [HomeController::class, 'fasilitassekolah'])->name('fasilitassekolah');
 Route::get('/prestasisiswa', [HomeController::class, 'prestasisiswa'])->name('prestasisiswa');
 Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
 //ekskul
