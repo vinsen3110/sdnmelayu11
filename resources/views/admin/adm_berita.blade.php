@@ -87,7 +87,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <<button type="submit" class="btn btn-primary">Tambah</button>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmModal" data-form-id="formTambah">Tambah</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
                 </div>
             </div>
@@ -135,7 +135,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-success">Simpan</button>
+                   <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#confirmModal" data-form-id="formEdit{{ $item->id }}">Simpan</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
                 </div>
             </div>
@@ -144,16 +144,16 @@
 </div>
 @endforeach
 
-{{-- Modal Konfirmasi Simpan --}}
+<!-- Modal Konfirmasi Simpan -->
 <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Konfirmasi Simpan</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                <h5 class="modal-title" id="confirmModalLabel">Konfirmasi Simpan</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                Apakah Anda yakin ingin menyimpan data ini?
+                Apakah Anda yakin ingin menyimpan data berita ini?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
@@ -178,8 +178,9 @@
         <form id="formHapus" method="POST" action="">
           @csrf
           @method('DELETE')
-          <button type="submit" class="btn btn-danger btn-sm">
-            <i class="fas fa-trash-alt me-1"></i> Hapus
+          <button type="submit" class="btn btn-danger">
+             Hapus
+          </button>
           </button>
         </form>
       </div>

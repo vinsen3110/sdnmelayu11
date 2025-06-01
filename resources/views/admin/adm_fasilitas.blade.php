@@ -75,7 +75,7 @@
                 <!-- Modal Edit -->
                 <div class="modal fade" id="editModal{{ $item->id }}" tabindex="-1" aria-labelledby="editModalLabel{{ $item->id }}" aria-hidden="true">
                   <div class="modal-dialog">
-                    <form method="POST" action="{{ route('fasilitas.update', $item->id) }}" enctype="multipart/form-data">
+                    <form id="formEdit{{ $item->id }}" method="POST" action="{{ route('fasilitas.update', $item->id) }}" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="modal-content">
@@ -113,8 +113,8 @@
                               </div>
                           </div>
                           <div class="modal-footer">
-                            <button type="submit" class="btn btn-success">Simpan</button>
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                           <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#confirmModal" data-form-id="formEdit{{ $item->id }}">Simpan</button>
+                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
                           </div>
                         </div>
                     </form>
@@ -133,7 +133,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="tambahModalLabel">Tambah Fasilitas</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <!-- Isi Form -->
@@ -167,7 +167,9 @@
         </div>
         <div class="modal-footer">
           <!-- Tombol Konfirmasi -->
-          <button type="button" class="btn btn-primary" id="btnKonfirmasiSimpanFasilitas">Tambah</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmModal" data-form-id="formTambahFasilitas">
+             Tambah
+        </button>
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
         </div>
       </div>
@@ -175,48 +177,83 @@
   </div>
 </div>
 
-<!-- Modal Konfirmasi Simpan -->
-<div class="modal fade" id="konfirmasiSimpanModal" tabindex="-1" aria-labelledby="konfirmasiSimpanLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="konfirmasiSimpanLabel">Konfirmasi Simpan</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
-      </div>
-      <div class="modal-body">
-        Apakah Anda yakin ingin menyimpan data fasilitas ini?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-        <button type="button" class="btn btn-primary" id="btn-konfirmasi-simpan">Yakin Simpan</button>
-      </div>
+<!-- Modal Konfirmasi Simpan Umum -->
+<div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmModalLabel">Konfirmasi Simpan</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Apakah Anda yakin ingin menyimpan data fasilitas ini?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                <button type="button" class="btn btn-primary" id="btnConfirmSimpan">Yakin Simpan</button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
-
 
 @endsection
 
-@push('script')
+@push('scripts')
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-    const btnTriggerKonfirmasi = document.getElementById('btnKonfirmasiSimpanFasilitas');
-    const btnSubmitForm = document.getElementById('btn-konfirmasi-simpan');
-    const form = document.getElementById('formTambahFasilitas');
+    let formToSubmit = null;
+    let deleteUrl = null;
 
-    if (btnTriggerKonfirmasi && btnSubmitForm && form) {
-        btnTriggerKonfirmasi.addEventListener('click', function () {
-            const modalKonfirmasi = new bootstrap.Modal(document.getElementById('konfirmasiSimpanModal'));
-            modalKonfirmasi.show();
-        });
+    // === Konfirmasi Simpan ===
+    const simpanModal = document.getElementById('confirmModal');
+    const btnSimpan = document.getElementById('btnConfirmSimpan');
 
-        btnSubmitForm.addEventListener('click', function () {
-            form.submit();
+    if (simpanModal) {
+        simpanModal.addEventListener('show.bs.modal', function (event) {
+            const button = event.relatedTarget;
+            const formId = button.getAttribute('data-form-id');
+            formToSubmit = document.getElementById(formId);
         });
-    } else {
-        console.warn('Element tidak ditemukan: Periksa ID tombol atau modal di Blade.');
     }
+
+    btnSimpan?.addEventListener('click', function () {
+        if (formToSubmit) {
+            formToSubmit.submit();
+        }
+    });
+
+    // === Konfirmasi Hapus ===
+    window.showDeleteConfirm = function (url) {
+        deleteUrl = url;
+        const deleteModal = new bootstrap.Modal(document.getElementById('confirmDeleteModal'));
+        deleteModal.show();
+    };
+
+    const btnHapus = document.getElementById('confirmDeleteBtn');
+    btnHapus?.addEventListener('click', function () {
+        if (deleteUrl) {
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = deleteUrl;
+
+            const csrf = document.createElement('input');
+            csrf.type = 'hidden';
+            csrf.name = '_token';
+            csrf.value = '{{ csrf_token() }}';
+
+            const method = document.createElement('input');
+            method.type = 'hidden';
+            method.name = '_method';
+            method.value = 'DELETE';
+
+            form.appendChild(csrf);
+            form.appendChild(method);
+            document.body.appendChild(form);
+            form.submit();
+        }
+    });
 });
 </script>
 @endpush
+
 

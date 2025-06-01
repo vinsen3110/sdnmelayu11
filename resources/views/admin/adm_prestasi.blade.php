@@ -47,18 +47,18 @@
                     </td>
                     <td>
                         <!-- Tombol Edit (warna biru dengan ikon) -->
-<button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editModal{{ $item->id_prestasi }}">
-    <i class="fas fa-edit me-1"></i> Edit
-</button>
+                        <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editModal{{ $item->id_prestasi }}">
+                            <i class="fas fa-edit me-1"></i> Edit
+                        </button>
 
-<!-- Tombol Hapus (warna merah dengan ikon) -->
-<form action="{{ route('prestasi.destroy', $item->id_prestasi) }}" method="POST" style="display:inline-block;" onsubmit="return confirm('Yakin ingin menghapus data ini?')">
-    @csrf
-    @method('DELETE')
-    <button type="submit" class="btn btn-sm btn-danger">
-        <i class="fas fa-trash-alt me-1"></i> Hapus
-    </button>
-</form>
+                        <!-- Tombol Hapus (warna merah dengan ikon) -->
+                        <form id="deleteForm{{ $item->id_prestasi }}" action="{{ route('prestasi.destroy', $item->id_prestasi) }}" method="POST" style="display:inline-block;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="button" class="btn btn-sm btn-danger" onclick="showDeleteConfirmModal({{ $item->id_prestasi }})">
+                            <i class="fas fa-trash-alt me-1"></i> Hapus
+                        </button>
+                        </form>
 
                     </td>
                 </tr>
@@ -108,7 +108,7 @@
                               </div>
                           </div>
                           <div class="modal-footer">
-                            <button type="submit" class="btn btn-success">Simpan</button>
+                           <button type="button" class="btn btn-success" onclick="showConfirmModal(this.form)">Simpan</button>
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
                           </div>
                         </div>
@@ -161,11 +161,84 @@
               </div>
           </div>
           <div class="modal-footer">
-            <button type="submit" class="btn btn-primary">Tambah</button>
+            <button type="button" class="btn btn-primary" onclick="showConfirmModal(this.form)">Tambah</button>
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
           </div>
         </div>
     </form>
   </div>
 </div>
+<!-- Modal Konfirmasi Simpan/Edit -->
+<div class="modal fade custom-slide-down" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="confirmModalLabel">Konfirmasi Simpan</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+      </div>
+      <div class="modal-body">
+        Apakah Anda yakin ingin menyimpan data ini?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+        <button type="button" class="btn btn-primary" id="confirmSave">Yakin Simpan</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal Konfirmasi Hapus -->
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Konfirmasi Hapus</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Apakah Anda yakin ingin menghapus data ini?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+        <button type="submit" class="btn btn-danger">Hapus</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
 @endsection
+@push('scripts')
+<script>
+    let formToSubmit = null;
+
+    function showConfirmModal(form) {
+        formToSubmit = form;
+        const confirmModal = new bootstrap.Modal(document.getElementById('confirmModal'));
+        confirmModal.show();
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        document.getElementById('confirmSave').addEventListener('click', function () {
+            if (formToSubmit) {
+                formToSubmit.submit();
+            }
+        });
+    });
+      let deleteFormId = null;
+
+    function showDeleteConfirmModal(id) {
+        deleteFormId = `deleteForm${id}`;
+        const modal = new bootstrap.Modal(document.getElementById('confirmDeleteModal'));
+        modal.show();
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        document.getElementById('confirmDeleteBtn').addEventListener('click', function () {
+            if (deleteFormId) {
+                document.getElementById(deleteFormId).submit();
+            }
+        });
+    });
+</script>
+@endpush
+
