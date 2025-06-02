@@ -49,58 +49,60 @@
                                 <i class="fas fa-edit me-1"></i> Edit
                             </button>
 
-                            {{-- Modal Edit --}}
-                            <div class="modal fade" id="editEkskulModal{{ $item->id }}" tabindex="-1" aria-labelledby="editEkskulLabel{{ $item->id }}" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <form action="{{ route('ekskul.update', $item->id) }}" method="POST" enctype="multipart/form-data" class="modal-content">
-                                        @csrf
-                                        @method('PUT')
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="editEkskulLabel{{ $item->id }}">Edit Ekskul</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="mb-3">
-                                                <label class="form-label">Nama Ekskul</label>
-                                                <input type="text" name="nama_ekskul" value="{{ $item->nama_ekskul }}" class="form-control" required>
+                                {{-- Modal Edit --}}
+                                <div class="modal fade" id="editEkskulModal{{ $item->id }}" tabindex="-1" aria-labelledby="editEkskulLabel{{ $item->id }}" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <form id="formEditEkskul{{ $item->id }}" action="{{ route('ekskul.update', $item->id) }}" method="POST" enctype="multipart/form-data" class="modal-content">
+                                            @csrf
+                                            @method('PUT')
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="editEkskulLabel{{ $item->id }}">Edit Ekskul</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
                                             </div>
-                                            <div class="mb-3">
-                                                <label class="form-label">Pembina</label>
-                                                <input type="text" name="pembina" value="{{ $item->pembina }}" class="form-control" required>
+                                            <div class="modal-body">
+                                                <div class="mb-3">
+                                                    <label class="form-label">Nama Ekskul</label>
+                                                    <input type="text" name="nama_ekskul" value="{{ $item->nama_ekskul }}" class="form-control" required>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label">Pembina</label>
+                                                    <input type="text" name="pembina" value="{{ $item->pembina }}" class="form-control" required>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label">Hari Kegiatan</label>
+                                                    <select name="hari_kegiatan" class="form-select" required>
+                                                        @foreach(['Senin','Selasa','Rabu','Kamis','Jumat','Sabtu','Minggu'] as $hari)
+                                                            <option value="{{ $hari }}" {{ $item->hari_kegiatan == $hari ? 'selected' : '' }}>{{ $hari }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label">Waktu Kegiatan</label>
+                                                    <input type="time" name="waktu_kegiatan" value="{{ \Carbon\Carbon::parse($item->waktu_kegiatan)->format('H:i') }}" class="form-control" required>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label">Deskripsi</label>
+                                                    <textarea name="deskripsi" class="form-control" rows="3" required>{{ $item->deskripsi }}</textarea>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label">Foto Ekskul (opsional)</label>
+                                                    <input type="file" name="foto" class="form-control" accept="image/*">
+                                                    @if($item->foto)
+                                                        <small class="text-muted d-block mt-2">Foto saat ini:
+                                                            <img src="{{ asset('storage/ekskul/' . $item->foto) }}" width="50">
+                                                        </small>
+                                                    @endif
+                                                </div>
                                             </div>
-                                            <div class="mb-3">
-                                                <label class="form-label">Hari Kegiatan</label>
-                                                <select name="hari_kegiatan" class="form-select" required>
-                                                    @foreach(['Senin','Selasa','Rabu','Kamis','Jumat','Sabtu','Minggu'] as $hari)
-                                                        <option value="{{ $hari }}" {{ $item->hari_kegiatan == $hari ? 'selected' : '' }}>{{ $hari }}</option>
-                                                    @endforeach
-                                                </select>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                                <button type="button" class="btn btn-primary btn-konfirmasi-edit" data-form-id="formEditEkskul{{ $item->id }}">
+                                                    Simpan Perubahan
+                                                </button>
                                             </div>
-                                            <div class="mb-3">
-                                                <label class="form-label">Waktu Kegiatan</label>
-                                                <input type="time" name="waktu_kegiatan" value="{{ \Carbon\Carbon::parse($item->waktu_kegiatan)->format('H:i') }}" class="form-control" required>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="form-label">Deskripsi</label>
-                                                <textarea name="deskripsi" class="form-control" rows="3" required>{{ $item->deskripsi }}</textarea>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="form-label">Foto Ekskul (opsional)</label>
-                                                <input type="file" name="foto" class="form-control" accept="image/*">
-                                                @if($item->foto)
-                                                    <small class="text-muted d-block mt-2">Foto saat ini:
-                                                        <img src="{{ asset('storage/ekskul/' . $item->foto) }}" width="50">
-                                                    </small>
-                                                @endif
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                                            <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
-                                        </div>
-                                    </form>
+                                        </form>
+                                    </div>
                                 </div>
-                            </div>
 
                             {{-- Tombol Hapus --}}
                             <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#hapusEkskulModal{{ $item->id }}">
@@ -189,7 +191,7 @@
     </div>
 </div>
 
-{{-- Modal Konfirmasi Simpan Ekskul --}}
+<!-- Modal Konfirmasi Simpan Ekskul -->
 <div class="modal fade" id="konfirmasiSimpanModalEkskul" tabindex="-1" aria-labelledby="konfirmasiSimpanLabelEkskul" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -207,66 +209,68 @@
         </div>
     </div>
 </div>
-{{-- Modal Konfirmasi Simpan Ekskul (di luar modal utama) --}}
-<div class="modal fade" id="konfirmasiSimpanModalEkskul" tabindex="-1" aria-labelledby="konfirmasiSimpanLabelEkskul" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="konfirmasiSimpanLabelEkskul">Konfirmasi Simpan</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
-            </div>
-            <div class="modal-body">
-                Apakah Anda yakin ingin menyimpan data ekskul ini?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                <button type="button" class="btn btn-primary" id="btnSubmitEkskul">Yakin Simpan</button>
-            </div>
-        </div>
+<!-- Modal Konfirmasi Simpan Edit (HANYA SATU SAJA) -->
+<div class="modal fade" id="modalKonfirmasiEditEkskul" tabindex="-1" aria-labelledby="modalKonfirmasiEditEkskulLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalKonfirmasiEditEkskulLabel">Konfirmasi Perubahan</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        Apakah Anda yakin ingin menyimpan perubahan data ekskul ini?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+        <button type="button" class="btn btn-primary" id="btnKonfirmasiSubmitEdit">Ya, Simpan</button>
+      </div>
     </div>
+  </div>
 </div>
-
 @endsection
 
 @push('scripts')
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const btnKonfirmasi = document.getElementById('btnKonfirmasiUpload');
-        const formTambah = document.getElementById('formTambahEkskul');
-        const submitBtn = document.getElementById('konfirmasiSubmitBtn');
+document.addEventListener('DOMContentLoaded', function () {
+    // --- TAMBAH EKSKUL ---
+    const btnKonfirmasiUpload = document.getElementById('btnKonfirmasiUpload');
+    const modalTambahEkskul = new bootstrap.Modal(document.getElementById('tambahEkskulModal'));
+    const modalKonfirmasiTambah = new bootstrap.Modal(document.getElementById('konfirmasiSimpanModalEkskul'));
+    const btnSubmitEkskul = document.getElementById('btnSubmitEkskul');
+    const formTambahEkskul = document.getElementById('formTambahEkskul');
 
-        // Saat klik "Simpan" pertama kali, munculkan modal konfirmasi
-        btnKonfirmasi?.addEventListener('click', () => {
-            const modal = new bootstrap.Modal(document.getElementById('konfirmasiSimpanModal'));
-            modal.show();
-        });
+    btnKonfirmasiUpload?.addEventListener('click', () => {
+        // Tutup modal input terlebih dahulu
+        modalTambahEkskul.hide();
 
-        // Saat klik "Ya, Simpan" di modal konfirmasi, submit form
-        submitBtn?.addEventListener('click', () => {
-            formTambah.submit();
+        // Tampilkan modal konfirmasi setelah delay
+        setTimeout(() => {
+            modalKonfirmasiTambah.show();
+        }, 300);
+    });
+
+    btnSubmitEkskul?.addEventListener('click', () => {
+        formTambahEkskul?.submit();
+    });
+
+    // --- EDIT EKSKUL ---
+    const editButtons = document.querySelectorAll('.btn-konfirmasi-edit');
+    const modalKonfirmasiEdit = new bootstrap.Modal(document.getElementById('modalKonfirmasiEditEkskul'));
+    let formEditTarget = null;
+
+    editButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            const formId = this.getAttribute('data-form-id');
+            formEditTarget = document.getElementById(formId);
+            modalKonfirmasiEdit.show(); // tampilkan modal konfirmasi edit
         });
     });
 
-     document.addEventListener('DOMContentLoaded', function () {
-        const btnKonfirmasiUpload = document.getElementById('btnKonfirmasiUpload');
-        const modalTambahEkskul = new bootstrap.Modal(document.getElementById('tambahEkskulModal'));
-        const modalKonfirmasi = new bootstrap.Modal(document.getElementById('konfirmasiSimpanModalEkskul'));
-        const btnSubmitEkskul = document.getElementById('btnSubmitEkskul');
-        const formEkskul = document.getElementById('formTambahEkskul');
-
-        btnKonfirmasiUpload?.addEventListener('click', () => {
-            // Tutup modal form ekskul terlebih dahulu
-            modalTambahEkskul.hide();
-
-            // Tampilkan modal konfirmasi setelah jeda agar tidak tabrakan transisi
-            setTimeout(() => {
-                modalKonfirmasi.show();
-            }, 300);
-        });
-
-        btnSubmitEkskul?.addEventListener('click', () => {
-            formEkskul.submit();
-        });
+    document.getElementById('btnKonfirmasiSubmitEdit')?.addEventListener('click', () => {
+        if (formEditTarget) {
+            formEditTarget.submit();
+        }
     });
+});
 </script>
 @endpush
