@@ -11,8 +11,6 @@ use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\KontakController;
 
-
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,12 +23,17 @@ use App\Http\Controllers\KontakController;
 */
 Route::get('/', [HomeController::class, 'index'])->name('homepage');
 Route::get('/beritasekolah', [HomeController::class, 'beritasekolah'])->name('beritasekolah');
+
+// Tambahan route untuk detail berita berdasarkan id
+Route::get('/berita/{id}', [HomeController::class, 'showBerita'])->name('berita.show');
+
 Route::get('/visimisi', [HomeController::class, 'visimisi'])->name('visimisi');
 Route::get('/strukturorganisasi', [HomeController::class, 'strukturorganisasi'])->name('strukturorganisasi');
 Route::get('/pengumumanppdb', [HomeController::class, 'pengumumanppdb'])->name('pengumumanppdb');
 Route::get('/kontak', [HomeController::class, 'kontak'])->name('kontak');
 Route::get('/fasilitassekolah', [HomeController::class, 'fasilitassekolah'])->name('fasilitassekolah');
 Route::get('/prestasisiswa', [HomeController::class, 'prestasisiswa'])->name('prestasisiswa');
+
 Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
 //ekskul
 Route::get('/admin/ekskul', [EkskulController::class, 'index'])->name('ekskul')->middleware('auth');
@@ -60,5 +63,3 @@ Route::delete('/admin/berita/{id}', [BeritaController::class, 'destroy'])->name(
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-
-

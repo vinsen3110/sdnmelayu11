@@ -19,12 +19,13 @@
 </div>
 <!-- Header End -->
 
-    <div class="container py-5">
-        <h2 class="mb-4">Semua Berita</h2>
-        <div class="row">
-            @foreach ($berita as $item)
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100">
+<div class="container py-5">
+    <h2 class="mb-4">Semua Berita</h2>
+    <div class="row">
+        @foreach ($berita as $item)
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <a href="{{ route('berita.show', $item->id) }}" style="text-decoration: none; color: inherit;">
                         <img src="{{ $item->foto ? Storage::url($item->foto) : asset('img/foto-tidak-ada.png') }}" 
                              class="card-img-top" alt="Thumbnail">
                         <div class="card-body">
@@ -34,13 +35,15 @@
                             </p>
                             <h5 class="card-title">{{ $item->judul_berita }}</h5>
                         </div>
-                    </div>
+                    </a>
                 </div>
-            @endforeach
-        </div>
-
-        <div class="d-flex justify-content-center mt-4">
-            {{ $berita->links() }}
-        </div>
+            </div>
+        @endforeach
     </div>
+
+    <div class="d-flex justify-content-center mt-4">
+        {{ $berita->links() }}
+    </div>
+</div>
+
 @endsection

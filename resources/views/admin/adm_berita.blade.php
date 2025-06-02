@@ -49,6 +49,8 @@
                     onclick="konfirmasiHapus('{{ route('berita.hapus', $item->id) }}')">
                     <i class="fas fa-trash-alt me-1"></i> Hapus
                     </button>
+
+                    
                     </td>
                 </tr>
             @endforeach
@@ -71,6 +73,10 @@
                         <label>Judul Berita</label>
                         <input type="text" name="judul_berita" class="form-control" required>
                     </div>
+                    <div class="mb-3">
+                        <label>Deskripsi</label>
+                        <textarea name="deskripsi" class="form-control" rows="4" required></textarea>
+                    </div>
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label>Jam</label>
@@ -87,7 +93,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <<button type="submit" class="btn btn-primary">Tambah</button>
+                    <button type="submit" class="btn btn-primary">Tambah</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
                 </div>
             </div>
@@ -113,6 +119,10 @@
                         <label>Judul Berita</label>
                         <input type="text" name="judul_berita" class="form-control"
                                value="{{ $item->judul_berita }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label>Deskripsi</label>
+                        <textarea name="deskripsi" class="form-control" rows="4" required>{{ $item->deskripsi }}</textarea>
                     </div>
                     <div class="row">
                         <div class="col-md-6 mb-3">
@@ -224,5 +234,3 @@
     }
 </script>
 @endpush
-
-

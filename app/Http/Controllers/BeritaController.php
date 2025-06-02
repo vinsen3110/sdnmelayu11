@@ -18,6 +18,7 @@ class BeritaController extends Controller
     {
         $request->validate([
             'judul_berita' => 'required|string|max:255',
+            'deskripsi' => 'required|string', // Tambahan validasi deskripsi
             'foto' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
             'jam' => 'required',
             'tanggal' => 'required|date',
@@ -30,6 +31,7 @@ class BeritaController extends Controller
         
         Berita::create([
             'judul_berita' => $request->judul_berita,
+            'deskripsi' => $request->deskripsi, // Tambahan simpan deskripsi
             'foto' => $path,
             'jam' => $request->jam,
             'tanggal' => $request->tanggal,
@@ -50,6 +52,7 @@ class BeritaController extends Controller
 
         $request->validate([
             'judul_berita' => 'required|string|max:255',
+            'deskripsi' => 'required|string', // Tambahan validasi deskripsi
             'foto' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
             'jam' => 'required',
             'tanggal' => 'required|date',
@@ -63,6 +66,7 @@ class BeritaController extends Controller
         }
 
         $berita->judul_berita = $request->judul_berita;
+        $berita->deskripsi = $request->deskripsi; // Tambahan update deskripsi
         $berita->jam = $request->jam;
         $berita->tanggal = $request->tanggal;
         $berita->save();

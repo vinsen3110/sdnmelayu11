@@ -17,6 +17,12 @@ class HomeController extends Controller
         return view('beritasekolah', compact('berita'));
     }
 
+    // Tambahkan method baru untuk menampilkan detail berita
+    public function showBerita($id) {
+        $berita = Berita::findOrFail($id); // cari berita berdasarkan id, jika tidak ditemukan 404
+        return view('beritadeskripsi', compact('berita')); // kirim data ke view berita_detail.blade.php
+    }
+
     public function visimisi() {
         return view('visimisi');
     }
