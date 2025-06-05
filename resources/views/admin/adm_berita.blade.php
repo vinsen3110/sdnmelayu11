@@ -93,11 +93,11 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-<<<<<<< HEAD
+
                     <button type="submit" class="btn btn-primary">Tambah</button>
-=======
+
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmModal" data-form-id="formTambah">Tambah</button>
->>>>>>> 577a0a9f3f3cc4327a160abe026fbc913f21c255
+
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
                 </div>
             </div>

@@ -97,13 +97,13 @@
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
                                                 <button type="button" class="btn btn-primary btn-konfirmasi-edit" data-form-id="formEditEkskul{{ $item->id }}">
-                                                    Simpan Perubahan
+                                                    Simpan
                                                 </button>
                                             </div>
                                         </form>
                                     </div>
                                 </div>
-
+                                
                             {{-- Tombol Hapus --}}
                             <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#hapusEkskulModal{{ $item->id }}">
                                 <i class="fas fa-trash me-1"></i> Hapus
@@ -209,24 +209,27 @@
         </div>
     </div>
 </div>
-<!-- Modal Konfirmasi Simpan Edit (HANYA SATU SAJA) -->
-<div class="modal fade" id="modalKonfirmasiEditEkskul" tabindex="-1" aria-labelledby="modalKonfirmasiEditEkskulLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
+<!-- Modal Konfirmasi Edit Ekskul -->
+<div class="modal fade" id="modalKonfirmasiEditEkskul" tabindex="-1" role="dialog" aria-labelledby="modalKonfirmasiEditLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="modalKonfirmasiEditEkskulLabel">Konfirmasi Perubahan</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        <h5 class="modal-title">Konfirmasi Simpan</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
       <div class="modal-body">
         Apakah Anda yakin ingin menyimpan perubahan data ekskul ini?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-        <button type="button" class="btn btn-primary" id="btnKonfirmasiSubmitEdit">Ya, Simpan</button>
+        <button type="button" class="btn btn-primary" id="btnKonfirmasiSubmitEdit">Yakin Simpan</button>
       </div>
     </div>
   </div>
 </div>
+
 @endsection
 
 @push('scripts')
