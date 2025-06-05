@@ -51,7 +51,7 @@
             <img class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2"
                         style="height: 60px; width: 60px;" src="{{ asset('ta/img/logo.png') }}" alt="">
             <p class="text-md mb-0 text-primary" style="font-size: 15px;">
-  SDN NEGERI MELAYU 11<br>BANJARMASIN
+  SD NEGERI MELAYU 11<br>BANJARMASIN
 </p>
 
         </a>
@@ -74,7 +74,7 @@
         <a href="{{ route('visimisi') }}" class="dropdown-item">Visi & Misi</a>
         <a href="{{ route('strukturorganisasi') }}" class="dropdown-item">Struktur Organisasi</a>
         <a href="{{ route('fasilitassekolah') }}" class="dropdown-item">Fasilitas Sekolah</a>
-        <a href="#" class="dropdown-item">Kegiatan</a>
+        <a href="{{ route('ekstrakulikuler') }}" class="dropdown-item">Ekstrakulikuler</a>
     </div>
 </div>
         <a href="{{ route('beritasekolah') }}" class="nav-item nav-link">Berita</a>
@@ -88,6 +88,11 @@
     </div>
 </div>
         <a href="{{ route('kontak') }}" class="nav-item nav-link">Kontak</a>
+        <!-- Search Form -->
+        <form class="d-flex ms-3" action="{{ route('search') }}" method="GET">
+            <input class="form-control form-control-sm me-2" type="search" name="query" placeholder="Cari..." aria-label="Search" style="max-width: 180px;">
+            <button class="btn btn-sm btn-primary" type="submit"><i class="fas fa-search"></i></button>
+        </form>
     </nav>
     <!-- Navbar End -->
 @yield('content')

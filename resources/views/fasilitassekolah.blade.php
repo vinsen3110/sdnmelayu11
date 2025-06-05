@@ -18,6 +18,57 @@
 </div>
 <!-- Header End -->
 
+<div class="container">
 
+    {{-- Fasilitas Utama --}}
+    <h2 class="text-start mb-4">Fasilitas Utama</h2>
+    <div class="row">
+        @forelse ($utama as $item)
+            <div class="col-6 col-md-4 col-lg-3 mb-4">
+                <div class="card shadow-sm h-100 rounded-4 overflow-hidden">
+                    @php
+                        $gambar = $item->foto1 ?? $item->foto2 ?? $item->foto3;
+                    @endphp
+                    @if($gambar)
+                        <img src="{{ asset('storage/' . $gambar) }}" class="card-img-top" alt="{{ $item->nama }}" style="height: 160px; object-fit: cover; border-top-left-radius: 1.2rem; border-top-right-radius: 1.2rem;">
+                    @endif
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $item->nama }}</h5>
+                        <p class="card-text">
+                            <strong>Jumlah:</strong> {{ $item->jumlah }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        @empty
+            <p class="text-center">Belum ada fasilitas utama.</p>
+        @endforelse
+    </div>
+
+    {{-- Fasilitas Pendukung --}}
+    <h2 class="text-start mt-5 mb-4">Fasilitas Pendukung</h2>
+    <div class="row">
+        @forelse ($pendukung as $item)
+            <div class="col-6 col-md-4 col-lg-3 mb-4">
+                <div class="card shadow-sm h-100 rounded-4 overflow-hidden">
+                    @php
+                        $gambar = $item->foto1 ?? $item->foto2 ?? $item->foto3;
+                    @endphp
+                    @if($gambar)
+                        <img src="{{ asset('storage/' . $gambar) }}" class="card-img-top" alt="{{ $item->nama }}" style="height: 160px; object-fit: cover; border-top-left-radius: 1.2rem; border-top-right-radius: 1.2rem;">
+                    @endif
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $item->nama }}</h5>
+                        <p class="card-text">
+                            <strong>Jumlah:</strong> {{ $item->jumlah }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        @empty
+            <p class="text-center">Belum ada fasilitas pendukung.</p>
+        @endforelse
+    </div>
+</div>
 
 @endsection

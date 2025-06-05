@@ -50,7 +50,7 @@
         <div class="sidebar-logo">
           <!-- Logo Header -->
           <div class="logo-header d-flex align-items-center" data-background-color="dark">
-          <a href="index.html" class="logo d-flex align-items-center">
+          <a href="{{ url('/') }}" class="logo d-flex align-items-center">
              <img
             src="{{ asset('assets/img/logo_sekolah.png') }}"
             alt="navbar brand"

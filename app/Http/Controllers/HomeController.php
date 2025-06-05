@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Berita; 
+use App\Models\Fasilitas;
+use App\Models\Ekskul;
 
 class HomeController extends Controller
 {
@@ -41,7 +43,13 @@ class HomeController extends Controller
     public function kontak() {
         return view('kontak');
     }
+    public function ekstrakulikuler() {
+    $ekskul = Ekskul::all(); 
+    return view('ekstrakulikuler', compact('ekskul')); 
+    }
     public function fasilitassekolah() {
-        return view('fasilitassekolah');
+    $utama = Fasilitas::where('kategori', 'utama')->get();
+    $pendukung = Fasilitas::where('kategori', 'pendukung')->get();
+    return view('fasilitassekolah', compact('utama', 'pendukung'));
     }
 }

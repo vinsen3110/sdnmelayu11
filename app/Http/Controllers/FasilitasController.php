@@ -27,7 +27,6 @@ class FasilitasController extends Controller
 
         $data = $request->only(['nama', 'kategori', 'jumlah']);
 
-        // Upload foto jika ada
         if ($request->hasFile('foto1')) {
             $data['foto1'] = $request->file('foto1')->store('fasilitas', 'public');
         }
@@ -55,10 +54,8 @@ class FasilitasController extends Controller
         ]);
 
         $fasilitas = Fasilitas::findOrFail($id);
-
         $data = $request->only(['nama', 'kategori', 'jumlah']);
 
-        // Upload foto baru dan hapus lama jika ada
         foreach (['foto1', 'foto2', 'foto3'] as $fotoField) {
             if ($request->hasFile($fotoField)) {
                 if ($fasilitas->$fotoField) {
@@ -77,7 +74,6 @@ class FasilitasController extends Controller
     {
         $fasilitas = Fasilitas::findOrFail($id);
 
-        // Hapus semua foto jika ada
         foreach (['foto1', 'foto2', 'foto3'] as $fotoField) {
             if ($fasilitas->$fotoField) {
                 Storage::delete('public/' . $fasilitas->$fotoField);
@@ -87,5 +83,14 @@ class FasilitasController extends Controller
         $fasilitas->delete();
 
         return redirect()->back()->with('success', 'Fasilitas berhasil dihapus.');
+    }
+
+    // ✅ Tambahan untuk menampilkan fasilitas per kategori di halaman frontend
+    public function fasilitasFrontend()
+    {
+        $utama = Fasilitas::where('kategori', 'utama')->get();
+        $pendukung = Fasilitas::where('kategori', 'pendukung')->get();
+
+        return view('frontend.fasilitas', compact('utama', 'pendukung'));
     }
 }

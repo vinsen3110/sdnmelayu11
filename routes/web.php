@@ -10,6 +10,7 @@ use App\Http\Controllers\PrestasiController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\KontakController;
+use App\Http\Controllers\SearchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,9 +33,13 @@ Route::get('/strukturorganisasi', [HomeController::class, 'strukturorganisasi'])
 Route::get('/pengumumanppdb', [HomeController::class, 'pengumumanppdb'])->name('pengumumanppdb');
 Route::get('/kontak', [HomeController::class, 'kontak'])->name('kontak');
 Route::get('/fasilitassekolah', [HomeController::class, 'fasilitassekolah'])->name('fasilitassekolah');
+Route::get('/ekstrakulikuler', [HomeController::class, 'ekstrakulikuler'])->name('ekstrakulikuler');
 Route::get('/prestasisiswa', [HomeController::class, 'prestasisiswa'])->name('prestasisiswa');
-
 Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
+
+// search
+Route::get('/search', [SearchController::class, 'index'])->name('search');
+
 //ekskul
 Route::get('/admin/ekskul', [EkskulController::class, 'index'])->name('ekskul')->middleware('auth');
 Route::post('/admin/ekskul', [EkskulController::class, 'store'])->name('ekskul.store');

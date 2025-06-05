@@ -289,18 +289,21 @@
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
                 @foreach($berita->take(6) as $item)
-                    <div class="swiper-slide">
+                <div class="swiper-slide">
+                    <a href="{{ route('berita.show', $item->id) }}" style="text-decoration: none; color: inherit;">
                         <div class="card h-100" style="width: 320px;">
                             <img src="{{ $item->foto ? Storage::url($item->foto) : asset('img/foto-tidak-ada.png') }}" 
-                                 class="card-img-top" style="height: 200px; object-fit: cover;" alt="Thumbnail">
+                                class="card-img-top" alt="Thumbnail">
                             <div class="card-body">
                                 <span class="badge bg-success mb-2">Berita</span>
                                 <p class="text-muted mb-1"><i class="bi bi-calendar"></i> {{ $item->created_at->format('Y-m-d H:i:s') }}</p>
                                 <h5 class="card-title">{{ $item->judul_berita }}</h5>
                             </div>
                         </div>
-                    </div>
-                @endforeach
+                    </a>
+                </div>
+            @endforeach
+
             </div>
             <div class="swiper-pagination mt-4"></div>
         </div>
