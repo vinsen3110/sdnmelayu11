@@ -94,8 +94,6 @@
                 </div>
                 <div class="modal-footer">
 
-                    <button type="submit" class="btn btn-primary">Tambah</button>
-
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmModal" data-form-id="formTambah">Tambah</button>
 
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>

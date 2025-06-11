@@ -11,6 +11,7 @@ use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\KontakController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\PpdbController;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,6 +65,12 @@ Route::post('/admin/berita/store', [BeritaController::class, 'store'])->name('be
 Route::get('/admin/berita/{id}/edit', [BeritaController::class, 'edit'])->name('berita.edit');
 Route::put('/admin/berita/{id}', [BeritaController::class, 'update'])->name('berita.update');
 Route::delete('/admin/berita/{id}', [BeritaController::class, 'destroy'])->name('berita.hapus');
+//ppdb
+Route::get('/admin/ppdb', [PpdbController::class, 'index'])->name('ppdb')->middleware('auth');
+Route::post('/admin/ppdb', [PpdbController::class, 'store'])->name('ppdb.store');
+Route::get('/admin/ppdb/{id}/edit', [PpdbController::class, 'edit'])->name('ppdb.edit');
+Route::delete('/admin/ppdb/{id}', [PpdbController::class, 'destroy'])->name('ppdb.destroy');
+Route::put('/admin/ppdb/{id}', [PpdbController::class, 'update'])->name('ppdb.update');
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);

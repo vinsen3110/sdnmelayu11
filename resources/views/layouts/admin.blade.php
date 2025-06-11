@@ -126,6 +126,12 @@
                  <p>BERITA</p>
                </a>
               </li>
+              <li class="nav-item {{ request()->is('admin/ppdb*') ? 'active' : '' }}">
+              <a href="{{ url('admin/ppdb') }}" class="nav-link {{ request()->is('admin/ppdb*') ? 'active' : '' }}">
+                <i class="fas fa-user-graduate"></i>
+                <p>PPDB</p>
+              </a>
+            </li>
             </ul>
           </div>
         </div>
