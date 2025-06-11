@@ -38,8 +38,8 @@ class PpdbController extends Controller
 
     public function edit($id)
     {
-        $item = Ppdb::findOrFail($id);
-        return response()->json($item);
+        $ppdb = Ppdb::findOrFail($id);
+        return response()->json($ppdb);
     }
 
     public function update(Request $request, $id)
