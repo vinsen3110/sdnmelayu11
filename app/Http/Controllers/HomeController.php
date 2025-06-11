@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Berita; 
 use App\Models\Fasilitas;
 use App\Models\Ekskul;
+use App\Models\Prestasi;
 
 class HomeController extends Controller
 {
@@ -37,9 +38,12 @@ class HomeController extends Controller
         return view('pengumumanppdb');
     }
 
-    public function prestasisiswa() {
-        return view('prestasisiswa');
+    public function prestasisiswa()
+    {
+        $prestasi = Prestasi::latest()->paginate(9); // atau ->all(), bebas
+        return view('prestasisiswa', compact('prestasi'));
     }
+
     public function kontak() {
         return view('kontak');
     }

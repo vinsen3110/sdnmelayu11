@@ -84,7 +84,7 @@
     <div class="dropdown-menu fade-down m-0">
         
         <a href="{{ route('pengumumanppdb') }}" class="dropdown-item">Pengumuman PPDB</a>
-        <a href="{{ route('prestasisiswa') }}" class="dropdown-item">Prestasi Siswa</a>
+        <a href="{{ route('prestasisiswa') }}" class="dropdown-item">Prestasi Sekolah</a>
     </div>
 </div>
         <a href="{{ route('kontak') }}" class="nav-item nav-link">Kontak</a>
