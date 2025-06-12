@@ -1,11 +1,16 @@
 @extends('layouts.admin')
 
 @section('title', 'Manajemen PPDB')
-
 @section('content')
-<div class="container mt-4">
-    <h2 class="mb-4">Manajemen PPDB</h2>
+<div class="container py-4">
+    <h2 style="margin-left:20px;" class="mb-4">Daftar PPDB</h2>
 
+    {{-- Flash Message --}}
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
     {{-- Tombol Tambah --}}
     <button class="btn btn-primary mb-3 ms-3" data-bs-toggle="modal" data-bs-target="#modalTambah">
         <i class="fas fa-plus me-2"></i>Tambah PPDB
