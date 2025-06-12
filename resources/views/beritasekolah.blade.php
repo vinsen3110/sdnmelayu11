@@ -29,11 +29,10 @@
                         <img src="{{ $item->foto ? Storage::url($item->foto) : asset('img/foto-tidak-ada.png') }}" 
                              class="card-img-top" alt="Thumbnail">
                         <div class="card-body">
-                            <span class="badge bg-success mb-2">Berita</span>
+                                <h5 class="card-title">{{ $item->judul_berita }}</h5>
                             <p class="text-muted">
                                 <i class="bi bi-calendar"></i> {{ $item->created_at->format('Y-m-d H:i:s') }}
                             </p>
-                            <h5 class="card-title">{{ $item->judul_berita }}</h5>
                         </div>
                     </a>
                 </div>

@@ -305,7 +305,7 @@
             @endforeach
 
             </div>
-            <div class="swiper-pagination mt-4"></div>
+            <div class="swiper-pagination mt-5"></div>
         </div>
     </div>
 </section>
@@ -336,32 +336,6 @@ window.addEventListener('load', function () {
     });
 });
 </script>
-
-
-<style>
-    .swiper {
-        width: 100%;
-        padding-bottom: 50px; /* jarak ke pagination dots */
-    }
-
-    .swiper-slide {
-        display: flex;
-        justify-content: center;
-    }
-
-    .swiper-pagination {
-        margin-top: 10px; /* jarak dots */
-    }
-
-    .card {
-        width: 320px;
-    }
-
-    .card-img-top {
-        height: 200px;
-        object-fit: cover;
-    }
-</style>
 
 
 @endsection

@@ -25,10 +25,7 @@ use App\Http\Controllers\PpdbController;
 */
 Route::get('/', [HomeController::class, 'index'])->name('homepage');
 Route::get('/beritasekolah', [HomeController::class, 'beritasekolah'])->name('beritasekolah');
-
-// Tambahan route untuk detail berita berdasarkan id
 Route::get('/berita/{id}', [HomeController::class, 'showBerita'])->name('berita.show');
-
 Route::get('/visimisi', [HomeController::class, 'visimisi'])->name('visimisi');
 Route::get('/strukturorganisasi', [HomeController::class, 'strukturorganisasi'])->name('strukturorganisasi');
 Route::get('/pengumumanppdb', [HomeController::class, 'pengumumanppdb'])->name('pengumumanppdb');
