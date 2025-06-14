@@ -19,61 +19,51 @@
 </div>
 <!-- Header End -->
 
-<!-- PPDB Image Start -->
-<div class="container text-center mb-5">
-    <div class="row justify-content-center">
-        <div class="col-12 d-flex justify-content-center">
-            <div class="zoom-wrapper position-relative overflow-hidden">
-                <img src="{{ asset('ta/img/ppdb-1.jpg') }}" alt="PPDB"
-                    class="img-fluid rounded shadow zoomable-img"
-                    style="width: 800px; height: auto;">
+<!-- Konten Pengumuman PPDB -->
+<div class="container">
+    @foreach ($ppdb as $item)
+        <!-- Judul & Tanggal -->
+        <div class="row mb-2">
+            <div class="col-md-12">
+                <h3 class="mb-1">{{ $item->judul }}</h3>
+                <p class="text-muted" style="margin-bottom: 0.5rem;">
+                    <i class="bi bi-calendar2"></i>
+                    {{ \Carbon\Carbon::parse($item->created_at)->format('d M Y') }}
+                </p>
             </div>
         </div>
-    </div>
+
+        <!-- Tombol Unduh Foto -->
+        <div class="row mb-2">
+            <div class="col-md-12 d-flex justify-content-end" style="padding-right: 120px;">
+                <a href="{{ Storage::url($item->foto) }}"
+                   class="btn btn-info text-white btn-sm"
+                   download>
+                   <i class="bi bi-download"></i> Unduh Foto
+                </a>
+            </div>
+        </div>
+
+        <!-- Gambar -->
+        <div class="text-center mb-4">
+            <img src="{{ Storage::url($item->foto) }}"
+                 alt="{{ $item->judul }}"
+                 class="img-fluid rounded shadow"
+                 style="max-width: 900px;">
+        </div>
+
+        <!-- Deskripsi -->
+        <p>{!! nl2br(e($item->deskripsi)) !!}</p>
+
+        <!-- Tombol Hubungi Kami -->
+        <div class="text-start mt-3 mb-5">
+            <a href="{{ url('/kontak') }}" class="btn btn-outline-primary">
+                <i class="bi bi-envelope-fill"></i> Kontak
+            </a>
+        </div>
+
+        <hr class="my-5">
+    @endforeach
 </div>
-<!-- PPDB Image End -->
 
 @endsection
-
-{{-- CSS Khusus Halaman Ini --}}
-@push('styles')
-<style>
-    .zoomable-img {
-        transition: transform 0.3s ease;
-        cursor: zoom-in;
-        transform-origin: center center;
-    }
-
-    .zoomable-img.zoomed {
-        transform: scale(2);
-        cursor: zoom-out;
-    }
-</style>
-@endpush
-
-{{-- JavaScript Khusus Halaman Ini --}}
-@push('scripts')
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const img = document.querySelector('.zoomable-img');
-        if (!img) return;
-
-        img.addEventListener('click', function (e) {
-            const rect = this.getBoundingClientRect();
-            const offsetX = e.clientX - rect.left;
-            const offsetY = e.clientY - rect.top;
-
-            const xPercent = (offsetX / rect.width) * 100;
-            const yPercent = (offsetY / rect.height) * 100;
-
-            if (!this.classList.contains('zoomed')) {
-                this.style.transformOrigin = `${xPercent}% ${yPercent}%`;
-                this.classList.add('zoomed');
-            } else {
-                this.style.transformOrigin = `center center`;
-                this.classList.remove('zoomed');
-            }
-        });
-    });
-</script>
-@endpush

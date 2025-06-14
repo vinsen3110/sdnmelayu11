@@ -7,6 +7,7 @@ use App\Models\Berita;
 use App\Models\Fasilitas;
 use App\Models\Ekskul;
 use App\Models\Prestasi;
+use App\Models\PPDB;
 
 class HomeController extends Controller
 {
@@ -34,9 +35,12 @@ class HomeController extends Controller
         return view('strukturorganisasi');
     }
 
-    public function pengumumanppdb() {
-        return view('pengumumanppdb');
+    public function pengumumanPPDB()
+    {
+    $ppdb = PPDB::latest()->paginate(6);
+    return view('pengumumanppdb', compact('ppdb'));
     }
+
 
     public function prestasisiswa()
     {

@@ -37,8 +37,64 @@
                 </div>
             </div>
 
-            <!-- Modal Fasilitas Utama -->
-            <div class="modal fade" id="modalUtama{{ $item->id }}" tabindex="-1" aria-hidden="true">
+            <!-- Modal Swiper -->
+<div class="modal fade" id="modalUtama{{ $item->id }}" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content text-center bg-white border-0">
+            <div class="modal-header border-0 d-flex flex-column align-items-start w-100">
+                <div class="w-100 d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0 ms-2">{{ $item->nama }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="ms-2 mt-1 text-muted" style="font-size: 0.9rem;">Jumlah: {{ $item->jumlah }}</div>
+            </div>
+            <div class="modal-body pt-2 pb-3">
+                <div class="swiper fasilitasSwiper{{ $item->id }}">
+                    <div class="swiper-wrapper">
+                        @foreach (['foto1', 'foto2', 'foto3'] as $foto)
+                            @if ($item->$foto)
+                                <div class="swiper-slide">
+                                    <img src="{{ asset('storage/' . $item->$foto) }}" class="d-block w-100 rounded" style="height: 400px; object-fit: cover;">
+                                </div>
+                            @endif
+                        @endforeach
+                    </div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        @empty
+            <p class="text-center">Belum ada fasilitas utama.</p>
+        @endforelse
+    </div>
+</div>
+
+<div class="container py-5">
+    {{-- Fasilitas Pendukung --}}
+    <h2 class="mb-4 mt-5">Fasilitas Pendukung</h2>
+    <div class="row">
+        @forelse ($pendukung as $item)
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm" role="button" data-bs-toggle="modal" data-bs-target="#modalPendukung{{ $item->id }}">
+                    @php $gambar = $item->foto1 ?? $item->foto2 ?? $item->foto3; @endphp
+                    @if($gambar)
+                        <img src="{{ asset('storage/' . $gambar) }}" class="card-img-top" alt="{{ $item->nama }}" style="height: 200px; object-fit: cover;">
+                    @endif
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $item->nama }}</h5>
+                        <p class="card-text text-muted" style="font-size: 0.95rem;">Jumlah: {{ $item->jumlah }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Fasilitas Pendukung -->
+            <div class="modal fade" id="modalPendukung{{ $item->id }}" tabindex="-1" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-lg">
                     <div class="modal-content text-center bg-white border-0">
                         <div class="modal-header border-0 d-flex flex-column align-items-start w-100">
@@ -49,7 +105,7 @@
                             <div class="ms-2 mt-1 text-muted" style="font-size: 0.9rem;">Jumlah: {{ $item->jumlah }}</div>
                         </div>
                         <div class="modal-body pt-2 pb-3">
-                            <div id="carouselUtama{{ $item->id }}" class="carousel slide" data-bs-ride="carousel">
+                            <div id="carouselPendukung{{ $item->id }}" class="carousel slide" data-bs-ride="carousel">
                                 <div class="carousel-inner">
                                     @php $active = 'active'; @endphp
                                     @foreach (['foto1', 'foto2', 'foto3'] as $foto)
@@ -61,11 +117,11 @@
                                         @endif
                                     @endforeach
                                 </div>
-                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselUtama{{ $item->id }}" data-bs-slide="prev">
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselPendukung{{ $item->id }}" data-bs-slide="prev">
                                     <span class="carousel-control-prev-icon rounded-circle" aria-hidden="true"></span>
                                     <span class="visually-hidden">Previous</span>
                                 </button>
-                                <button class="carousel-control-next" type="button" data-bs-target="#carouselUtama{{ $item->id }}" data-bs-slide="next">
+                                <button class="carousel-control-next" type="button" data-bs-target="#carouselPendukung{{ $item->id }}" data-bs-slide="next">
                                     <span class="carousel-control-next-icon rounded-circle" aria-hidden="true"></span>
                                     <span class="visually-hidden">Next</span>
                                 </button>
@@ -73,7 +129,7 @@
                                     @php $index = 0; @endphp
                                     @foreach (['foto1', 'foto2', 'foto3'] as $foto)
                                         @if ($item->$foto)
-                                            <button type="button" data-bs-target="#carouselUtama{{ $item->id }}" data-bs-slide-to="{{ $index }}" class="{{ $index == 0 ? 'active' : '' }}" aria-current="true"></button>
+                                            <button type="button" data-bs-target="#carouselPendukung{{ $item->id }}" data-bs-slide-to="{{ $index }}" class="{{ $index == 0 ? 'active' : '' }}" aria-current="true"></button>
                                             @php $index++; @endphp
                                         @endif
                                     @endforeach
@@ -84,8 +140,35 @@
                 </div>
             </div>
         @empty
-            <p class="text-center">Belum ada fasilitas utama.</p>
+            <p class="text-center">Belum ada fasilitas pendukung.</p>
         @endforelse
     </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+    // Saat modal fasilitas utama dibuka, inisialisasi swiper-nya
+    document.querySelectorAll('[id^="modalUtama"]').forEach(modal => {
+        modal.addEventListener('shown.bs.modal', function () {
+            const swiperEl = modal.querySelector('.swiper');
+            if (swiperEl && !swiperEl.classList.contains('swiper-initialized')) {
+                new Swiper(swiperEl, {
+                    loop: true,
+                    spaceBetween: 10,
+                    grabCursor: true,
+                    autoplay: {
+                        delay: 3000,
+                        disableOnInteraction: false,
+                    },
+                    pagination: {
+                        el: swiperEl.querySelector('.swiper-pagination'),
+                        clickable: true,
+                    },
+                });
+            }
+        });
+    });
+});
+</script>
 @endsection
+

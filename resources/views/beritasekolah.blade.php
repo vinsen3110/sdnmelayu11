@@ -31,7 +31,7 @@
                         <div class="card-body">
                                 <h5 class="card-title">{{ $item->judul_berita }}</h5>
                             <p class="text-muted">
-                                <i class="bi bi-calendar"></i> {{ $item->created_at->format('Y-m-d H:i:s') }}
+                                <i class="bi bi-calendar"></i> {{ $item->created_at->format('d M Y, h:i A') }}
                             </p>
                         </div>
                     </a>

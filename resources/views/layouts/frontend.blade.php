@@ -29,7 +29,12 @@
 
     <!-- Template Stylesheet -->
     <link href="{{ asset('ta/css/style.css') }}" rel="stylesheet">
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+
 </head>
+
 
 @section('content')
 <!-- Tambahkan ini di dalam section atau di layout -->
@@ -55,11 +60,6 @@
 </p>
 
         </a>
-        <!-- Tambahkan class custom-navbar-toggler -->
-<button class="navbar-toggler custom-navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-  <span class="fw-bold" style="color:rgb(0, 0, 0)">☰</span>
-</button>
-
 
         <div class="collapse navbar-collapse" id="navbarCollapse" style="justify-content: end">
             <div class="navbar-nav justify-content-end py-0">
@@ -88,11 +88,6 @@
     </div>
 </div>
         <a href="{{ route('kontak') }}" class="nav-item nav-link">Kontak</a>
-        <!-- Search Form -->
-        <form class="d-flex ms-3" action="{{ route('search') }}" method="GET">
-            <input class="form-control form-control-sm me-2" type="search" name="query" placeholder="Cari..." aria-label="Search" style="max-width: 180px;">
-            <button class="btn btn-sm btn-primary" type="submit"><i class="fas fa-search"></i></button>
-        </form>
     </nav>
     <!-- Navbar End -->
 @yield('content')
@@ -228,6 +223,30 @@
 
 <!-- Template Javascript -->
 <script src="{{asset('ta/js/main.js')}}"></script>
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('[class^="fasilitasSwiper"]').forEach(swiperEl => {
+            new Swiper(swiperEl, {
+                loop: true,
+                spaceBetween: 10,
+                grabCursor: true,
+                pagination: {
+                    el: swiperEl.querySelector('.swiper-pagination'),
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: swiperEl.querySelector('.swiper-button-next'),
+                    prevEl: swiperEl.querySelector('.swiper-button-prev'),
+                },
+            });
+        });
+    });
+</script>
+
+@yield('scripts')
 </body>
 
 </html>

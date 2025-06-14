@@ -195,94 +195,79 @@
                     <div class="col-sm-6"><p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>1 Unit Sound System</p></div>
                     <div class="col-sm-6"><p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>2 Unit Printer</p></div>
                 </div>
-                <a class="btn btn-primary py-3 px-5 mt-2" href="#">Read More</a>
             </div>
         </div>
     </div>
 </div>
 <!-- About End -->
 
-
-
 <!-- Diagram Data PTK dan Siswa Start -->
-<section class="py-5" style="background-color : white;">
+<section class="py-5 bg-white">
     <div class="container">
-        <h2 class="text-white text-center mb-5 wow fadeInUp" data-wow-delay="0.1s"
+        <h2 class="text-white text-center mb-5 wow fadeInUp"
             style="background-color: #357194; padding: 12px 40px; border-radius: 100px;">
-             DATA PTK DAN SISWA
+            DATA PTK DAN SISWA
         </h2>
-        <div class="row justify-content-center text-center">
+
+        <div class="row justify-content-center">
             <!-- Diagram PTK -->
-            <div class="col-md-6 d-flex flex-column align-items-center wow fadeInUp" data-wow-delay="0.2s">
-                <h5 class="mb-4">Data PTK</h5>
-                <canvas id="ptkChart" width="350" height="350" style="display: block; margin: 0 auto;"></canvas>
+            <div class="col-md-6 mb-4 wow fadeInUp" data-wow-delay="0.2s">
+                <h5 class="mb-4 text-center">Data PTK</h5>
+                <div class="mx-auto" style="position: relative; height:300px; width:100%; max-width:400px;">
+                    <canvas id="ptkChart"></canvas>
+                </div>
             </div>
 
             <!-- Diagram Siswa -->
-            <div class="col-md-6 d-flex flex-column align-items-center wow fadeInUp" data-wow-delay="0.3s">
-                <h5 class="mb-4">Data Siswa</h5>
-                <canvas id="siswaChart" width="350" height="350" style="display: block; margin: 0 auto;"></canvas>
+            <div class="col-md-6 mb-4 wow fadeInUp" data-wow-delay="0.3s">
+                <h5 class="mb-4 text-center">Data Siswa</h5>
+                <div class="mx-auto" style="position: relative; height:300px; width:100%; max-width:400px;">
+                    <canvas id="siswaChart"></canvas>
+                </div>
             </div>
         </div>
     </div>
 </section>
 <!-- Diagram Data PTK dan Siswa End -->
 
+
 <!-- Script Chart.js -->
 <script>
-    // Chart PTK
-    const ctxPTK = document.getElementById('ptkChart').getContext('2d');
-    new Chart(ctxPTK, {
-        type: 'doughnut',
-        data: {
-            labels: ['Guru (8)', 'Tenaga Kependidikan (5)'],
-            datasets: [{
-                data: [8, 5],
-                backgroundColor: ['#36A2EB', '#FF6384'],
-                hoverOffset: 10
-            }]
-        },
-        options: {
-            responsive: false,
-            animation: {
-                duration: 2000
-            },
-            plugins: {
-                legend: {
-                    position: 'bottom'
-                }
-            }
-        }
-    });
+const commonOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    animation: { duration: 2000 },
+    plugins: { legend: { position: 'bottom' } }
+};
 
-    // Chart Siswa
-    const ctxSiswa = document.getElementById('siswaChart').getContext('2d');
-    new Chart(ctxSiswa, {
-        type: 'doughnut',
-        data: {
-            labels: ['Laki-laki (50)', 'Perempuan (39)'],
-            datasets: [{
-                data: [50, 39],
-                backgroundColor: ['#4BC0C0', '#FFCE56'],
-                hoverOffset: 10
-            }]
-        },
-        options: {
-            responsive: false,
-            plugins: {
-                legend: {
-                    position: 'bottom'
-                }
-            }
-        }
-    });
+// Chart PTK
+const ctxPTK = document.getElementById('ptkChart').getContext('2d');
+new Chart(ctxPTK, {
+    type: 'doughnut',
+    data: {
+        labels: ['Guru (8)', 'Tenaga Kependidikan (5)'],
+        datasets: [{ data: [8,5], backgroundColor: ['#36A2EB','#FF6384'], hoverOffset: 10 }]
+    },
+    options: commonOptions
+});
+
+// Chart Siswa
+const ctxSiswa = document.getElementById('siswaChart').getContext('2d');
+new Chart(ctxSiswa, {
+    type: 'doughnut',
+    data: {
+        labels: ['Laki-laki (50)', 'Perempuan (39)'],
+        datasets: [{ data: [50,39], backgroundColor: ['#4BC0C0','#FFCE56'], hoverOffset: 10 }]
+    },
+    options: commonOptions
+});
 </script>
 
 
 <!-- Berita -->
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 
-<section class="py-5">
+<section class="py-5 pb-5"> <!-- Tambahkan pb-5 agar tidak mepet -->
     <div class="container">
         <h2 class="mb-4">Berita</h2>
 
@@ -291,7 +276,7 @@
                 @foreach($berita->take(6) as $item)
                 <div class="swiper-slide">
                     <a href="{{ route('berita.show', $item->id) }}" style="text-decoration: none; color: inherit;">
-                        <div class="card h-100" style="width: 320px;">
+                        <div class="card h-100">
                             <img src="{{ $item->foto ? Storage::url($item->foto) : asset('img/foto-tidak-ada.png') }}" 
                                 class="card-img-top" alt="Thumbnail">
                             <div class="card-body">
@@ -302,13 +287,13 @@
                         </div>
                     </a>
                 </div>
-            @endforeach
-
+                @endforeach
             </div>
             <div class="swiper-pagination mt-5"></div>
         </div>
     </div>
 </section>
+
 
 <!-- Tambahkan Swiper JS -->
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
