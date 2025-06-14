@@ -7,9 +7,23 @@ use Illuminate\Http\Request;
 
 class PrestasiController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $prestasi = Prestasi::all();
+        $search = $request->input('search');
+
+        $query = Prestasi::query();
+
+        if ($search) {
+            $query->where('nama_siswa', 'like', '%' . $search . '%')
+                  ->orWhere('nama_prestasi', 'like', '%' . $search . '%')
+                  ->orWhere('peringkat', 'like', '%' . $search . '%')
+                  ->orWhere('jenis_prestasi', 'like', '%' . $search . '%')
+                  ->orWhere('tingkat', 'like', '%' . $search . '%')
+                  ->orWhere('tahun', 'like', '%' . $search . '%');
+        }
+
+        $prestasi = $query->get();
+
         return view('admin.adm_prestasi', compact('prestasi'));
     }
 
@@ -82,5 +96,3 @@ class PrestasiController extends Controller
         return redirect()->route('prestasi.index')->with('success', 'Data berhasil dihapus!');
     }
 }
-
-

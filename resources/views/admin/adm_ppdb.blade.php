@@ -16,6 +16,7 @@
         <i class="fas fa-plus me-2"></i>Tambah PPDB
     </button>
 
+
     {{-- Tabel --}}
     <table class="table table-bordered">
         <thead>
@@ -38,16 +39,21 @@
                     @endif
                 </td>
                 <td>{{ $item->deskripsi }}</td>
-                <td>
-                    <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editModal{{ $item->id }}">
-                        Edit
+               <td>
+                {{-- Tombol Edit --}}
+                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editModal{{ $item->id }}">
+                    <i class="fas fa-edit me-1"></i>Edit
+                </button>
+
+                {{-- Tombol Hapus --}}
+                <form action="{{ route('ppdb.destroy', $item->id) }}" method="POST" class="formHapus d-inline" data-id="{{ $item->id }}">
+                    @csrf
+                    @method('DELETE')
+                    <button type="button" class="btn btn-sm btn-danger btnUniversalTrigger" data-modal="hapus" data-id="{{ $item->id }}">
+                        <i class="fas fa-trash me-1"></i>Hapus
                     </button>
-                    <form action="{{ route('ppdb.destroy', $item->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Yakin ingin menghapus data ini?')">
-                        @csrf
-                        @method('DELETE')
-                        <button class="btn btn-sm btn-danger">Hapus</button>
-                    </form>
-                </td>
+                </form>
+            </td>
             </tr>
             @endforeach
         </tbody>
@@ -57,7 +63,7 @@
 {{-- Modal Tambah --}}
 <div class="modal fade" id="modalTambah" tabindex="-1" aria-labelledby="modalTambahLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <form action="{{ route('ppdb.store') }}" method="POST" enctype="multipart/form-data" class="modal-content">
+        <form id="formTambahPPDB" action="{{ route('ppdb.store') }}" method="POST" enctype="multipart/form-data" class="modal-content">
             @csrf
             <div class="modal-header">
                 <h5 class="modal-title">Tambah Data PPDB</h5>
@@ -79,7 +85,7 @@
             </div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                <button class="btn btn-primary" type="submit">Simpan</button>
+               <button type="button" class="btn btn-primary btnUniversalTrigger" data-modal="tambah">Simpan</button>
             </div>
         </form>
     </div>
@@ -114,11 +120,94 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-success">Simpan</button>
+               <button type="button" class="btn btn-success btnUniversalTrigger" data-modal="edit" data-id="{{ $item->id }}">Simpan</button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
             </div>
         </form>
     </div>
 </div>
 @endforeach
+
+<!-- Modal Konfirmasi Umum -->
+<div class="modal fade" id="modalKonfirmasiUniversal" tabindex="-1" aria-labelledby="konfirmasiUniversalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalKonfirmasiTitle">Konfirmasi</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body" id="modalKonfirmasiBody">
+        <!-- Isi konfirmasi diisi lewat JS -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+        <button type="button" class="btn btn-primary" id="btnUniversalSubmit">Lanjutkan</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+@push('scripts')
+<script>
+    let currentAction = null;
+    let currentForm = null;
+
+    // Modal instance
+    const modalUniversal = new bootstrap.Modal(document.getElementById('modalKonfirmasiUniversal'));
+    const modalTitle = document.getElementById('modalKonfirmasiTitle');
+    const modalBody = document.getElementById('modalKonfirmasiBody');
+
+    document.querySelectorAll('.btnUniversalTrigger').forEach(btn => {
+        btn.addEventListener('click', function () {
+            const actionType = this.getAttribute('data-modal');
+            const id = this.getAttribute('data-id');
+
+            if (actionType === 'tambah') {
+                modalTitle.textContent = 'Konfirmasi Tambah';
+                modalBody.textContent = 'Apakah Anda yakin ingin menyimpan data PPDB ini?';
+                currentForm = document.getElementById('formTambahPPDB');
+                currentAction = 'submit';
+                bootstrap.Modal.getInstance(document.getElementById('modalTambah')).hide();
+
+            } else if (actionType === 'edit') {
+                modalTitle.textContent = 'Konfirmasi Edit';
+                modalBody.textContent = 'Apakah Anda yakin ingin menyimpan perubahan data ini?';
+                currentForm = document.getElementById('formEdit' + id);
+                currentAction = 'submit';
+                bootstrap.Modal.getInstance(document.getElementById('editModal' + id)).hide();
+
+            } else if (actionType === 'hapus') {
+                modalTitle.textContent = 'Konfirmasi Hapus';
+                modalBody.textContent = 'Apakah Anda yakin ingin menghapus data ini?';
+                currentForm = document.querySelector(`.formHapus[data-id="${id}"]`);
+                currentAction = 'submit';
+            }
+
+            modalUniversal.show();
+        });
+    });
+
+    // Tombol Lanjutkan (submit sesuai action)
+    document.getElementById('btnUniversalSubmit').addEventListener('click', function () {
+        if (currentForm && currentAction === 'submit') {
+            currentForm.submit();
+        }
+    });
+
+    // Tombol Batal: jika tambah/edit dibatalkan, kembalikan modal form
+    document.querySelector('#modalKonfirmasiUniversal .btn-secondary').addEventListener('click', function () {
+        if (!currentForm) return;
+
+        const id = currentForm.getAttribute('id');
+        if (id === 'formTambahPPDB') {
+            new bootstrap.Modal(document.getElementById('modalTambah')).show();
+        } else if (id && id.startsWith('formEdit')) {
+            const editId = id.replace('formEdit', '');
+            new bootstrap.Modal(document.getElementById('editModal' + editId)).show();
+        }
+    });
+</script>
+@endpush
+
 @endsection

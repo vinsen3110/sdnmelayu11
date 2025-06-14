@@ -16,6 +16,16 @@
         <i class="fas fa-plus me-2"></i>Tambah Berita 
     </button>
 
+    {{-- Form Search --}}
+    <div class="mb-3 px-3">
+        <form method="GET" action="{{ route('berita') }}" class="d-flex" style="max-width: 100%;">
+            <input type="text" name="search" class="form-control me-2" placeholder="Cari Berita..." value="{{ request('search') }}">
+            <button type="submit" class="btn btn-outline-primary">
+                <i class="fas fa-search me-1"></i>Search
+            </button>
+        </form>
+    </div>
+
     {{-- Tabel --}}
     <table class="table table-bordered">
         <thead>
@@ -176,7 +186,7 @@
 </div>
 <!-- Modal Konfirmasi Hapus -->
 <div class="modal fade modal-top" id="hapusModal" tabindex="-1" aria-labelledby="hapusModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+ <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Konfirmasi Hapus</h5>

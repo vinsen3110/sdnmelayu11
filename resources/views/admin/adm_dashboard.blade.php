@@ -25,90 +25,78 @@
               </div>
               
             </div>
-            <div class="row">
-              <div class="col-sm-6 col-md-3">
-                <div class="card card-stats card-round">
-                  <div class="card-body">
-                    <div class="row align-items-center">
-                      <div class="col-icon">
-                        <div
-                          class="icon-big text-center icon-primary bubble-shadow-small"
-                        >
-                          <i class="fas fa-users"></i>
+           <div class="row">
+    <div class="col-md-3">
+        <a href="{{ route('ekskul') }}" style="text-decoration: none">
+            <div class="card card-stats card-round">
+                <div class="card-body d-flex align-items-center">
+                    <div class="col-icon me-3">
+                        <div class="icon-big text-center icon-primary bubble-shadow-small">
+                            <i class="fas fa-users"></i>
                         </div>
-                      </div>
-                      <div class="col col-stats ms-3 ms-sm-0">
-                        <div class="numbers">
-                          <p class="card-category">Ekskul</p>
-                          <h4 class="card-title">5</h4>
-                        </div>
-                      </div>
                     </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-3">
-                <div class="card card-stats card-round">
-                  <div class="card-body">
-                    <div class="row align-items-center">
-                      <div class="col-icon">
-                        <div
-                          class="icon-big text-center icon-info bubble-shadow-small"
-                        >
-                          <i class="fas fa-building"></i>
-                        </div>
-                      </div>
-                      <div class="col col-stats ms-3 ms-sm-0">
-                        <div class="numbers">
-                          <p class="card-category">Fasilitas</p>
-                          <h4 class="card-title">14</h4>
-                        </div>
-                      </div>
+                    <div class="col">
+                        <p class="card-category">Ekskul</p>
+                        <h4 class="card-title">{{ $jumlahEkskul }}</h4>
                     </div>
-                  </div>
                 </div>
-              </div>
-              <div class="col-sm-6 col-md-3">
-                <div class="card card-stats card-round">
-                  <div class="card-body">
-                    <div class="row align-items-center">
-                      <div class="col-icon">
-                        <div
-                          class="icon-big text-center icon-success bubble-shadow-small"
-                        >
-                          <i class="fas fa-trophy"></i>
-                        </div>
-                      </div>
-                      <div class="col col-stats ms-3 ms-sm-0">
-                        <div class="numbers">
-                          <p class="card-category">Prestasi</p>
-                          <h4 class="card-title">50</h4>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-3">
-                <div class="card card-stats card-round">
-                  <div class="card-body">
-                    <div class="row align-items-center">
-                      <div class="col-icon">
-                        <div
-                          class="icon-big text-center icon-secondary bubble-shadow-small"
-                        >
-                          <i class="fas fa-chalkboard-teacher"></i>
-                        </div>
-                      </div>
-                      <div class="col col-stats ms-3 ms-sm-0">
-                        <div class="numbers">
-                          <p class="card-category">PTK</p>
-                          <h4 class="card-title">13</h4>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
+        </a>
+    </div>
+
+    <div class="col-md-3">
+        <a href="{{ route('fasilitas') }}" style="text-decoration: none">
+            <div class="card card-stats card-round">
+                <div class="card-body d-flex align-items-center">
+                    <div class="col-icon me-3">
+                        <div class="icon-big text-center icon-info bubble-shadow-small">
+                            <i class="fas fa-building"></i>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <p class="card-category">Fasilitas</p>
+                        <h4 class="card-title">{{ $jumlahFasilitas }}</h4>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-md-3">
+        <a href="{{ route('prestasi.index') }}" style="text-decoration: none">
+            <div class="card card-stats card-round">
+                <div class="card-body d-flex align-items-center">
+                    <div class="col-icon me-3">
+                        <div class="icon-big text-center icon-success bubble-shadow-small">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <p class="card-category">Prestasi</p>
+                        <h4 class="card-title">{{ $jumlahPrestasi }}</h4>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-md-3">
+        <a href="{{ route('ptk.index') }}" style="text-decoration: none">
+            <div class="card card-stats card-round">
+                <div class="card-body d-flex align-items-center">
+                    <div class="col-icon me-3">
+                        <div class="icon-big text-center icon-secondary bubble-shadow-small">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <p class="card-category">PTK</p>
+                        <h4 class="card-title">{{ $jumlahPtk }}</h4>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+
 @endsection

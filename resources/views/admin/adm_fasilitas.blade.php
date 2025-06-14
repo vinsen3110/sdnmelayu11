@@ -16,6 +16,16 @@
         <i class="fas fa-plus me-2"></i>Tambah Fasilitas
     </button>
 
+   {{-- Form Search --}}
+    <div class="mb-3 px-3">
+        <form method="GET" action="{{ route('fasilitas') }}" class="d-flex" style="max-width: 100%;">
+            <input type="text" name="search" class="form-control me-2" placeholder="Cari fasilitas..." value="{{ request('search') }}">
+            <button type="submit" class="btn btn-outline-primary">
+                <i class="fas fa-search me-1"></i>Search
+            </button>
+        </form>
+    </div>
+
     <!-- Tabel Fasilitas -->
     <table class="table table-bordered">
         <thead>
@@ -52,7 +62,7 @@
 
                     <!-- Modal Konfirmasi Hapus -->
                     <div class="modal fade" id="hapusFasilitasModal{{ $item->id }}" tabindex="-1" aria-labelledby="hapusFasilitasLabel{{ $item->id }}" aria-hidden="true">
-                        <div class="modal-dialog">
+                         <div class="modal-dialog modal-dialog-centered">
                             <form action="{{ route('fasilitas.destroy', $item->id) }}" method="POST" class="modal-content">
                                 @csrf
                                 @method('DELETE')

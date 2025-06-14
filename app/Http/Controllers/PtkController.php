@@ -8,11 +8,23 @@ use Illuminate\Support\Facades\Storage;
 
 class PtkController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $ptks = Ptk::all();
-       return view('admin.adm_ptk', compact('ptks'));
+        $query = Ptk::query();
 
+        if ($request->has('search') && $request->search != '') {
+            $search = $request->search;
+            $query->where(function ($q) use ($search) {
+                $q->where('nama_ptk', 'like', "%{$search}%")
+                  ->orWhere('jabatan', 'like', "%{$search}%")
+                  ->orWhere('email', 'like', "%{$search}%")
+                  ->orWhere('no_tmt', 'like', "%{$search}%");
+            });
+        }
+
+        $ptks = $query->latest()->get(); // Bisa pakai paginate() kalau ingin
+
+        return view('admin.adm_ptk', compact('ptks'));
     }
 
     public function create()
@@ -67,6 +79,7 @@ class PtkController extends Controller
         $data = $request->all();
 
         if ($request->hasFile('foto')) {
+            // Hapus foto lama jika ada
             if ($ptk->foto && Storage::disk('public')->exists($ptk->foto)) {
                 Storage::disk('public')->delete($ptk->foto);
             }

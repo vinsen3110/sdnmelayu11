@@ -8,12 +8,21 @@ use Illuminate\Support\Facades\Storage;
 
 class FasilitasController extends Controller
 {
-    public function index()
+    // ✅ INDEX: Menampilkan daftar fasilitas + fitur pencarian
+    public function index(Request $request)
     {
-        $fasilitas = Fasilitas::all();
+        $query = Fasilitas::query();
+
+        if ($request->has('search') && $request->search != '') {
+            $query->where('nama', 'like', '%' . $request->search . '%');
+        }
+
+        $fasilitas = $query->latest()->get(); // Atau ->paginate() jika pakai pagination
+
         return view('admin.adm_fasilitas', compact('fasilitas'));
     }
 
+    // ✅ STORE: Menyimpan fasilitas baru
     public function store(Request $request)
     {
         $request->validate([
@@ -27,21 +36,18 @@ class FasilitasController extends Controller
 
         $data = $request->only(['nama', 'kategori', 'jumlah']);
 
-        if ($request->hasFile('foto1')) {
-            $data['foto1'] = $request->file('foto1')->store('fasilitas', 'public');
-        }
-        if ($request->hasFile('foto2')) {
-            $data['foto2'] = $request->file('foto2')->store('fasilitas', 'public');
-        }
-        if ($request->hasFile('foto3')) {
-            $data['foto3'] = $request->file('foto3')->store('fasilitas', 'public');
+        foreach (['foto1', 'foto2', 'foto3'] as $fotoField) {
+            if ($request->hasFile($fotoField)) {
+                $data[$fotoField] = $request->file($fotoField)->store('fasilitas', 'public');
+            }
         }
 
         Fasilitas::create($data);
 
-        return redirect()->back()->with('success', 'Fasilitas berhasil ditambahkan.');
+        return redirect()->route('fasilitas')->with('success', 'Fasilitas berhasil ditambahkan.');
     }
 
+    // ✅ UPDATE: Memperbarui data fasilitas
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -67,9 +73,10 @@ class FasilitasController extends Controller
 
         $fasilitas->update($data);
 
-        return redirect()->back()->with('success', 'Fasilitas berhasil diperbarui.');
+        return redirect()->route('fasilitas')->with('success', 'Fasilitas berhasil diperbarui.');
     }
 
+    // ✅ DESTROY: Menghapus fasilitas
     public function destroy($id)
     {
         $fasilitas = Fasilitas::findOrFail($id);
@@ -82,10 +89,10 @@ class FasilitasController extends Controller
 
         $fasilitas->delete();
 
-        return redirect()->back()->with('success', 'Fasilitas berhasil dihapus.');
+        return redirect()->route('fasilitas')->with('success', 'Fasilitas berhasil dihapus.');
     }
 
-    // ✅ Tambahan untuk menampilkan fasilitas per kategori di halaman frontend
+    // ✅ FRONTEND: Menampilkan data fasilitas ke pengguna
     public function fasilitasFrontend()
     {
         $utama = Fasilitas::where('kategori', 'utama')->get();

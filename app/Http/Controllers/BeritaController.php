@@ -8,17 +8,29 @@ use Illuminate\Support\Facades\Storage;
 
 class BeritaController extends Controller
 {
-    public function index()
+    // Menampilkan daftar berita dengan fitur pencarian
+    public function index(Request $request)
     {
-        $berita = Berita::all();
+        $search = $request->input('search');
+
+        $query = Berita::query();
+
+        if ($search) {
+            $query->where('judul_berita', 'like', '%' . $search . '%')
+                  ->orWhere('deskripsi', 'like', '%' . $search . '%');
+        }
+
+        $berita = $query->get();
+
         return view('admin.adm_berita', compact('berita'));
     }
 
+    // Menyimpan data berita baru
     public function store(Request $request)
     {
         $request->validate([
             'judul_berita' => 'required|string|max:255',
-            'deskripsi' => 'required|string', // Tambahan validasi deskripsi
+            'deskripsi' => 'required|string',
             'foto' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
             'jam' => 'required',
             'tanggal' => 'required|date',
@@ -28,10 +40,10 @@ class BeritaController extends Controller
         if ($request->hasFile('foto')) {
             $path = $request->file('foto')->store('public/foto_berita');
         }
-        
+
         Berita::create([
             'judul_berita' => $request->judul_berita,
-            'deskripsi' => $request->deskripsi, // Tambahan simpan deskripsi
+            'deskripsi' => $request->deskripsi,
             'foto' => $path,
             'jam' => $request->jam,
             'tanggal' => $request->tanggal,
@@ -40,19 +52,21 @@ class BeritaController extends Controller
         return redirect()->route('berita')->with('success', 'Berita berhasil ditambahkan.');
     }
 
+    // Form edit
     public function edit($id)
     {
         $berita = Berita::findOrFail($id);
         return view('berita.edit', compact('berita'));
     }
 
+    // Memperbarui data berita
     public function update(Request $request, $id)
     {
         $berita = Berita::findOrFail($id);
 
         $request->validate([
             'judul_berita' => 'required|string|max:255',
-            'deskripsi' => 'required|string', // Tambahan validasi deskripsi
+            'deskripsi' => 'required|string',
             'foto' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
             'jam' => 'required',
             'tanggal' => 'required|date',
@@ -66,7 +80,7 @@ class BeritaController extends Controller
         }
 
         $berita->judul_berita = $request->judul_berita;
-        $berita->deskripsi = $request->deskripsi; // Tambahan update deskripsi
+        $berita->deskripsi = $request->deskripsi;
         $berita->jam = $request->jam;
         $berita->tanggal = $request->tanggal;
         $berita->save();
@@ -74,6 +88,7 @@ class BeritaController extends Controller
         return redirect()->route('berita')->with('success', 'Berita berhasil diperbarui.');
     }
 
+    // Menghapus data berita
     public function destroy($id)
     {
         $berita = Berita::findOrFail($id);

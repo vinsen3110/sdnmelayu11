@@ -17,6 +17,16 @@
         <i class="fas fa-plus me-2"></i>Tambah Prestasi
     </button>
 
+    {{-- Form Search --}}
+    <div class="mb-3 px-3">
+        <form method="GET" action="{{ route('prestasi.index') }}" class="d-flex" style="max-width: 100%;">
+            <input type="text" name="search" class="form-control me-2" placeholder="Cari Prestasi..." value="{{ request('search') }}">
+            <button type="submit" class="btn btn-outline-primary">
+                <i class="fas fa-search me-1"></i>Search
+            </button>
+        </form>
+    </div>
+
     <!-- Tabel Prestasi -->
     <table class="table table-bordered">
         <thead>
