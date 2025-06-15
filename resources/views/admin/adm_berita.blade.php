@@ -106,7 +106,7 @@
 
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmModal" data-form-id="formTambah">Tambah</button>
 
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
                 </div>
             </div>
         </form>
@@ -157,8 +157,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                   <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#confirmModal" data-form-id="formEdit{{ $item->id }}">Simpan</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmModal" data-form-id="formEdit{{ $item->id }}">Simpan</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
                 </div>
             </div>
         </form>
@@ -178,8 +178,8 @@
                 Apakah Anda yakin ingin menyimpan data berita ini?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                <button type="button" class="btn btn-primary" id="btnConfirmSimpan">Yakin Simpan</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Batal</button>
+                <button type="button" class="btn btn-danger" id="btnConfirmSimpan">Yakin Simpan</button>
             </div>
         </div>
     </div>
@@ -196,7 +196,7 @@
         Apakah Anda yakin ingin menghapus data ini?
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Batal</button>
         <form id="formHapus" method="POST" action="">
           @csrf
           @method('DELETE')

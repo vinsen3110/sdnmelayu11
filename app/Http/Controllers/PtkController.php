@@ -35,7 +35,7 @@ class PtkController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'no_tmt' => 'required',
+            'no_tmt' => 'required|date',
             'nama_ptk' => 'required|string|max:255',
             'jabatan' => 'required|string|max:255',
             'status_kepegawaian' => 'required|in:ASN,P3K,Honorer',
@@ -65,7 +65,7 @@ class PtkController extends Controller
     public function update(Request $request, Ptk $ptk)
     {
         $request->validate([
-            'no_tmt' => 'required',
+            'no_tmt' => 'required|date',
             'nama_ptk' => 'required|string|max:255',
             'jabatan' => 'required|string|max:255',
             'status_kepegawaian' => 'required|in:ASN,P3K,Honorer',

@@ -102,42 +102,47 @@
                 </span>
                 <h4 class="text-section">Components</h4>
               </li>
+              <li class="nav-item {{ request()->is('admin/berita*') ? 'active' : '' }}">
+                <a href="{{ url('admin/berita') }}" class="nav-link {{ request()->is('admin/berita*') ? 'active' : '' }}">
+                  <i class="fas fa-newspaper"></i>
+                  <p>BERITA</p>
+                </a>
+              </li>
+
               <li class="nav-item {{ request()->is('admin/ekskul*') ? 'active' : '' }}">
                 <a href="{{ url('admin/ekskul') }}" class="nav-link {{ request()->is('admin/ekskul*') ? 'active' : '' }}">
                   <i class="fas fa-users"></i>
                   <p>EKSKUL</p>
-               </a>
+                </a>
               </li>
+
               <li class="nav-item {{ request()->is('admin/fasilitas*') ? 'active' : '' }}">
                 <a href="{{ url('admin/fasilitas') }}" class="nav-link {{ request()->is('admin/fasilitas*') ? 'active' : '' }}">
-                   <i class="fas fa-building"></i>
-                   <p>FASILITAS</p>
+                  <i class="fas fa-building"></i>
+                  <p>FASILITAS</p>
                 </a>
-                </li>
-              <li class="nav-item {{ request()->is('admin/prestasi*') ? 'active' : '' }}">
-               <a href="{{ url('admin/prestasi') }}" class="nav-link {{ request()->is('admin/prestasi*') ? 'active' : '' }}">
-                 <i class="fas fa-trophy"></i>
-                 <p>PRESTASI</p>
-              </a>
               </li>
-              <li class="nav-item {{ request()->is('admin/berita*') ? 'active' : '' }}">
-               <a href="{{ url('admin/berita') }}" class="nav-link {{ request()->is('admin/berita*') ? 'active' : '' }}">
-                 <i class="fas fa-newspaper"></i>
-                 <p>BERITA</p>
-               </a>
-              </li>
+
               <li class="nav-item {{ request()->is('admin/ppdb*') ? 'active' : '' }}">
-              <a href="{{ url('admin/ppdb') }}" class="nav-link {{ request()->is('admin/ppdb*') ? 'active' : '' }}">
-                <i class="fas fa-user-graduate"></i>
-                <p>PPDB</p>
-              </a>
-            </li>
-            <li class="nav-item {{ request()->is('admin/ptk*') ? 'active' : '' }}">
-            <a href="{{ url('admin/ptk') }}" class="nav-link {{ request()->is('admin/ptk*') ? 'active' : '' }}">
-              <i class="fas fa-chalkboard-teacher"></i>
-              <p>PTK</p>
-            </a>
-            </li>
+                <a href="{{ url('admin/ppdb') }}" class="nav-link {{ request()->is('admin/ppdb*') ? 'active' : '' }}">
+                  <i class="fas fa-user-graduate"></i>
+                  <p>PPDB</p>
+                </a>
+              </li>
+
+              <li class="nav-item {{ request()->is('admin/prestasi*') ? 'active' : '' }}">
+                <a href="{{ url('admin/prestasi') }}" class="nav-link {{ request()->is('admin/prestasi*') ? 'active' : '' }}">
+                  <i class="fas fa-trophy"></i>
+                  <p>PRESTASI</p>
+                </a>
+              </li>
+
+              <li class="nav-item {{ request()->is('admin/ptk*') ? 'active' : '' }}">
+                <a href="{{ url('admin/ptk') }}" class="nav-link {{ request()->is('admin/ptk*') ? 'active' : '' }}">
+                  <i class="fas fa-chalkboard-teacher"></i>
+                  <p>PTK</p>
+                </a>
+              </li>
             </ul>
           </div>
         </div>

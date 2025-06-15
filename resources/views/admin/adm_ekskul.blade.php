@@ -37,11 +37,8 @@
                         <td>{{ $item->hari_kegiatan }}</td>
                         <td>{{ \Carbon\Carbon::parse($item->waktu_kegiatan)->format('H:i') }}</td>
                         <td>
-                            @if ($item->foto)
-                                <img src="{{ asset('storage/ekskul/' . $item->foto) }}" alt="Foto" width="60" class="rounded">
-                            @else
-                                -
-                            @endif
+                        <img src="{{ $item->foto ? Storage::url($item->foto) : asset('img/foto-tidak-ada.png') }}"
+                            alt="Foto Ekskul" style="width: 100px; height: auto;">
                         </td>
                         <td>
                             {{-- Tombol Edit --}}
@@ -95,7 +92,7 @@
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
                                                 <button type="button" class="btn btn-primary btn-konfirmasi-edit" data-form-id="formEditEkskul{{ $item->id }}">
                                                     Simpan
                                                 </button>
@@ -111,7 +108,7 @@
 
                             {{-- Modal Konfirmasi Hapus --}}
                             <div class="modal fade" id="hapusEkskulModal{{ $item->id }}" tabindex="-1" aria-labelledby="hapusEkskulLabel{{ $item->id }}" aria-hidden="true">
-                                <div class="modal-dialog">
+                                <div class="modal-dialog modal-dialog-centered">
                                     <form action="{{ route('ekskul.destroy', $item->id) }}" method="POST" class="modal-content">
                                         @csrf
                                         @method('DELETE')
@@ -123,7 +120,7 @@
                                             Yakin ingin menghapus ekskul <strong>{{ $item->nama_ekskul }}</strong>?
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Batal</button>
                                             <button type="submit" class="btn btn-danger">Hapus</button>
                                         </div>
                                     </form>
@@ -184,8 +181,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                <button type="button" class="btn btn-primary" id="btnKonfirmasiUpload">Simpan</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
+                <button type="button" class="btn btn-primary" id="btnKonfirmasiUpload">Tambah</button>
             </div>
         </form>
     </div>
@@ -262,12 +259,21 @@ document.addEventListener('DOMContentLoaded', function () {
     let formEditTarget = null;
 
     editButtons.forEach(button => {
-        button.addEventListener('click', function () {
-            const formId = this.getAttribute('data-form-id');
-            formEditTarget = document.getElementById(formId);
-            modalKonfirmasiEdit.show(); // tampilkan modal konfirmasi edit
-        });
+    button.addEventListener('click', function () {
+        const formId = this.getAttribute('data-form-id');
+        formEditTarget = document.getElementById(formId);
+
+        // Tutup modal edit dulu
+        const modalEdit = bootstrap.Modal.getInstance(formEditTarget.closest('.modal'));
+        modalEdit.hide();
+
+        // Tampilkan modal konfirmasi setelah delay agar animasi smooth
+        setTimeout(() => {
+            modalKonfirmasiEdit.show();
+        }, 300);
     });
+});
+
 
     document.getElementById('btnKonfirmasiSubmitEdit')?.addEventListener('click', () => {
         if (formEditTarget) {

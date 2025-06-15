@@ -52,8 +52,10 @@
                     <td>{{ $item->tahun }}</td>
                     <td>
                         @if ($item->foto)
-                            <img src="{{ asset('storage/' . $item->foto) }}" alt="Foto" width="60">
-                        @endif
+                        <img src="{{ Storage::url($item->foto) }}" alt="Foto" width="60">
+                    @else
+                        <span class="text-muted">Tidak ada</span>
+                    @endif
                     </td>
                     <td>
                         <!-- Tombol Edit (warna biru dengan ikon) -->
@@ -76,9 +78,14 @@
                 <!-- Modal Edit -->
                 <div class="modal fade" id="editModal{{ $item->id_prestasi }}" tabindex="-1" aria-labelledby="editModalLabel{{ $item->id_prestasi }}" aria-hidden="true">
                   <div class="modal-dialog">
-                    <form method="POST" action="{{ route('prestasi.update', $item->id_prestasi) }}" enctype="multipart/form-data">
-                        @csrf
-                        @method('PUT')
+                    <form id="editForm{{ $item->id_prestasi }}"
+                    method="POST"
+                    action="{{ route('prestasi.update', $item->id_prestasi) }}"
+                    enctype="multipart/form-data"
+                    onsubmit="event.preventDefault(); showConfirmModal(this);">
+                    @csrf
+                    @method('PUT')
+
                         <div class="modal-content">
                           <div class="modal-header">
                             <h5 class="modal-title">Edit Prestasi</h5>
@@ -118,8 +125,8 @@
                               </div>
                           </div>
                           <div class="modal-footer">
-                           <button type="button" class="btn btn-success" onclick="showConfirmModal(this.form)">Simpan</button>
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                          <button type="button" class="btn btn-danger" onclick="showConfirmModal(document.getElementById('editForm{{ $item->id_prestasi }}'))">Simpan</button>
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Batal</button>
                           </div>
                         </div>
                     </form>
@@ -172,7 +179,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-primary" onclick="showConfirmModal(this.form)">Tambah</button>
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
           </div>
         </div>
     </form>
@@ -190,15 +197,15 @@
         Apakah Anda yakin ingin menyimpan data ini?
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-        <button type="button" class="btn btn-primary" id="confirmSave">Yakin Simpan</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Batal</button>
+        <button type="button" class="btn btn-danger" id="confirmSave">Yakin Simpan</button>
       </div>
     </div>
   </div>
 </div>
 <!-- Modal Konfirmasi Hapus -->
 <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Konfirmasi Hapus</h5>
@@ -208,7 +215,7 @@
         Apakah Anda yakin ingin menghapus data ini?
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Batal</button>
        <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Hapus</button>
         </form>
       </div>
@@ -219,22 +226,24 @@
 @endsection
 @push('scripts')
 <script>
-    let formToSubmit = null;
+    let currentForm = null;
 
     function showConfirmModal(form) {
-        formToSubmit = form;
+        currentForm = form;
+
+        // ✅ Tutup modal edit saat ini sebelum buka konfirmasi
+        const modalEdit = form.closest('.modal');
+        const modalInstance = bootstrap.Modal.getInstance(modalEdit);
+        if (modalInstance) {
+            modalInstance.hide();
+        }
+
+        // ✅ Tampilkan modal konfirmasi
         const confirmModal = new bootstrap.Modal(document.getElementById('confirmModal'));
         confirmModal.show();
     }
 
-    document.addEventListener('DOMContentLoaded', function () {
-        document.getElementById('confirmSave').addEventListener('click', function () {
-            if (formToSubmit) {
-                formToSubmit.submit();
-            }
-        });
-    });
-      let deleteFormId = null;
+    let deleteFormId = null;
 
     function showDeleteConfirmModal(id) {
         deleteFormId = `deleteForm${id}`;
@@ -243,12 +252,21 @@
     }
 
     document.addEventListener('DOMContentLoaded', function () {
+        // ✅ Aksi tombol konfirmasi HAPUS
         document.getElementById('confirmDeleteBtn').addEventListener('click', function () {
             if (deleteFormId) {
                 document.getElementById(deleteFormId).submit();
             }
         });
+
+        // ✅ Aksi tombol konfirmasi SIMPAN (EDIT)
+        document.getElementById('confirmSave').addEventListener('click', function () {
+            if (currentForm) {
+                currentForm.submit();
+            }
+        });
     });
 </script>
 @endpush
+
 

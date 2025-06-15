@@ -27,29 +27,30 @@
     </div>
 
     <!-- Tabel Fasilitas -->
-    <table class="table table-bordered">
-        <thead>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Nama</th>
+            <th>Kategori</th>
+            <th>Jumlah</th>
+            <th>Foto</th>
+            <th>Aksi</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach ($fasilitas as $item)
             <tr>
-                <th>Nama</th>
-                <th>Kategori</th>
-                <th>Jumlah</th>
-                <th>Foto</th>
-                <th>Aksi</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($fasilitas as $item)
-                <tr>
-                    <td>{{ $item->nama }}</td>
-                    <td>{{ ucfirst($item->kategori) }}</td>
-                    <td>{{ $item->jumlah }}</td>
-                    <td>
-                        @foreach (['foto1', 'foto2', 'foto3'] as $foto)
-                            @if ($item->$foto)
-                                <img src="{{ asset('storage/' . $item->$foto) }}" alt="Foto" width="60" class="me-1 mb-1">
-                            @endif
-                        @endforeach
-                    <td>
+                <td>{{ $item->nama }}</td>
+                <td>{{ ucfirst($item->kategori) }}</td>
+                <td>{{ $item->jumlah }}</td>
+                <td>
+                    @foreach (['foto1', 'foto2', 'foto3'] as $foto)
+                        @if ($item->$foto)
+                            <img src="{{ Storage::url($item->$foto) }}" alt="Foto" width="60" class="me-1 mb-1">
+                        @endif
+                    @endforeach
+                </td>
+                <td>
                     <!-- Tombol Edit  -->
                     <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editModal{{ $item->id }}">
                         <i class="fas fa-edit me-1"></i> Edit
@@ -123,8 +124,8 @@
                               </div>
                           </div>
                           <div class="modal-footer">
-                           <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#confirmModal" data-form-id="formEdit{{ $item->id }}">Simpan</button>
-                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                           <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmModal" data-form-id="formEdit{{ $item->id }}">Simpan</button>
+                           <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
                           </div>
                         </div>
                     </form>
@@ -180,7 +181,7 @@
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmModal" data-form-id="formTambahFasilitas">
              Tambah
         </button>
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
         </div>
       </div>
     </form>
@@ -199,7 +200,7 @@
                 Apakah Anda yakin ingin menyimpan data fasilitas ini?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
                 <button type="button" class="btn btn-primary" id="btnConfirmSimpan">Yakin Simpan</button>
             </div>
         </div>

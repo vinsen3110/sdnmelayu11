@@ -17,29 +17,29 @@
     </button>
 
 
-    {{-- Tabel --}}
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>Judul</th>
-                <th>Foto</th>
-                <th>Deskripsi</th>
-                <th>Aksi</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($data as $item)
-            <tr>
-                <td>{{ $item->judul }}</td>
-                <td>
-                    @if($item->foto)
-                        <img src="{{ asset('storage/' . $item->foto) }}" width="80" alt="Foto">
-                    @else
-                        Tidak ada
-                    @endif
+   {{-- Tabel PPDB --}}
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Judul</th>
+            <th>Foto</th>
+            <th>Deskripsi</th>
+            <th>Aksi</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach($data as $item)
+        <tr>
+            <td>{{ $item->judul }}</td>
+            <td>
+                @if($item->foto)
+                    <img src="{{ Storage::url($item->foto) }}" width="80" alt="Foto">
+                @else
+                    <span class="text-muted">Tidak ada</span>
+                @endif
                 </td>
                 <td>{{ $item->deskripsi }}</td>
-               <td>
+                <td>
                 {{-- Tombol Edit --}}
                 <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editModal{{ $item->id }}">
                     <i class="fas fa-edit me-1"></i>Edit
@@ -84,7 +84,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                <button class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
                <button type="button" class="btn btn-primary btnUniversalTrigger" data-modal="tambah">Simpan</button>
             </div>
         </form>
@@ -120,8 +120,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-               <button type="button" class="btn btn-success btnUniversalTrigger" data-modal="edit" data-id="{{ $item->id }}">Simpan</button>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+               <button type="button" class="btn btn-primary btnUniversalTrigger" data-modal="edit" data-id="{{ $item->id }}">Simpan</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
             </div>
         </form>
     </div>
@@ -140,7 +140,7 @@
         <!-- Isi konfirmasi diisi lewat JS -->
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
         <button type="button" class="btn btn-primary" id="btnUniversalSubmit">Lanjutkan</button>
       </div>
     </div>
