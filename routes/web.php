@@ -13,6 +13,8 @@ use App\Http\Controllers\KontakController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\PpdbController;
 use App\Http\Controllers\PtkController;
+use App\Http\Controllers\VisiMisiController;
+use App\Http\Controllers\StrukturOrganisasiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -73,8 +75,20 @@ Route::put('/admin/ppdb/{id}', [PpdbController::class, 'update'])->name('ppdb.up
 Route::get('/admin/ptk', [PtkController::class, 'index'])->name('ptk.index')->middleware('auth');
 Route::post('/admin/ptk', [PtkController::class, 'store'])->name('ptk.store');
 Route::get('/admin/ptk/{id}/edit', [PtkController::class, 'edit'])->name('ptk.edit');
-Route::delete('/admin/ptk/{id}', [PtkController::class, 'destroy'])->name('ptk.destroy');
+Route::delete('/admin/ptk/{ptk}', [PtkController::class, 'destroy'])->name('ptk.destroy');
 Route::put('/admin/ptk/{id}', [PtkController::class, 'update'])->name('ptk.update');
+// VisiMisi
+Route::get('/admin/visimisi', [VisiMisiController::class, 'index'])->name('visimisi')->middleware('auth');
+Route::post('/admin/visimisi', [VisiMisiController::class, 'store'])->name('visimisi.store');
+Route::get('/admin/visimisi/{id}/edit', [VisiMisiController::class, 'edit'])->name('visimisi.edit');
+Route::put('/admin/visimisi/{id}', [VisiMisiController::class, 'update'])->name('visimisi.update');
+Route::delete('/admin/visimisi/{id}', [VisiMisiController::class, 'destroy'])->name('visimisi.destroy');
+//StrukturOrganisasi
+Route::get('/admin/strukturorganisasi', [StrukturOrganisasiController::class, 'index'])->name('strukturorganisasi')->middleware('auth');
+Route::post('/admin/strukturorganisasi', [StrukturOrganisasiController::class, 'store'])->name('strukturorganisasi.store');
+Route::get('/admin/strukturorganisasi/{id}/edit', [StrukturOrganisasiController::class, 'edit'])->name('strukturorganisasi.edit');
+Route::put('/admin/strukturorganisasi/{id}', [StrukturOrganisasiController::class, 'update'])->name('strukturorganisasi.update');
+Route::delete('/admin/strukturorganisasi/{id}', [StrukturOrganisasiController::class, 'destroy'])->name('strukturorganisasi.destroy');
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);

@@ -25,6 +25,6 @@ class CreatePtkTable extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('fasilitas');
+        Schema::dropIfExists('ptk');
     }
 }

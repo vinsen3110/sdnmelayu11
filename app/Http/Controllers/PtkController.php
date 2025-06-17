@@ -22,7 +22,7 @@ class PtkController extends Controller
             });
         }
 
-        $ptks = $query->latest()->get(); // Bisa pakai paginate() kalau ingin
+        $ptks = $query->latest()->get();
 
         return view('admin.adm_ptk', compact('ptks'));
     }
@@ -46,7 +46,10 @@ class PtkController extends Controller
             'foto' => 'nullable|image|max:2048'
         ]);
 
-        $data = $request->all();
+        $data = $request->only([
+            'no_tmt', 'nama_ptk', 'jabatan', 'status_kepegawaian',
+            'pendidikan_terakhir', 'jenis_kelamin', 'no_hp', 'email'
+        ]);
 
         if ($request->hasFile('foto')) {
             $data['foto'] = $request->file('foto')->store('foto_ptk', 'public');
@@ -76,10 +79,12 @@ class PtkController extends Controller
             'foto' => 'nullable|image|max:2048'
         ]);
 
-        $data = $request->all();
+        $data = $request->only([
+            'no_tmt', 'nama_ptk', 'jabatan', 'status_kepegawaian',
+            'pendidikan_terakhir', 'jenis_kelamin', 'no_hp', 'email'
+        ]);
 
         if ($request->hasFile('foto')) {
-            // Hapus foto lama jika ada
             if ($ptk->foto && Storage::disk('public')->exists($ptk->foto)) {
                 Storage::disk('public')->delete($ptk->foto);
             }

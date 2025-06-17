@@ -143,6 +143,18 @@
                   <p>PTK</p>
                 </a>
               </li>
+              <li class="nav-item {{ request()->is('admin/visimisi*') ? 'active' : '' }}">
+                <a href="{{ url('admin/visimisi') }}" class="nav-link {{ request()->is('admin/visimisi*') ? 'active' : '' }}">
+                      <i class="fas fa-bullseye me-2"></i>
+                    <p>Visi Misi</p>
+                </a>
+            </li>
+            <li class="nav-item {{ request()->is('admin/struktur*') ? 'active' : '' }}">
+                <a href="{{ url('admin/struktur') }}" class="nav-link {{ request()->is('admin/struktur*') ? 'active' : '' }}">
+                     <i class="fas fa-sitemap me-2"></i>
+                    <p>Struktur Organisasi</p>
+                </a>
+            </li>
             </ul>
           </div>
         </div>
@@ -262,6 +274,13 @@
                   </ul>
                 </li>
               </ul>
+              {{-- Tombol Logout --}}
+              <form method="POST" action="{{ route('logout') }}" class="m-3">
+                @csrf
+                <button type="submit" class="btn btn-danger w-100">
+                  <i class="fas fa-sign-out-alt me-2"></i> Logout
+                </button>
+              </form>
             </div>
           </nav>
           <!-- End Navbar -->

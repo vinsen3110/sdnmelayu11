@@ -9,6 +9,8 @@ use App\Models\Fasilitas;
 use App\Models\Ppdb;
 use App\Models\Prestasi;
 use App\Models\Ptk;
+use App\Models\StrukturOrganisasi;
+use App\Models\VisiMisi;
 
 class DashboardController extends Controller
 {
@@ -20,6 +22,8 @@ class DashboardController extends Controller
         $jumlahPpdb = Ppdb::count();
         $jumlahPrestasi = Prestasi::count();
         $jumlahPtk = Ptk::count();
+        $jumlahVisiMisi = VisiMisi::count();
+        $jumlahStrukturOrganisasi = StrukturOrganisasi::count();
 
         return view('admin.adm_dashboard', compact(
             'jumlahBerita',
@@ -27,7 +31,9 @@ class DashboardController extends Controller
             'jumlahFasilitas',
             'jumlahPpdb',
             'jumlahPrestasi',
-            'jumlahPtk'
+            'jumlahPtk',
+            'jumlahVisiMisi',
+            'jumlahStrukturOrganisasi'
         ));
     }
 }

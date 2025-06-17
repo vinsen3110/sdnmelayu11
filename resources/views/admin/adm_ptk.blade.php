@@ -191,7 +191,9 @@
                 </div>
             </div>
             <div class="modal-footer px-3">
-               <button type="button" class="btn btn-primary btn-konfirmasi-simpan" data-form-id="formEdit{{ $item->id }}" data-bs-toggle="modal" data-bs-target="#modalKonfirmasi">Simpan</button>
+                <button type="button" class="btn btn-primary btn-konfirmasi-simpan" data-form-id="formEdit{{ $item->id }}" data-bs-toggle="modal" data-bs-target="#modalKonfirmasi">
+                Simpan
+                </button>
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
             </div>
         </form>
@@ -199,18 +201,23 @@
 </div>
 @endforeach
 
-{{-- Modal Konfirmasi Simpan --}}
+<!-- Modal Konfirmasi -->
 <div class="modal fade" id="modalKonfirmasi" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header"><h5 class="modal-title">Konfirmasi Simpan</h5></div>
-            <div class="modal-body">Apakah Anda yakin ingin menyimpan data ini?</div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
-                <button type="button" class="btn btn-primary" id="btnSimpanKonfirmasi">Yakin Simpan</button>
-            </div>
-        </div>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Konfirmasi Simpan</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        Apakah kamu yakin ingin menyimpan perubahan?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+        <button type="button" class="btn btn-primary" id="btnSimpanKonfirmasi">Yakin Simpan</button>
+      </div>
     </div>
+  </div>
 </div>
 
 {{-- Modal Konfirmasi Hapus --}}
