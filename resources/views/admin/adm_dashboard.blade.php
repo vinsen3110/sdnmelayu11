@@ -35,7 +35,7 @@
                     ['title' => 'Prestasi', 'icon' => 'fas fa-trophy', 'color' => 'icon-success', 'value' => $jumlahPrestasi, 'route' => route('prestasi.index')],
                     ['title' => 'PTK', 'icon' => 'fas fa-chalkboard-teacher', 'color' => 'icon-secondary', 'value' => $jumlahPtk, 'route' => route('ptk.index')],
                     ['title' => 'Visi Misi', 'icon' => 'fas fa-bullseye', 'color' => 'icon-info', 'value' => $jumlahVisiMisi, 'route' => route('visimisi')],
-    ['title' => 'Struktur Organisasi', 'icon' => 'fas fa-sitemap', 'color' => 'icon-secondary', 'value' => $jumlahStrukturOrganisasi, 'route' => route('strukturorganisasi')],
+                    ['title' => 'Struktur Organisasi', 'icon' => 'fas fa-sitemap', 'color' => 'icon-secondary', 'value' => $jumlahStrukturOrganisasi, 'route' => route('strukturorganisasi')],
                     ];
             @endphp
 
