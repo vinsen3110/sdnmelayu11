@@ -35,7 +35,10 @@ Route::get('/kontak', [HomeController::class, 'kontak'])->name('kontak');
 Route::get('/fasilitassekolah', [HomeController::class, 'fasilitassekolah'])->name('fasilitassekolah');
 Route::get('/ekstrakulikuler', [HomeController::class, 'ekstrakulikuler'])->name('ekstrakulikuler');
 Route::get('/prestasisiswa', [HomeController::class, 'prestasisiswa'])->name('prestasisiswa');
-Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
+Route::prefix('admin')->middleware('auth')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+});
+
 
 // search
 Route::get('/search', [SearchController::class, 'index'])->name('search');

@@ -75,7 +75,7 @@ class PtkController extends Controller
             'pendidikan_terakhir' => 'required|string|max:255',
             'jenis_kelamin' => 'required|in:Laki-laki,Perempuan',
             'no_hp' => 'required|string|max:20',
-            'email' => 'required|email|unique:ptk,email,' . $ptk->id,
+            'email' => 'required|email|unique:ptk,email',
             'foto' => 'nullable|image|max:2048'
         ]);
 
