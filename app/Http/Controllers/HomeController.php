@@ -8,6 +8,7 @@ use App\Models\Fasilitas;
 use App\Models\Ekskul;
 use App\Models\Prestasi;
 use App\Models\PPDB;
+use App\Models\VisiMisi;
 
 class HomeController extends Controller
 {
@@ -27,8 +28,10 @@ class HomeController extends Controller
         return view('beritadeskripsi', compact('berita')); // kirim data ke view berita_detail.blade.php
     }
 
-    public function visimisi() {
-        return view('visimisi');
+    public function visimisi()
+    {
+    $visimisi = VisiMisi::latest()->paginate(6);
+    return view('visimisi', compact('visimisi'));
     }
 
     public function strukturorganisasi() {

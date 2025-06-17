@@ -1,4 +1,5 @@
 @extends('layouts.frontend')
+
 @section('content')
 
 <!-- Header Start -->
@@ -8,7 +9,9 @@
             <h1 class="display-5 text-white animated slideInDown">VISI & MISI</h1>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb justify-content-center">
-                    <li class="breadcrumb-item"><a class="text-white" href="#">SD NEGERI MELAYU 11 BANJARMASIN</a></li>
+                    <li class="breadcrumb-item">
+                        <a class="text-white" href="#">SD NEGERI MELAYU 11 BANJARMASIN</a>
+                    </li>
                 </ol>
             </nav>
         </div>
@@ -16,14 +19,51 @@
 </div>
 <!-- Header End -->
 
-<!-- Visi Misi Image Start -->
-<div class="container text-center mb-5">
-    <div class="row justify-content-center">
-         <div class="col-lg-6 col-md-8 wow fadeInUp d-flex justify-content-center" data-wow-delay="0.1s">
-            <img src="{{ asset('ta/img/visimisi.jpg') }}" alt="" class="img-fluid rounded shadow"
-                style="max-width: 500px;">
+<!-- Konten Pengumuman PPDB -->
+<div class="container">
+    @foreach ($visimisi as $item)
+        <!-- Judul & Tanggal -->
+        <div class="row mb-2">
+            <div class="col-md-12">
+                <h3 class="mb-1">{{ $item->judul }}</h3>
+                <p class="text-muted" style="margin-bottom: 0.5rem;">
+                    <i class="bi bi-calendar2"></i>
+                    {{ \Carbon\Carbon::parse($item->created_at)->format('d M Y') }}
+                </p>
+            </div>
         </div>
-    </div>
+
+        <!-- Tombol Unduh Foto -->
+        <div class="row mb-2">
+            <div class="col-md-12 d-flex justify-content-end" style="padding-right: 120px;">
+                <a href="{{ Storage::url($item->foto) }}"
+                   class="btn btn-info text-white btn-sm"
+                   download>
+                   <i class="bi bi-download"></i> Unduh Foto
+                </a>
+            </div>
+        </div>
+
+        <!-- Gambar -->
+        <div class="text-center mb-4">
+            <img src="{{ Storage::url($item->foto) }}"
+                 alt="{{ $item->judul }}"
+                 class="img-fluid rounded shadow"
+                 style="max-width: 900px;">
+        </div>
+
+        <!-- Deskripsi -->
+        <p>{!! nl2br(e($item->deskripsi)) !!}</p>
+
+        <!-- Tombol Hubungi Kami -->
+        <div class="text-start mt-3 mb-5">
+            <a href="{{ url('/kontak') }}" class="btn btn-outline-primary">
+                <i class="bi bi-envelope-fill"></i> Kontak
+            </a>
+        </div>
+
+        <hr class="my-5">
+    @endforeach
 </div>
-<!-- Visi Misi Image End -->
+
 @endsection
