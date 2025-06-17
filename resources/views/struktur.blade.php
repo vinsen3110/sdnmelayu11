@@ -1,12 +1,11 @@
 @extends('layouts.frontend')
-
 @section('content')
 
 <!-- Header Start -->
 <div class="container-fluid p-0 mb-5" style="position: relative; background: rgb(53, 113, 148); height: 150px;">
     <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center">
         <div class="text-center">
-            <h1 class="display-5 text-white animated slideInDown">VISI & MISI</h1>
+            <h1 class="display-5 text-white animated slideInDown">STRUKTUR ORGANISASI</h1>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb justify-content-center">
                     <li class="breadcrumb-item">
@@ -21,7 +20,7 @@
 
 <!-- Konten Pengumuman PPDB -->
 <div class="container">
-    @foreach ($visimisi as $item)
+    @foreach ($strukturorganisasi as $item)
         <!-- Judul & Tanggal -->
         <div class="row mb-2">
             <div class="col-md-12">
@@ -65,5 +64,6 @@
         <hr class="my-5">
     @endforeach
 </div>
+
 
 @endsection

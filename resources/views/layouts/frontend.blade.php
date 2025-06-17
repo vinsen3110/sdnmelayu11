@@ -30,13 +30,14 @@
     <!-- Template Stylesheet -->
     <link href="{{ asset('ta/css/style.css') }}" rel="stylesheet">
 
+
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
 
 </head>
 
 
-@section('content')
+
 <!-- Tambahkan ini di dalam section atau di layout -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -65,14 +66,14 @@
             <div class="navbar-nav justify-content-end py-0">
                 <a href="{{ route('homepage') }}"
                     class="nav-item nav-link ">Home</a>
-                <a href="">
 
 {{-- dropdown profil sekolah --}}
 <div class="nav-item dropdown">
     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Profil Sekolah</a>
     <div class="dropdown-menu fade-down m-0">
-        <a href="{{ route('visimisi') }}" class="dropdown-item">Visi & Misi</a>
-        <a href="{{ route('strukturorganisasi') }}" class="dropdown-item">Struktur Organisasi</a>
+        <a href="{{ route('visidanmisi') }}" class="dropdown-item">Visi & Misi</a>
+        <a href="{{ route('struktur') }}" class="dropdown-item">Struktur Organisasi</a>
+        <a href="{{ route('dataptk') }}" class="dropdown-item">Data PTK</a>
         <a href="{{ route('fasilitassekolah') }}" class="dropdown-item">Fasilitas Sekolah</a>
         <a href="{{ route('ekstrakulikuler') }}" class="dropdown-item">Ekstrakulikuler</a>
     </div>

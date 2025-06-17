@@ -9,6 +9,8 @@ use App\Models\Ekskul;
 use App\Models\Prestasi;
 use App\Models\PPDB;
 use App\Models\VisiMisi;
+use App\Models\Ptk;
+use App\Models\StrukturOrganisasi;
 
 class HomeController extends Controller
 {
@@ -28,14 +30,22 @@ class HomeController extends Controller
         return view('beritadeskripsi', compact('berita')); // kirim data ke view berita_detail.blade.php
     }
 
-    public function visimisi()
+    public function visidanmisi()
     {
-    $visimisi = VisiMisi::latest()->paginate(6);
-    return view('visimisi', compact('visimisi'));
+    $visimisi = VisiMisi::all();
+    return view('visidanmisi', compact('visimisi'));
     }
 
-    public function strukturorganisasi() {
-        return view('strukturorganisasi');
+    public function struktur()
+    {
+    $strukturorganisasi = strukturorganisasi::all(); 
+    return view('struktur', compact('strukturorganisasi'));
+    }
+
+    public function dataptk()
+    {
+    $ptk = Ptk::all(); 
+    return view('dataptk', compact('ptk'));
     }
 
     public function pengumumanPPDB()
@@ -43,7 +53,6 @@ class HomeController extends Controller
     $ppdb = PPDB::latest()->paginate(6);
     return view('pengumumanppdb', compact('ppdb'));
     }
-
 
     public function prestasisiswa()
     {
