@@ -12,6 +12,7 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\PpdbController;
 use App\Http\Controllers\PtkController;
 use App\Http\Controllers\VisiMisiController;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\StrukturOrganisasiController;
 
 /*
@@ -93,4 +94,7 @@ Route::delete('/admin/strukturorganisasi/{id}', [StrukturOrganisasiController::c
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::post('/logout', function () {
+    Auth::logout();
+    return redirect()->route('homepage');
+})->name('logout');
