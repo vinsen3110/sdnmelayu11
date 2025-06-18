@@ -78,7 +78,7 @@ Route::get('/admin/ptk', [PtkController::class, 'index'])->name('ptk.index')->mi
 Route::post('/admin/ptk', [PtkController::class, 'store'])->name('ptk.store');
 Route::get('/admin/ptk/{id}/edit', [PtkController::class, 'edit'])->name('ptk.edit');
 Route::delete('/admin/ptk/{ptk}', [PtkController::class, 'destroy'])->name('ptk.destroy');
-Route::put('/admin/ptk/{id}', [PtkController::class, 'update'])->name('ptk.update');
+Route::put('/admin/ptk/{ptk}', [PtkController::class, 'update'])->name('ptk.update');
 // VisiMisi
 Route::get('/admin/visimisi', [VisiMisiController::class, 'index'])->name('visimisi')->middleware('auth');
 Route::post('/admin/visimisi', [VisiMisiController::class, 'store'])->name('visimisi.store');

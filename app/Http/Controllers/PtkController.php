@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Ptk;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Storage;
 
 class PtkController extends Controller
@@ -16,9 +17,9 @@ class PtkController extends Controller
             $search = $request->search;
             $query->where(function ($q) use ($search) {
                 $q->where('nama_ptk', 'like', "%{$search}%")
-                  ->orWhere('jabatan', 'like', "%{$search}%")
-                  ->orWhere('email', 'like', "%{$search}%")
-                  ->orWhere('no_tmt', 'like', "%{$search}%");
+                    ->orWhere('jabatan', 'like', "%{$search}%")
+                    ->orWhere('email', 'like', "%{$search}%")
+                    ->orWhere('no_tmt', 'like', "%{$search}%");
             });
         }
 
@@ -47,8 +48,14 @@ class PtkController extends Controller
         ]);
 
         $data = $request->only([
-            'no_tmt', 'nama_ptk', 'jabatan', 'status_kepegawaian',
-            'pendidikan_terakhir', 'jenis_kelamin', 'no_hp', 'email'
+            'no_tmt',
+            'nama_ptk',
+            'jabatan',
+            'status_kepegawaian',
+            'pendidikan_terakhir',
+            'jenis_kelamin',
+            'no_hp',
+            'email'
         ]);
 
         if ($request->hasFile('foto')) {
@@ -67,6 +74,8 @@ class PtkController extends Controller
 
     public function update(Request $request, Ptk $ptk)
     {
+     
+        
         $request->validate([
             'no_tmt' => 'required|date',
             'nama_ptk' => 'required|string|max:255',
@@ -75,13 +84,23 @@ class PtkController extends Controller
             'pendidikan_terakhir' => 'required|string|max:255',
             'jenis_kelamin' => 'required|in:Laki-laki,Perempuan',
             'no_hp' => 'required|string|max:20',
-            'email' => 'required|email|unique:ptk,email',
+            'email' => [
+                'required',
+                'email',
+                Rule::unique('ptk', 'email')->ignore($ptk->id, 'id'),
+            ],
             'foto' => 'nullable|image|max:2048'
         ]);
 
         $data = $request->only([
-            'no_tmt', 'nama_ptk', 'jabatan', 'status_kepegawaian',
-            'pendidikan_terakhir', 'jenis_kelamin', 'no_hp', 'email'
+            'no_tmt',
+            'nama_ptk',
+            'jabatan',
+            'status_kepegawaian',
+            'pendidikan_terakhir',
+            'jenis_kelamin',
+            'no_hp',
+            'email'
         ]);
 
         if ($request->hasFile('foto')) {
