@@ -94,7 +94,7 @@ Route::delete('/admin/strukturorganisasi/{id}', [StrukturOrganisasiController::c
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
-Route::post('/logout', function () {
-    Auth::logout();
-    return redirect()->route('homepage');
-})->name('logout');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::middleware(['auth'])->group(function () {
+Route::get('/admin', [DashboardController::class, 'index']); });

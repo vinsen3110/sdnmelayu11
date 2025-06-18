@@ -95,6 +95,18 @@
 
             <button type="submit">Login</button>
         </form>
+        <!-- Tombol Go Back -->
+        <a href="{{ url('/') }}" style="display: block; text-align: center; margin-top: 15px; color: #4CAF50; text-decoration: none;">
+            &larr; Kembali ke Beranda
+        </a>
     </div>
+    <script>
+    if (window.history && window.history.pushState) {
+        window.history.pushState(null, null, window.location.href);
+        window.onpopstate = function () {
+            window.location.href = "/";
+        };
+    }
+</script>
 </body>
 </html>

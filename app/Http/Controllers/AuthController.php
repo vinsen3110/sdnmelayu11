@@ -30,12 +30,13 @@ class AuthController extends Controller
     }
 
     public function logout(Request $request)
-    {
-        Auth::logout();
+{
+    Auth::logout();
 
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
 
-        return redirect('/');
-    }
+    return redirect()->away('/login'); // <- pakai away agar benar-benar keluar dari alur
+}
+
 }

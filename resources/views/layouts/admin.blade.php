@@ -154,12 +154,12 @@
 
     <!-- Tombol Logout di bagian bawah sidebar -->
     <div class="sidebar-logout mt-auto p-3">
-      <form method="POST" action="{{ route('logout') }}">
+      <form method="POST" action="{{ url('/logout') }}">
         @csrf
         <button type="submit" class="btn btn-danger w-100">
-          <i class="fas fa-sign-out-alt me-2"></i> Logout
+            <i class="fas fa-sign-out-alt me-2"></i> Logout
         </button>
-      </form>
+    </form>
     </div>
 
   </div>
@@ -243,7 +243,7 @@
                     <i class="fas fa-user fa-lg"></i>
                  </div>
                        <span class="profile-username">
-                       <span class="fw-bold">Hi Admin</span>
+                       <span class="fw-bold">Hi Admin </span>
                    </span>
                   </a>
                   <ul class="dropdown-menu dropdown-user animated fadeIn">
@@ -258,8 +258,8 @@
                             />
                           </div>
                           <div class="u-text">
-                            <h4>Hizrian</h4>
-                            <p class="text-muted">hello@example.com</p>
+                            <h4>Rita Meilani</h4>
+                            <p class="text-muted">ritameilani@gmail.com</p>
                             <a
                               href="profile.html"
                               class="btn btn-xs btn-secondary btn-sm"
