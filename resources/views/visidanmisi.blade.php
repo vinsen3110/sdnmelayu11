@@ -1,35 +1,64 @@
 @extends('layouts.frontend')
-
 @section('content')
-<!-- Header -->
-<div class="container-fluid page-header py-5 mb-5">
-    <div class="container py-5">
-        <h1 class="display-3 text-white mb-3">Visi & Misi</h1>
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb text-uppercase mb-0">
-                <li class="breadcrumb-item"><a href="/">Beranda</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Visi & Misi</li>
-            </ol>
-        </nav>
+
+<!-- Header Start -->
+<div class="container-fluid p-0 mb-5" style="position: relative; background: rgb(53, 113, 148); height: 150px;">
+    <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center">
+        <div class="text-center">
+            <h2 class="display-5 text-white animated slideInDown">VISI DAN MISI</h2>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb justify-content-center">
+                    <li class="breadcrumb-item">
+                        <a href="{{ route('homepage') }}" class="text-white">Home</a>
+                    </li>
+                    <li class="breadcrumb-item active text-white" aria-current="page">
+                        <strong>Visi & Misi</strong>
+                    </li>
+                </ol>
+            </nav>
+        </div>
     </div>
 </div>
+<!-- Header End -->
 
-<!-- Konten -->
-<div class="container py-5">
-    <div class="row">
-        @foreach($visimisi as $item)
-        <div class="col-md-6 col-lg-4 mb-4">
-            <div class="card h-100">
-                @if($item->foto)
-                    <img src="{{ asset('storage/' . $item->foto) }}" class="card-img-top" alt="Foto Visi Misi">
-                @endif
-                <div class="card-body">
-                    <h5 class="card-title">{{ $item->judul }}</h5>
-                    <p class="card-text">{!! Str::limit(strip_tags($item->deskripsi), 150) !!}</p>
-                </div>
+<!-- Konten Pengumuman PPDB -->
+<div class="container">
+    @foreach ($visimisi as $item)
+        <!-- Judul & Tanggal -->
+        <div class="row mb-2">
+            <div class="col-md-12">
+                <h3 class="mb-1">{{ $item->judul }}</h3>
+                <p class="text-muted" style="margin-bottom: 0.5rem;">
+                    <i class="bi bi-calendar2"></i>
+                    {{ \Carbon\Carbon::parse($item->created_at)->format('d M Y') }}
+                </p>
             </div>
         </div>
-        @endforeach
-    </div>
+
+        <!-- Tombol Unduh Foto -->
+        <div class="row mb-2">
+            <div class="col-md-12 d-flex justify-content-end" style="padding-right: 120px;">
+                <a href="{{ Storage::url($item->foto) }}"
+                   class="btn btn-info text-white btn-sm"
+                   download>
+                   <i class="bi bi-download"></i> Unduh Foto
+                </a>
+            </div>
+        </div>
+
+        <!-- Gambar -->
+        <div class="text-center mb-4">
+            <img src="{{ Storage::url($item->foto) }}"
+                 alt="{{ $item->judul }}"
+                 class="img-fluid rounded shadow"
+                 style="max-width: 500px;">
+        </div>
+
+        <!-- Deskripsi -->
+        <p>{!! nl2br(e($item->deskripsi)) !!}</p>
+
+    @endforeach
 </div>
+
+
 @endsection

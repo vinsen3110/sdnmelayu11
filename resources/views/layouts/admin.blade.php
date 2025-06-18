@@ -75,91 +75,99 @@
 </div>
 
           <!-- End Logo Header -->
-        </div>
-        <div class="sidebar-wrapper scrollbar scrollbar-inner">
-          <div class="sidebar-content">
-            <ul class="nav nav-secondary">
-              <li class="nav-item active">
-                <a
-                  href="{{route('dashboard')}}"
-                >
-                  <i class="fas fa-home"></i>
-                  <p>Dashboard</p>
-                </a>
-                {{-- <div class="collapse" id="dashboard">
-                  <ul class="nav nav-collapse">
-                    <li>
-                      <a href="../demo1/index.html">
-                        <span class="sub-item">Dashboard 1</span>
-                      </a>
-                    </li>
-                  </ul>
-                </div> --}}
-              </li>
-              <li class="nav-section">
-                <span class="sidebar-mini-icon">
-                  <i class="fa fa-ellipsis-h"></i>
-                </span>
-                <h4 class="text-section">Components</h4>
-              </li>
-              <li class="nav-item {{ request()->is('admin/berita*') ? 'active' : '' }}">
-                <a href="{{ url('admin/berita') }}" class="nav-link {{ request()->is('admin/berita*') ? 'active' : '' }}">
-                  <i class="fas fa-newspaper"></i>
-                  <p>BERITA</p>
-                </a>
-              </li>
+</div>
+<div class="sidebar-wrapper scrollbar scrollbar-inner">
+  <div class="sidebar-content">
+    <ul class="nav nav-secondary">
+      <li class="nav-item active">
+      <a href="{{ route('dashboard') }}">
+        <i class="fas fa-home"></i>
+        <p>Dashboard</p>
+      </a>
 
-              <li class="nav-item {{ request()->is('admin/ekskul*') ? 'active' : '' }}">
-                <a href="{{ url('admin/ekskul') }}" class="nav-link {{ request()->is('admin/ekskul*') ? 'active' : '' }}">
-                  <i class="fas fa-users"></i>
-                  <p>EKSKUL</p>
-                </a>
-              </li>
 
-              <li class="nav-item {{ request()->is('admin/fasilitas*') ? 'active' : '' }}">
-                <a href="{{ url('admin/fasilitas') }}" class="nav-link {{ request()->is('admin/fasilitas*') ? 'active' : '' }}">
-                  <i class="fas fa-building"></i>
-                  <p>FASILITAS</p>
-                </a>
-              </li>
+      </li>
 
-              <li class="nav-item {{ request()->is('admin/ppdb*') ? 'active' : '' }}">
-                <a href="{{ url('admin/ppdb') }}" class="nav-link {{ request()->is('admin/ppdb*') ? 'active' : '' }}">
-                  <i class="fas fa-user-graduate"></i>
-                  <p>PPDB</p>
-                </a>
-              </li>
+      <li class="nav-section">
+        <span class="sidebar-mini-icon">
+          <i class="fa fa-ellipsis-h"></i>
+        </span>
+        <h4 class="text-section">Components</h4>
+      </li>
 
-              <li class="nav-item {{ request()->is('admin/prestasi*') ? 'active' : '' }}">
-                <a href="{{ url('admin/prestasi') }}" class="nav-link {{ request()->is('admin/prestasi*') ? 'active' : '' }}">
-                  <i class="fas fa-trophy"></i>
-                  <p>PRESTASI</p>
-                </a>
-              </li>
+      <li class="nav-item {{ request()->is('admin/berita*') ? 'active' : '' }}">
+        <a href="{{ url('admin/berita') }}" class="nav-link {{ request()->is('admin/berita*') ? 'active' : '' }}">
+          <i class="fas fa-newspaper"></i>
+          <p>BERITA</p>
+        </a>
+      </li>
 
-              <li class="nav-item {{ request()->is('admin/ptk*') ? 'active' : '' }}">
-                <a href="{{ url('admin/ptk') }}" class="nav-link {{ request()->is('admin/ptk*') ? 'active' : '' }}">
-                  <i class="fas fa-chalkboard-teacher"></i>
-                  <p>PTK</p>
-                </a>
-              </li>
-              <li class="nav-item {{ request()->is('admin/visimisi*') ? 'active' : '' }}">
-                <a href="{{ url('admin/visimisi') }}" class="nav-link {{ request()->is('admin/visimisi*') ? 'active' : '' }}">
-                      <i class="fas fa-bullseye me-2"></i>
-                    <p>Visi Misi</p>
-                </a>
-            </li>
-            <li class="nav-item {{ request()->is('admin/struktur*') ? 'active' : '' }}">
-                <a href="{{ url('admin/struktur') }}" class="nav-link {{ request()->is('admin/struktur*') ? 'active' : '' }}">
-                     <i class="fas fa-sitemap me-2"></i>
-                    <p>Struktur Organisasi</p>
-                </a>
-            </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <!-- End Sidebar -->
+      <li class="nav-item {{ request()->is('admin/ekskul*') ? 'active' : '' }}">
+        <a href="{{ url('admin/ekskul') }}" class="nav-link {{ request()->is('admin/ekskul*') ? 'active' : '' }}">
+          <i class="fas fa-users"></i>
+          <p>EKSKUL</p>
+        </a>
+      </li>
+
+      <li class="nav-item {{ request()->is('admin/fasilitas*') ? 'active' : '' }}">
+        <a href="{{ url('admin/fasilitas') }}" class="nav-link {{ request()->is('admin/fasilitas*') ? 'active' : '' }}">
+          <i class="fas fa-building"></i>
+          <p>FASILITAS</p>
+        </a>
+      </li>
+
+      <li class="nav-item {{ request()->is('admin/ppdb*') ? 'active' : '' }}">
+        <a href="{{ url('admin/ppdb') }}" class="nav-link {{ request()->is('admin/ppdb*') ? 'active' : '' }}">
+          <i class="fas fa-user-graduate"></i>
+          <p>PPDB</p>
+        </a>
+      </li>
+
+      <li class="nav-item {{ request()->is('admin/prestasi*') ? 'active' : '' }}">
+        <a href="{{ url('admin/prestasi') }}" class="nav-link {{ request()->is('admin/prestasi*') ? 'active' : '' }}">
+          <i class="fas fa-trophy"></i>
+          <p>PRESTASI</p>
+        </a>
+      </li>
+
+      <li class="nav-item {{ request()->is('admin/ptk*') ? 'active' : '' }}">
+        <a href="{{ url('admin/ptk') }}" class="nav-link {{ request()->is('admin/ptk*') ? 'active' : '' }}">
+          <i class="fas fa-chalkboard-teacher"></i>
+          <p>PTK</p>
+        </a>
+      </li>
+
+      <li class="nav-item {{ request()->is('admin/visimisi*') ? 'active' : '' }}">
+        <a href="{{ url('admin/visimisi') }}" class="nav-link {{ request()->is('admin/visimisi*') ? 'active' : '' }}">
+          <i class="fas fa-bullseye me-2"></i>
+          <p>Visi Misi</p>
+        </a>
+      </li>
+
+      <li class="nav-item {{ request()->is('admin/strukturorganisasi*') ? 'active' : '' }}">
+      <a href="{{ route('strukturorganisasi') }}" class="nav-link {{ request()->is('admin/strukturorganisasi*') ? 'active' : '' }}">
+        <i class="fas fa-sitemap me-2"></i>
+        <p>Struktur Organisasi</p>
+      </a>
+    </li>
+    </ul>
+
+    <!-- Tombol Logout di bagian bawah sidebar -->
+    <div class="sidebar-logout mt-auto p-3">
+      <form method="POST" action="{{ route('logout') }}">
+        @csrf
+        <button type="submit" class="btn btn-danger w-100">
+          <i class="fas fa-sign-out-alt me-2"></i> Logout
+        </button>
+      </form>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- End Sidebar -->
+
 
       <div class="main-panel">
         <div class="main-header">
@@ -260,27 +268,10 @@
                           </div>
                         </div>
                       </li>
-                      <li>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">My Profile</a>
-                        <a class="dropdown-item" href="#">My Balance</a>
-                        <a class="dropdown-item" href="#">Inbox</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Account Setting</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Logout</a>
-                      </li>
                     </div>
                   </ul>
                 </li>
               </ul>
-              {{-- Tombol Logout --}}
-              <form method="POST" action="{{ route('logout') }}" class="m-3">
-                @csrf
-                <button type="submit" class="btn btn-danger w-100">
-                  <i class="fas fa-sign-out-alt me-2"></i> Logout
-                </button>
-              </form>
             </div>
           </nav>
           <!-- End Navbar -->

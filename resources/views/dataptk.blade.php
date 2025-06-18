@@ -5,11 +5,14 @@
 <div class="container-fluid p-0 mb-5" style="position: relative; background: rgb(53, 113, 148); height: 150px;">
     <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center">
         <div class="text-center">
-            <h1 class="display-5 text-white animated slideInDown">DATA PENDIDIK & KEPENDIDIKAN</h1>
+            <h2 class="display-5 text-white animated slideInDown">DATA PENDIDIK & KEPENDIDIKAN</h2>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb justify-content-center">
                     <li class="breadcrumb-item">
-                        <a class="text-white" href="#">SD NEGERI MELAYU 11 BANJARMASIN</a>
+                        <a href="{{ route('homepage') }}" class="text-white">Home</a>
+                    </li>
+                    <li class="breadcrumb-item active text-white" aria-current="page">
+                        <strong>Data PTK</strong>
                     </li>
                 </ol>
             </nav>
@@ -54,14 +57,6 @@
         <!-- Deskripsi -->
         <p>{!! nl2br(e($item->deskripsi)) !!}</p>
 
-        <!-- Tombol Hubungi Kami -->
-        <div class="text-start mt-3 mb-5">
-            <a href="{{ url('/kontak') }}" class="btn btn-outline-primary">
-                <i class="bi bi-envelope-fill"></i> Kontak
-            </a>
-        </div>
-
-        <hr class="my-5">
     @endforeach
 </div>
 

@@ -67,7 +67,6 @@
                 <h4 class="text-start" style="color: black; font-weight: bold;">Sambutan Kepala Sekolah</h4>
                 <p class="mb-3">Assalamu’alaikum Warahmatullahi Wabarakaatuh.</p>
                 <p>Salam sejahtera untuk kita semua. Selamat datang di website SD Negeri Melayu 11. Website ini dibangun sebagai media informasi dan komunikasi sekolah, agar selaras dengan perkembangan teknologi serta memudahkan masyarakat dalam mencari informasi terkait sekolah kami.</p>
-                <a href="#" class="btn btn-warning text-white mt-2">Selengkapnya</a>
             </div>
         </div>
     </div>
@@ -83,7 +82,7 @@
 
             <!-- Visi & Misi -->
             <div class="col-lg-3 col-sm-6 mb-4 mx-3 wow fadeInUp" data-wow-delay="0.1s">
-                <a href="{{ route('visimisi') }}" style="text-decoration: none; color: inherit;">
+                <a href="{{ route('visidanmisi') }}" style="text-decoration: none; color: inherit;">
                     <div class="service-item text-center pt-3 h-100">
                         <div class="p-4">
                             <i class="fa fa-3x fa-bullseye text-primary mb-4"></i>
@@ -96,7 +95,7 @@
 
             <!-- Struktur Organisasi -->
             <div class="col-lg-3 col-sm-6 mb-4 mx-3 wow fadeInUp" data-wow-delay="0.2s">
-                <a href="{{ route('strukturorganisasi') }}" style="text-decoration: none; color: inherit;">
+                <a href="{{ route('struktur') }}" style="text-decoration: none; color: inherit;">
                     <div class="service-item text-center pt-3 h-100">
                         <div class="p-4">
                             <i class="fa fa-3x fa-users text-primary mb-4"></i>
@@ -187,7 +186,7 @@
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
                 <h4 class="text-start" style="color: black; font-weight: bold;">Tentang Sekolah Kami</h4>
                 <h1 class="mb-4">SD Negeri Melayu 11</h1>
-                <p class="mb-4">Merupakan sekolah dasar  memiliki Akreditasi B yang beralamatkan di Jln. Kampung Melayu Darat RT.09 No.27, Kelurahan Melayu, Kecamatan Banjarmasin Tengah. Sekolah ini beroperasi sejak tanggal 1 Januari 1978.</p>
+                <p class="mb-4">Merupakan sekolah dasar negeri memiliki Akreditasi B yang beralamatkan di Jln. Kampung Melayu Darat RT.09 No.27, Kelurahan Melayu, Kecamatan Banjarmasin Tengah. Sekolah ini beroperasi sejak tanggal 1 Januari 1978.</p>
                 <p class="mb-4">Hingga tahun 2025, sekolah ini memiliki luas bangunan 1038 m² dengan 1 ruang kepala sekolah, 1 ruang guru, 6 ruang kelas, 1 perpustakaan, 1 ruang UKS, 3 toilet, dan 1 ruang bangunan. Untuk mendukung pembelajaran, tersedia:</p>
                 <div class="row gy-2 gx-4 mb-4">
                     <div class="col-sm-6"><p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>17 Unit Laptop</p></div>

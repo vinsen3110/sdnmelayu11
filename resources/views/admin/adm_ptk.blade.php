@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
+
 <div class="container py-4">
     <h2 class="mb-4 ms-3">Daftar PTK</h2>
 
@@ -11,7 +12,17 @@
     <button class="btn btn-primary mb-3 ms-3" data-bs-toggle="modal" data-bs-target="#modalTambah">
         <i class="fas fa-plus me-1"></i> Tambah PTK
     </button>
-
+    @if ($errors->any())
+                    <div class="alert alert-danger alert-dismissible text-white" role="alert">
+                        @foreach ($errors->all() as $error)
+                            {{ $error }}
+                        @endforeach
+                        <button type="button" class="btn-close text-lg py-3 opacity-10" data-bs-dismiss="alert"
+                            aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @endif
     {{-- Form Search --}}
     <div class="mb-3 px-3">
         <form method="GET" action="{{ route('ptk.index') }}" class="d-flex" style="max-width: 100%;">

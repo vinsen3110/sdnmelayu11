@@ -5,11 +5,14 @@
 <div class="container-fluid p-0 mb-5" style="position: relative; background: rgb(53, 113, 148); height: 150px;">
     <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center">
         <div class="text-center">
-            <h1 class="display-5 text-white animated slideInDown">KONTAK</h1>
+            <h2 class="display-5 text-white animated slideInDown">KONTAK</h2>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb justify-content-center">
                     <li class="breadcrumb-item">
-                        <a class="text-white" href="#">SD NEGERI MELAYU 11 BANJARMASIN</a>
+                        <a href="{{ route('homepage') }}" class="text-white">Home</a>
+                    </li>
+                    <li class="breadcrumb-item active text-white" aria-current="page">
+                        <strong>Kontak</strong>
                     </li>
                 </ol>
             </nav>
@@ -36,7 +39,7 @@
           <!-- Judul Sesuai Permintaan -->
         <h4 class="text-start" style="color: black; font-weight: bold;">Hubungi Kami</h4>
           <p><i class="fas fa-map-marker-alt me-2"></i> Jl. Kampung Melayu Darat No.23, RT.9, Melayu, Banjarmasin Tengah, Kalimantan Selatan 70234</p>
-          <p><i class="fas fa-phone me-2"></i> (0511) 335XXXX</p>
+          <p><i class="fas fa-phone me-2"></i>+62 0812 3456 7890</p>
           <p><i class="fas fa-envelope me-2"></i> sdnmelayu11@gmail.com</p>
           <p><i class="fas fa-clock me-2"></i> Senin - Jumat: 07.30 - 15.00 WITA</p>
 

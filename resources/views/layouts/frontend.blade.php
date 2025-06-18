@@ -53,19 +53,18 @@
 
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
-        <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5 mb-1">
+        <a href="{{ route('homepage') }}" class="navbar-brand d-flex align-items-center px-4 px-lg-5 mb-1">
             <img class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2"
                         style="height: 60px; width: 60px;" src="{{ asset('ta/img/logo.png') }}" alt="">
             <p class="text-md mb-0 text-primary" style="font-size: 15px;">
-  SD NEGERI MELAYU 11<br>BANJARMASIN
-</p>
-
+                SD NEGERI MELAYU 11<br>BANJARMASIN
+            </p>
         </a>
 
         <div class="collapse navbar-collapse" id="navbarCollapse" style="justify-content: end">
             <div class="navbar-nav justify-content-end py-0">
                 <a href="{{ route('homepage') }}"
-                    class="nav-item nav-link ">Home</a>
+                    class="nav-item nav-link ">Beranda</a>
 
 {{-- dropdown profil sekolah --}}
 <div class="nav-item dropdown">
@@ -154,10 +153,8 @@
 <!-- WhatsApp Floating Button End -->
 
 
-
-
 <!-- Footer Start -->
-<div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+<div class="container-fluid text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s" style="background: rgb(44, 97, 128)">
     <div class="container py-3">
         <div class="row g-5 align-items-start">
             <!-- Kiri: Logo & Nama Sekolah -->
@@ -174,22 +171,30 @@
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <h5 class="text-white mb-2">Quick Link</h5>
-                        <a class="btn btn-link" href="#">Tentang Kami</a>
-                        <a class="btn btn-link" href="#">Kontak</a>
-                        <a class="btn btn-link" href="#">Privacy Policy</a>
-                        <a class="btn btn-link" href="#">Terms & Condition</a>
+                        <a class="btn btn-link" href="{{ route('homepage') }}">Beranda</a>
+                        <a class="btn btn-link" href="{{ route('berita') }}">Berita</a>
+                        <a class="btn btn-link" href="{{ route('pengumumanppdb') }}">Pengumuman PPDB</a>
                         <a class="btn btn-link" href="{{ route('login') }}">Login</a>
                     </div>
                     <div class="col-md-6">
                         <h5 class="text-white mb-2">Contact</h5>
                         <p class="mb-1"><i class="fa fa-map-marker-alt me-2"></i>Jl. Kp. Melayu Darat No.23, RT.9, Banjarmasin</p>
-                        <p class="mb-1"><i class="fa fa-phone-alt me-2"></i>+012 345 67890</p>
-                        <p class="mb-2"><i class="fa fa-envelope me-2"></i>info@example.com</p>
+                        <p class="mb-1"><i class="fa fa-phone-alt me-2"></i>+62 812 3456 7890</p>
+                        <p class="mb-2"><i class="fa fa-envelope me-2"></i>sdnmelayu11bjm@gmail.com</p>
                         <div class="d-flex pt-1">
-                            <a class="btn btn-outline-light btn-social me-1" href="#"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-outline-light btn-social me-1" href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-outline-light btn-social me-1" href="#"><i class="fab fa-youtube"></i></a>
-                            <a class="btn btn-outline-light btn-social" href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://instagram.com/sdnmelayu11_banjarmasin" target="_blank"
+                                class="btn px-2"
+                                style="background: transparent; border: none; color: white; font-weight: normal;"
+                                title="@sdnmelayu11_banjarmasin">
+                                    <i class="fab fa-instagram fa-lg"></i>
+                            </a>
+
+                            <a href="https://wa.me/6281234567890" target="_blank"
+                                class="btn px-2"
+                                style="background: transparent; border: none; color: white; font-weight: normal;"
+                                title="Chat via WhatsApp">
+                                    <i class="fab fa-whatsapp fa-lg"></i>
+                            </a>
                         </div>
                     </div>
                 </div>

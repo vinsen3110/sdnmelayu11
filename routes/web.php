@@ -12,6 +12,7 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\PpdbController;
 use App\Http\Controllers\PtkController;
 use App\Http\Controllers\VisiMisiController;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\StrukturOrganisasiController;
 
 /*
@@ -35,7 +36,9 @@ Route::get('/kontak', [HomeController::class, 'kontak'])->name('kontak');
 Route::get('/fasilitassekolah', [HomeController::class, 'fasilitassekolah'])->name('fasilitassekolah');
 Route::get('/ekstrakulikuler', [HomeController::class, 'ekstrakulikuler'])->name('ekstrakulikuler');
 Route::get('/prestasisiswa', [HomeController::class, 'prestasisiswa'])->name('prestasisiswa');
-Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+
 
 // search
 Route::get('/search', [SearchController::class, 'index'])->name('search');
@@ -91,4 +94,7 @@ Route::delete('/admin/strukturorganisasi/{id}', [StrukturOrganisasiController::c
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::post('/logout', function () {
+    Auth::logout();
+    return redirect()->route('homepage');
+})->name('logout');
