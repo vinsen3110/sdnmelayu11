@@ -187,7 +187,7 @@
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
                 <h4 class="text-start" style="color: black; font-weight: bold;">Tentang Sekolah Kami</h4>
                 <h1 class="mb-4">SD Negeri Melayu 11</h1>
-                <p class="mb-4">Merupakan sekolah dasar negeri memiliki Akreditasi B yang beralamatkan di Jln. Kampung Melayu Darat RT.09 No.27, Kelurahan Melayu, Kecamatan Banjarmasin Tengah. Sekolah ini beroperasi sejak tanggal 1 Januari 1978.</p>
+                <p class="mb-4">Merupakan sekolah dasar  memiliki Akreditasi B yang beralamatkan di Jln. Kampung Melayu Darat RT.09 No.27, Kelurahan Melayu, Kecamatan Banjarmasin Tengah. Sekolah ini beroperasi sejak tanggal 1 Januari 1978.</p>
                 <p class="mb-4">Hingga tahun 2025, sekolah ini memiliki luas bangunan 1038 m² dengan 1 ruang kepala sekolah, 1 ruang guru, 6 ruang kelas, 1 perpustakaan, 1 ruang UKS, 3 toilet, dan 1 ruang bangunan. Untuk mendukung pembelajaran, tersedia:</p>
                 <div class="row gy-2 gx-4 mb-4">
                     <div class="col-sm-6"><p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>17 Unit Laptop</p></div>
