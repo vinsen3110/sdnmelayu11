@@ -1,19 +1,15 @@
 @extends('layouts.frontend')
 @section('content')
 
-<!-- Header Start -->
+<!-- Header -->
 <div class="container-fluid p-0 mb-5" style="position: relative; background: rgb(53, 113, 148); height: 150px;">
     <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center">
         <div class="text-center">
             <h2 class="display-5 text-white animated slideInDown">DATA PENDIDIK & KEPENDIDIKAN</h2>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb justify-content-center">
-                    <li class="breadcrumb-item">
-                        <a href="{{ route('homepage') }}" class="text-white">Home</a>
-                    </li>
-                    <li class="breadcrumb-item active text-white" aria-current="page">
-                        <strong>Data PTK</strong>
-                    </li>
+                    <li class="breadcrumb-item"><a href="{{ route('homepage') }}" class="text-white">Home</a></li>
+                    <li class="breadcrumb-item active text-white" aria-current="page"><strong>Data PTK</strong></li>
                 </ol>
             </nav>
         </div>
@@ -21,44 +17,40 @@
 </div>
 <!-- Header End -->
 
-<!-- Konten Pengumuman PPDB -->
-<div class="container">
-    @foreach ($ptk as $item)
-        <!-- Judul & Tanggal -->
-        <div class="row mb-2">
-            <div class="col-md-12">
-                <h3 class="mb-1">{{ $item->judul }}</h3>
-                <p class="text-muted" style="margin-bottom: 0.5rem;">
-                    <i class="bi bi-calendar2"></i>
-                    {{ \Carbon\Carbon::parse($item->created_at)->format('d M Y') }}
-                </p>
+<div class="container py-5">
+
+    {{-- Kepala Sekolah (Baris Pertama) --}}
+    @if (count($ptks) > 0)
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-4 text-center">
+                <div class="ptk-card">
+                    <img src="{{ asset('storage/' . $ptks[0]->foto) }}" alt="{{ $ptks[0]->nama_ptk }}"
+                        style="width: 200px; height: 200px; object-fit: cover; border-radius: 50%; margin-bottom: 10px;">
+                    <div class="ptk-info-text">
+                        <h5 class="mb-1 text-white">{{ $ptks[0]->nama_ptk }}</h5>
+                        <p class="mb-0 text-white">{{ $ptks[0]->jabatan }}</p>
+                    </div>
+                </div>
             </div>
         </div>
+    @endif
 
-        <!-- Tombol Unduh Foto -->
-        <div class="row mb-2">
-            <div class="col-md-12 d-flex justify-content-end" style="padding-right: 120px;">
-                <a href="{{ Storage::url($item->foto) }}"
-                   class="btn btn-info text-white btn-sm"
-                   download>
-                   <i class="bi bi-download"></i> Unduh Foto
-                </a>
+    {{-- Guru/Pegawai Lainnya --}}
+    <div class="row">
+        @foreach ($ptks->skip(1) as $ptk)
+            <div class="col-md-3 col-sm-6 mb-4 d-flex justify-content-center">
+                <div class="ptk-card text-center">
+                    <img src="{{ asset('storage/' . $ptk->foto) }}" alt="{{ $ptk->nama_ptk }}"
+                        style="width: 140px; height: 140px; object-fit: cover; border-radius: 50%; margin-bottom: 10px;">
+                    <div class="ptk-info-text">
+                        <h6 class="mb-1 text-white">{{ $ptk->nama_ptk }}</h6>
+                        <p class="mb-0 text-white">{{ $ptk->jabatan }}</p>
+                    </div>
+                </div>
             </div>
-        </div>
+        @endforeach
+    </div>
 
-        <!-- Gambar -->
-        <div class="text-center mb-4">
-            <img src="{{ Storage::url($item->foto) }}"
-                 alt="{{ $item->judul }}"
-                 class="img-fluid rounded shadow"
-                 style="max-width: 900px;">
-        </div>
-
-        <!-- Deskripsi -->
-        <p>{!! nl2br(e($item->deskripsi)) !!}</p>
-
-    @endforeach
 </div>
-
 
 @endsection

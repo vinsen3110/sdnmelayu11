@@ -44,8 +44,8 @@ class HomeController extends Controller
 
     public function dataptk()
     {
-    $ptk = Ptk::all(); 
-    return view('dataptk', compact('ptk'));
+    $ptks = Ptk::all(); 
+    return view('dataptk', compact('ptks'));
     }
 
     public function pengumumanPPDB()

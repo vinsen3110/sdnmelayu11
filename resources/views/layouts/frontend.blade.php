@@ -54,92 +54,46 @@
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
         <a href="{{ route('homepage') }}" class="navbar-brand d-flex align-items-center px-4 px-lg-5 mb-1">
-            <img class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2"
-                        style="height: 60px; width: 60px;" src="{{ asset('ta/img/logo.png') }}" alt="">
-            <p class="text-md mb-0 text-primary" style="font-size: 15px;">
+            <img class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2 logo-img" src="{{ asset('ta/img/logo.png') }}" alt="">
+            <p class="text-md mb-0 text-primary text-15">
                 SD NEGERI MELAYU 11<br>BANJARMASIN
             </p>
         </a>
 
         <div class="collapse navbar-collapse" id="navbarCollapse" style="justify-content: end">
             <div class="navbar-nav justify-content-end py-0">
-                <a href="{{ route('homepage') }}"
-                    class="nav-item nav-link ">Beranda</a>
+                <a href="{{ route('homepage') }}" class="nav-item nav-link ">Beranda</a>
 
-{{-- dropdown profil sekolah --}}
-<div class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Profil Sekolah</a>
-    <div class="dropdown-menu fade-down m-0">
-        <a href="{{ route('visidanmisi') }}" class="dropdown-item">Visi & Misi</a>
-        <a href="{{ route('struktur') }}" class="dropdown-item">Struktur Organisasi</a>
-        <a href="{{ route('dataptk') }}" class="dropdown-item">Data PTK</a>
-        <a href="{{ route('fasilitassekolah') }}" class="dropdown-item">Fasilitas Sekolah</a>
-        <a href="{{ route('ekstrakulikuler') }}" class="dropdown-item">Ekstrakulikuler</a>
+    {{-- dropdown profil sekolah --}}
+    <div class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Profil Sekolah</a>
+        <div class="dropdown-menu fade-down m-0">
+            <a href="{{ route('visidanmisi') }}" class="dropdown-item {{ Request::is('visidanmisi') ? 'active' : '' }}">Visi & Misi</a>
+            <a href="{{ route('struktur') }}" class="dropdown-item {{ Request::is('struktur') ? 'active' : '' }}">Struktur Organisasi</a>
+            <a href="{{ route('dataptk') }}" class="dropdown-item {{ Request::is('dataptk') ? 'active' : '' }}">Data PTK</a>
+            <a href="{{ route('fasilitassekolah') }}" class="dropdown-item {{ Request::is('fasilitassekolah') ? 'active' : '' }}">Fasilitas</a>
+            <a href="{{ route('ekstrakulikuler') }}" class="dropdown-item {{ Request::is('ekstrakulikuler') ? 'active' : '' }}">Ekstrakulikuler</a>
+        </div>
     </div>
-</div>
-        <a href="{{ route('beritasekolah') }}" class="nav-item nav-link">Berita</a>
-<!-- Dropdown: Pages -->
-<div class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Informasi</a>
-    <div class="dropdown-menu fade-down m-0">
-        
-        <a href="{{ route('pengumumanppdb') }}" class="dropdown-item">Pengumuman PPDB</a>
-        <a href="{{ route('prestasisiswa') }}" class="dropdown-item">Prestasi Sekolah</a>
+
+            <a href="{{ route('beritasekolah') }}" class="nav-item nav-link {{ Request::is('beritasekolah') ? 'active' : '' }}">Berita</a>
+
+    <!-- Dropdown: Pages -->
+    <div class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Informasi</a>
+        <div class="dropdown-menu fade-down m-0">
+            <a href="{{ route('pengumumanppdb') }}" class="dropdown-item">Pengumuman PPDB</a>
+            <a href="{{ route('prestasisiswa') }}" class="dropdown-item">Prestasi Sekolah</a>
+        </div>
     </div>
-</div>
-        <a href="{{ route('kontak') }}" class="nav-item nav-link">Kontak</a>
-    </nav>
-    <!-- Navbar End -->
+
+            <a href="{{ route('kontak') }}" class="nav-item nav-link">Kontak</a>
+            </nav>
+        <!-- Navbar End -->
+
 @yield('content')
 
 <!-- WhatsApp Floating Button Start -->
-<style>
-    .wa-chat-container {
-        position: fixed;
-        right: 20px;
-        bottom: 25px;
-        z-index: 9999;
-        display: flex;
-        align-items: center;
-        font-family: Arial, sans-serif;
-    }
-
-    .wa-chat-text {
-        background: white;
-        padding: 8px 12px;
-        border-radius: 10px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-        font-size: 13px;
-        margin-right: 8px;
-        color: #000;
-        line-height: 1.3;
-    }
-
-    .wa-chat-text strong {
-        font-weight: 600;
-        color: #2e7d32;
-    }
-
-    .wa-chat-icon img {
-        width: 55px;
-        height: 55px;
-        border-radius: 50%;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-    }
-
-    @media (max-width: 768px) {
-        .wa-chat-text {
-            font-size: 12px;
-            padding: 6px 10px;
-        }
-
-        .wa-chat-icon img {
-            width: 50px;
-            height: 50px;
-        }
-    }
-</style>
-
 <div class="wa-chat-container">
     <div class="wa-chat-text">
         Perlu bantuan?<br><strong>Chat dengan kami</strong>
@@ -154,13 +108,13 @@
 
 
 <!-- Footer Start -->
-<div class="container-fluid text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s" style="background: rgb(44, 97, 128)">
+<div class="container-fluid text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
     <div class="container py-3">
         <div class="row g-5 align-items-start">
             <!-- Kiri: Logo & Nama Sekolah -->
             <div class="col-lg-6 col-md-12">
                 <div class="d-flex align-items-center mb-2">
-                    <img src="{{ asset('ta/img/logo.png') }}" alt="Logo" style="height: 60px; width: 60px; margin-right: 15px;">
+                    <img src="{{ asset('ta/img/logo.png') }}" alt="Logo" class="footer-logo">
                     <h2 class="text-white mb-0" style="font-weight: 800;">SDN MELAYU 11</h2>
                 </div>
                 <p class="text-light mb-2">Sekolah yang membentuk karakter siswa, berkompetensi global, mandiri, peduli sosial dan peduli lingkungan.</p>
@@ -182,18 +136,11 @@
                         <p class="mb-1"><i class="fa fa-phone-alt me-2"></i>+62 812 3456 7890</p>
                         <p class="mb-2"><i class="fa fa-envelope me-2"></i>sdnmelayu11bjm@gmail.com</p>
                         <div class="d-flex pt-1">
-                            <a href="https://instagram.com/sdnmelayu11_banjarmasin" target="_blank"
-                                class="btn px-2"
-                                style="background: transparent; border: none; color: white; font-weight: normal;"
-                                title="@sdnmelayu11_banjarmasin">
-                                    <i class="fab fa-instagram fa-lg"></i>
+                            <a href="https://instagram.com/xxx" class="social-icon" target="_blank" title="@xxx">
+                                <i class="fab fa-instagram"></i>
                             </a>
-
-                            <a href="https://wa.me/6281234567890" target="_blank"
-                                class="btn px-2"
-                                style="background: transparent; border: none; color: white; font-weight: normal;"
-                                title="Chat via WhatsApp">
-                                    <i class="fab fa-whatsapp fa-lg"></i>
+                            <a href="https://wa.me/6281234567890" class="social-icon" target="_blank" title="Chat via WhatsApp">
+                                <i class="fab fa-whatsapp"></i>
                             </a>
                         </div>
                     </div>
@@ -213,11 +160,7 @@
                 </div>
             </div>
         </div>
-        <!-- Footer End -->
-
-
-
-
+<!-- Footer End -->
 
 <!-- JavaScript Libraries -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
