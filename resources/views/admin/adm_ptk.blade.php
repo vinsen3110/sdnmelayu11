@@ -125,8 +125,9 @@
                         <input type="text" name="no_hp" class="form-control">
                     </div>
                     <div class="col-md-6">
-                        <label>Email</label>
-                        <input type="email" name="email" class="form-control">
+                        <label for="email">Email (Opsional)</label>
+                        <input type="email" name="email" id="email" class="form-control"
+                            value="{{ old('email', $item->email ?? '') }}" placeholder="Masukkan email (jika ada)">
                     </div>
                     <div class="col-md-6">
                         <label>TMT</label>
@@ -198,8 +199,9 @@
                             <input type="text" name="no_hp" class="form-control" value="{{ $item->no_hp }}">
                         </div>
                         <div class="col-md-6">
-                            <label>Email</label>
-                            <input type="email" name="email" class="form-control" value="{{ $item->email }}">
+                            <label for="email">Email (Opsional)</label>
+                            <input type="email" name="email" id="email" class="form-control"
+                                value="{{ old('email', $item->email ?? '') }}" placeholder="Masukkan email (jika ada)">
                         </div>
                         <div class="col-md-6">
                             <label>TMT</label>

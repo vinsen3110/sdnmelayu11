@@ -15,6 +15,7 @@ class Ekskul extends Model
         'hari_kegiatan',
         'waktu_kegiatan',
         'deskripsi',
-        'foto'
+        'foto',
+        'deskripsi'
     ];
 }

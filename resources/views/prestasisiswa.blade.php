@@ -6,14 +6,14 @@
 <div class="container-fluid p-0 mb-5" style="position: relative; background: rgb(53, 113, 148); height: 150px;">
     <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center">
         <div class="text-center">
-            <h2 class="display-5 text-white animated slideInDown">PRESTASI SISWA</h2>
+            <h2 class="display-5 text-white animated slideInDown">PRESTASI SEKOLAH</h2>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb justify-content-center">
                     <li class="breadcrumb-item">
                         <a href="{{ route('homepage') }}" class="text-white">Home</a>
                     </li>
                     <li class="breadcrumb-item active text-white" aria-current="page">
-                        <strong>Prestasi Siswa</strong>
+                        <strong>Prestasi Sekolah</strong>
                     </li>
                 </ol>
             </nav>
@@ -23,7 +23,7 @@
 <!-- Header End -->
 
 <div class="container py-5">
-    <h2 class="mb-4">Prestasi Siswa</h2>
+    <h2 class="mb-4">Prestasi</h2>
 
     <div class="row">
         @foreach ($prestasi as $item)

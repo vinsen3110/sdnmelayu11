@@ -31,6 +31,7 @@
         <thead>
             <tr>
                 <th>Judul</th>
+                <th>Deskripsi</th>
                 <th>Foto</th>
                 <th>Jam</th>
                 <th>Tanggal</th>
@@ -38,9 +39,10 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($berita as $item)
+           @foreach ($berita as $item)
                 <tr>
                     <td>{{ $item->judul_berita }}</td>
+                    <td>{{ \Illuminate\Support\Str::limit(strip_tags($item->deskripsi), 80) }}</td>
                     <td>
                         <img src="{{ $item->foto ? Storage::url($item->foto) : asset('img/foto-tidak-ada.png') }}"
                             alt="Foto Berita" style="width: 100px; height: auto;">
@@ -59,8 +61,6 @@
                     onclick="konfirmasiHapus('{{ route('berita.hapus', $item->id) }}')">
                     <i class="fas fa-trash-alt me-1"></i> Hapus
                     </button>
-
-                    
                     </td>
                 </tr>
             @endforeach

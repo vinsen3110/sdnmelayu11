@@ -37,6 +37,7 @@
                 <th>Jenis</th>
                 <th>Tingkat</th>
                 <th>Tahun</th>
+                <th>Deskripsi</th>
                 <th>Foto</th>
                 <th>Aksi</th>
             </tr>
@@ -50,6 +51,7 @@
                     <td>{{ $item->jenis_prestasi }}</td>
                     <td>{{ $item->tingkat }}</td>
                     <td>{{ $item->tahun }}</td>
+                    <td>{{ \Illuminate\Support\Str::limit($item->deskripsi, 50) }}</td>
                     <td>
                         @if ($item->foto)
                         <img src="{{ Storage::url($item->foto) }}" alt="Foto" width="60">
@@ -116,6 +118,10 @@
                                   <label>Tahun</label>
                                   <input type="number" name="tahun" class="form-control" value="{{ $item->tahun }}" required>
                               </div>
+                              <div class="form-group mb-3">
+                                    <label for="deskripsi">Deskripsi</label>
+                                    <textarea name="deskripsi" id="deskripsi" class="form-control" rows="4">{{ old('deskripsi') }}</textarea>
+                             </div>
                               <div class="mb-3">
                                   <label>Foto (boleh kosong)</label>
                                   <input type="file" name="foto" class="form-control">
@@ -171,6 +177,10 @@
               <div class="mb-3">
                   <label>Tahun</label>
                   <input type="number" name="tahun" class="form-control" required>
+              </div>
+              <div class="form-group mb-3">
+                <label for="deskripsi">Deskripsi</label>
+                <textarea name="deskripsi" id="deskripsi" class="form-control" rows="4">{{ old('deskripsi') }}</textarea>
               </div>
               <div class="mb-3">
                   <label>Foto (boleh kosong)</label>

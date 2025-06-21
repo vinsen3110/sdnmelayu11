@@ -41,6 +41,7 @@ class PrestasiController extends Controller
             'jenis_prestasi' => 'required|string',
             'tingkat' => 'required|string',
             'tahun' => 'required|integer',
+            'deskripsi' => 'nullable|string',
             'foto' => 'nullable|image|max:2048'
         ]);
 
@@ -76,6 +77,7 @@ class PrestasiController extends Controller
             'jenis_prestasi' => 'required|string',
             'tingkat' => 'required|string',
             'tahun' => 'required|integer',
+            'deskripsi' => 'nullable|string',
             'foto' => 'nullable|image|max:2048'
         ]);
 

@@ -41,7 +41,6 @@
 
             @foreach ($cards as $card)
                 <div class="col-md-4 mb-4">
-                    <a href="{{ $card['route'] }}" style="text-decoration: none">
                         <div class="card card-stats card-round">
                             <div class="card-body d-flex align-items-center">
                                 <div class="col-icon me-3">

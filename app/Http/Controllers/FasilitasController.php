@@ -32,9 +32,10 @@ class FasilitasController extends Controller
             'foto1' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'foto2' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'foto3' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'deskripsi' => 'nullable|string',
         ]);
 
-        $data = $request->only(['nama', 'kategori', 'jumlah']);
+        $data = $request->only(['nama', 'kategori', 'jumlah', 'deskripsi']);
 
         foreach (['foto1', 'foto2', 'foto3'] as $fotoField) {
             if ($request->hasFile($fotoField)) {
@@ -57,10 +58,11 @@ class FasilitasController extends Controller
             'foto1' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'foto2' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'foto3' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'deskripsi' => 'nullable|string',
         ]);
 
         $fasilitas = Fasilitas::findOrFail($id);
-        $data = $request->only(['nama', 'kategori', 'jumlah']);
+        $data = $request->only(['nama', 'kategori', 'jumlah', 'deskripsi']);
 
         foreach (['foto1', 'foto2', 'foto3'] as $fotoField) {
             if ($request->hasFile($fotoField)) {

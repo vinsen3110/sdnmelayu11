@@ -20,6 +20,7 @@ class Fasilitas extends Model
         'foto1',
         'foto2',
         'foto3',
+        'deskripsi',
     ];
 
     // Optional: casting jika ingin pastikan 'jumlah' integer

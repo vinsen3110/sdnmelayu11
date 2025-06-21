@@ -25,6 +25,7 @@
                     <th>Pembina</th>
                     <th>Hari Kegiatan</th>
                     <th>Waktu</th>
+                    <th>Deskripsi</th>
                     <th>Foto</th>
                     <th>Aksi</th>
                 </tr>
@@ -36,6 +37,7 @@
                         <td>{{ $item->pembina }}</td>
                         <td>{{ $item->hari_kegiatan }}</td>
                         <td>{{ \Carbon\Carbon::parse($item->waktu_kegiatan)->format('H:i') }}</td>
+                        <td>{{ \Illuminate\Support\Str::limit($item->deskripsi, 50) }}</td>
                         <td>
                         <img src="{{ $item->foto ? Storage::url($item->foto) : asset('img/foto-tidak-ada.png') }}"
                             alt="Foto Ekskul" style="width: 100px; height: auto;">

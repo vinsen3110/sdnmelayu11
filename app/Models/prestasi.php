@@ -18,12 +18,15 @@ class Prestasi extends Model
     protected $keyType = 'int';
 
     protected $fillable = [
-        'nama_siswa',
-        'nama_prestasi',
-        'peringkat',
-        'jenis_prestasi',
-        'tingkat',
-        'tahun',
-        'foto'
+
+    'nama_siswa',
+    'nama_prestasi',
+    'peringkat',
+    'jenis_prestasi',
+    'tingkat',
+    'tahun',
+    'deskripsi',
+    'foto',
+    
     ];
 }

@@ -33,22 +33,24 @@
             <th>Nama</th>
             <th>Kategori</th>
             <th>Jumlah</th>
+            <th>Deskripsi</th>
             <th>Foto</th>
             <th>Aksi</th>
         </tr>
     </thead>
     <tbody>
-        @foreach ($fasilitas as $item)
-            <tr>
-                <td>{{ $item->nama }}</td>
-                <td>{{ ucfirst($item->kategori) }}</td>
-                <td>{{ $item->jumlah }}</td>
-                <td>
-                    @foreach (['foto1', 'foto2', 'foto3'] as $foto)
-                        @if ($item->$foto)
-                            <img src="{{ Storage::url($item->$foto) }}" alt="Foto" width="60" class="me-1 mb-1">
-                        @endif
-                    @endforeach
+       @foreach ($fasilitas as $item)
+        <tr>
+        <td>{{ $item->nama }}</td>
+        <td>{{ ucfirst($item->kategori) }}</td>
+        <td>{{ $item->jumlah }}</td>
+        <td>{{ \Illuminate\Support\Str::limit($item->deskripsi, 50) }}</td> 
+        <td>
+            @foreach (['foto1', 'foto2', 'foto3'] as $foto)
+                @if ($item->$foto)
+                    <img src="{{ Storage::url($item->$foto) }}" alt="Foto" width="60" class="me-1 mb-1 rounded">
+                @endif
+            @endforeach
                 </td>
                 <td>
                     <!-- Tombol Edit  -->
@@ -122,6 +124,10 @@
                                   <label>Foto 3</label>
                                   <input type="file" name="foto3" class="form-control">
                               </div>
+                              <div class="form-group">
+                                <label for="deskripsi">Deskripsi</label>
+                                <textarea name="deskripsi" class="form-control" id="deskripsi">{{ old('deskripsi') }}</textarea>
+                            </div>
                           </div>
                           <div class="modal-footer">
                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmModal" data-form-id="formEdit{{ $item->id }}">Simpan</button>
@@ -175,6 +181,10 @@
             <label>Foto 3</label>
             <input type="file" name="foto3" class="form-control">
           </div>
+          <div class="form-group">
+            <label for="deskripsi">Deskripsi</label>
+           <textarea name="deskripsi" class="form-control" id="deskripsi">{{ old('deskripsi') }}</textarea>
+        </div>
         </div>
         <div class="modal-footer">
           <!-- Tombol Konfirmasi -->

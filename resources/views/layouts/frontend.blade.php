@@ -82,12 +82,12 @@
     <div class="nav-item dropdown">
         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Informasi</a>
         <div class="dropdown-menu fade-down m-0">
-            <a href="{{ route('pengumumanppdb') }}" class="dropdown-item">Pengumuman PPDB</a>
-            <a href="{{ route('prestasisiswa') }}" class="dropdown-item">Prestasi Sekolah</a>
+            <a href="{{ route('pengumumanppdb') }}" class="dropdown-item {{ Request::is('pengumumanppdb') ? 'active' : '' }}">Pengumuman PPDB</a>
+            <a href="{{ route('prestasisiswa') }}" class="dropdown-item {{ Request::is('prestasisiswa') ? 'active' : '' }}">Prestasi Sekolah</a>
         </div>
     </div>
 
-            <a href="{{ route('kontak') }}" class="nav-item nav-link">Kontak</a>
+            <a href="{{ route('kontak') }}" class="nav-item nav-link {{ Request::is('kontak') ? 'active' : '' }}">Kontak</a>
             </nav>
         <!-- Navbar End -->
 
@@ -126,7 +126,7 @@
                     <div class="col-md-6 mb-3">
                         <h5 class="text-white mb-2">Quick Link</h5>
                         <a class="btn btn-link" href="{{ route('homepage') }}">Beranda</a>
-                        <a class="btn btn-link" href="{{ route('berita') }}">Berita</a>
+                        <a class="btn btn-link" href="{{ route('beritasekolah') }}">Berita</a>
                         <a class="btn btn-link" href="{{ route('pengumumanppdb') }}">Pengumuman PPDB</a>
                         <a class="btn btn-link" href="{{ route('login') }}">Login</a>
                     </div>
@@ -136,7 +136,7 @@
                         <p class="mb-1"><i class="fa fa-phone-alt me-2"></i>+62 812 3456 7890</p>
                         <p class="mb-2"><i class="fa fa-envelope me-2"></i>sdnmelayu11bjm@gmail.com</p>
                         <div class="d-flex pt-1">
-                            <a href="https://instagram.com/xxx" class="social-icon" target="_blank" title="@xxx">
+                            <a href="https://instagram.com/sdnmelayu11_banjarmasin" class="social-icon" target="_blank" title="@xxx">
                                 <i class="fab fa-instagram"></i>
                             </a>
                             <a href="https://wa.me/6281234567890" class="social-icon" target="_blank" title="Chat via WhatsApp">

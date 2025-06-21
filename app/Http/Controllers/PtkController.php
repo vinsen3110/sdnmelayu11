@@ -43,7 +43,7 @@ class PtkController extends Controller
             'pendidikan_terakhir' => 'required|string|max:255',
             'jenis_kelamin' => 'required|in:Laki-laki,Perempuan',
             'no_hp' => 'required|string|max:20',
-            'email' => 'required|email|unique:ptk,email',
+            'email' => 'nullable|email',
             'foto' => 'nullable|image|max:2048'
         ]);
 
@@ -85,7 +85,7 @@ class PtkController extends Controller
             'jenis_kelamin' => 'required|in:Laki-laki,Perempuan',
             'no_hp' => 'required|string|max:20',
             'email' => [
-                'required',
+                'nullable',
                 'email',
                 Rule::unique('ptk', 'email')->ignore($ptk->id, 'id'),
             ],
