@@ -132,10 +132,10 @@
 
             @php
                 $facilities = [
-                    ['icon' => 'fa-certificate', 'title' => 'Akreditasi', 'desc' => 'A'],
-                    ['icon' => 'fa-universal-access', 'title' => 'Sekolah Inklusi', 'desc' => '10 orang'],
-                    ['icon' => 'fa-leaf', 'title' => 'Sekolah Adiwiyata', 'desc' => 'Nasional'],
-                    ['icon' => 'fa-book', 'title' => 'Kurikulum', 'desc' => 'Merdeka'],
+                    ['icon' => 'fas fa-medal', 'title' => 'Akreditasi', 'desc' => 'A'],
+                    ['icon' => 'fas fa-universal-access', 'title' => 'Sekolah Inklusi', 'desc' => '10 orang'],
+                    ['icon' => 'fas fa-seedling', 'title' => 'Sekolah Adiwiyata', 'desc' => 'Nasional'],
+                    ['icon' => ' fas fa-book-open', 'title' => 'Kurikulum', 'desc' => 'Merdeka'],
                     ['icon' => 'fa-trophy', 'title' => 'Prestasi', 'desc' => '50+'],
                 ];
             @endphp
@@ -278,8 +278,20 @@ new Chart(ctxSiswa, {
                                 class="card-img-top" alt="Thumbnail">
                             <div class="card-body">
                                 <span class="badge bg-success mb-2">Berita</span>
-                                <p class="text-muted mb-1"><i class="bi bi-calendar"></i> {{ $item->created_at->format('Y-m-d H:i:s') }}</p>
                                 <h5 class="card-title">{{ $item->judul_berita }}</h5>
+                                @php
+                                try {
+                                    $waktu = \Carbon\Carbon::parse($item->tanggal . ' ' . $item->jam);
+                                } catch (\Exception $e) {
+                                    $waktu = null;
+                                }
+                            @endphp
+
+                            @if ($waktu)
+                                <p class="text-muted">
+                                    <i class="bi bi-calendar"></i> {{ $waktu->format('d M Y, h:i A') }}
+                                </p>
+                            @endif
                             </div>
                         </div>
                     </a>

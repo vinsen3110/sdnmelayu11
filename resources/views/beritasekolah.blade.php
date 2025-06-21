@@ -34,9 +34,19 @@
                              class="card-img-top" alt="Thumbnail">
                         <div class="card-body">
                                 <h5 class="card-title">{{ $item->judul_berita }}</h5>
+                        @php
+                            try {
+                                $waktu = \Carbon\Carbon::parse($item->tanggal . ' ' . $item->jam);
+                            } catch (\Exception $e) {
+                                $waktu = null;
+                            }
+                        @endphp
+
+                        @if ($waktu)
                             <p class="text-muted">
-                                <i class="bi bi-calendar"></i> {{ $item->created_at->format('d M Y, h:i A') }}
+                                <i class="bi bi-calendar"></i> {{ $waktu->format('d M Y, h:i A') }}
                             </p>
+                        @endif
                         </div>
                     </a>
                 </div>
