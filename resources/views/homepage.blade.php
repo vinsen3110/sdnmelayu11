@@ -135,7 +135,7 @@
                     ['icon' => 'fas fa-medal', 'title' => 'Akreditasi', 'desc' => 'A'],
                     ['icon' => 'fas fa-universal-access', 'title' => 'Sekolah Inklusi', 'desc' => '10 orang'],
                     ['icon' => 'fas fa-seedling', 'title' => 'Sekolah Adiwiyata', 'desc' => 'Nasional'],
-                    ['icon' => ' fas fa-book-open', 'title' => 'Kurikulum', 'desc' => 'Merdeka'],
+                    ['icon' => 'fas fa-book-open', 'title' => 'Kurikulum', 'desc' => 'Merdeka'],
                     ['icon' => 'fa-trophy', 'title' => 'Prestasi', 'desc' => '50+'],
                 ];
             @endphp
