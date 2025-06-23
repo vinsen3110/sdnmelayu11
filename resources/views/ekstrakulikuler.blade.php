@@ -51,7 +51,7 @@
                             <p class="mb-0">
                                 <strong>Hari & Waktu:</strong>
                                 {{ $item->hari_kegiatan }},
-                                {{ \Carbon\Carbon::createFromFormat('H:i:s', $item->waktu_kegiatan)->format('h:i A') }}
+                                {{ \Carbon\Carbon::createFromFormat('H:i:s', $item->waktu_kegiatan)->format('H:i') }}
                             </p>
                             <button type="button" class="btn-close position-absolute top-0 end-0 mt-3 me-3" data-bs-dismiss="modal" aria-label="Tutup"></button>
                         </div>
@@ -60,6 +60,12 @@
                                 <img src="{{ asset('storage/' . $item->foto) }}" class="img-fluid rounded" alt="{{ $item->nama_ekskul }}">
                             @endif
                         </div>
+                        {{-- Deskripsi --}}
+                        @if ($item->deskripsi)
+                            <p class="mt-3 px-3 text-start text-muted" style="font-size: 0.95rem;">
+                                {!! nl2br(e($item->deskripsi)) !!}
+                            </p>
+                        @endif
                     </div>
                 </div>
             </div>

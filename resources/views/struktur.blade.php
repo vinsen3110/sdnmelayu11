@@ -28,10 +28,6 @@
         <div class="row mb-2">
             <div class="col-md-12">
                 <h3 class="mb-1">{{ $item->judul }}</h3>
-                <p class="text-muted" style="margin-bottom: 0.5rem;">
-                    <i class="bi bi-calendar2"></i>
-                    {{ \Carbon\Carbon::parse($item->created_at)->format('d M Y') }}
-                </p>
             </div>
         </div>
 

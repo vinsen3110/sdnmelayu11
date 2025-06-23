@@ -17,7 +17,9 @@
 @endif
     <img src="{{ $berita->foto ? Storage::url($berita->foto) : asset('img/foto-tidak-ada.png') }}" alt="Foto Berita" class="img-fluid mb-4" />
     <p>{!! nl2br(e($berita->deskripsi)) !!}</p>
-    <a href="{{ url('/beritasekolah') }}" class="btn btn-primary mt-3 kembali-btn">Kembali ke Berita</a>
+    <a href="{{ url('/beritasekolah') }}" class="btn btn-outline-primary mt-3 kembali-btn">
+        <i class="bi bi-arrow-left"></i> Kembali ke Berita
+    </a>
 </div>
 
 @endsection

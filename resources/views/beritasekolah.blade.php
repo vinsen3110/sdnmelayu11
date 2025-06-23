@@ -33,21 +33,12 @@
                         <img src="{{ $item->foto ? Storage::url($item->foto) : asset('img/foto-tidak-ada.png') }}" 
                              class="card-img-top" alt="Thumbnail">
                         <div class="card-body">
-                                <h5 class="card-title">{{ $item->judul_berita }}</h5>
-                        @php
-                            try {
-                                $waktu = \Carbon\Carbon::parse($item->tanggal . ' ' . $item->jam);
-                            } catch (\Exception $e) {
-                                $waktu = null;
-                            }
-                        @endphp
-
-                        @if ($waktu)
-                            <p class="text-muted">
-                                <i class="bi bi-calendar"></i> {{ $waktu->format('d M Y, h:i A') }}
-                            </p>
-                        @endif
-                        </div>
+                        <h5 class="card-title">{{ $item->judul_berita }}</h5>
+                        <p class="mb-0">
+                            {{ \Carbon\Carbon::parse($item->tanggal)->format('d-m-Y') }},
+                            {{ \Carbon\Carbon::parse($item->jam)->format('H:i') }}
+                        </p>
+                    </div>
                     </a>
                 </div>
             </div>

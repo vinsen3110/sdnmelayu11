@@ -25,24 +25,28 @@
 <div class="container">
     @foreach ($visimisi as $item)
 
-        <!-- Tombol Unduh Foto -->
-        <div class="row mb-2">
-            <div class="col-md-12 d-flex justify-content-end" style="padding-right: 120px;">
-                <a href="{{ Storage::url($item->foto) }}"
-                   class="btn btn-info text-white btn-sm"
-                   download>
-                   <i class="bi bi-download"></i> Unduh Foto
-                </a>
-            </div>
-        </div>
+<!-- Tombol Unduh Foto -->
+<div class="row mb-2">
+    <div class="col-md-12 d-flex justify-content-between">
+        <div></div> <!-- Kolom kosong di kiri -->
+        <a href="{{ Storage::url($item->foto) }}"
+           class="btn btn-info text-white btn-sm"
+           style="margin-right: 310px;"
+           download>
+           <i class="bi bi-download"></i> Unduh Foto
+        </a>
+    </div>
+</div>
 
-        <!-- Gambar -->
-        <div class="text-center mb-4">
-            <img src="{{ Storage::url($item->foto) }}"
-                 alt="{{ $item->judul }}"
-                 class="img-fluid rounded shadow"
-                 style="max-width: 500px;">
-        </div>
+
+<!-- Gambar -->
+<div class="text-center mb-4">
+    <img src="{{ Storage::url($item->foto) }}"
+         alt="{{ $item->judul }}"
+         class="img-fluid rounded shadow"
+         style="max-width: 500px;">
+</div>
+
 
         <!-- Deskripsi -->
         <p>{!! nl2br(e($item->deskripsi)) !!}</p>

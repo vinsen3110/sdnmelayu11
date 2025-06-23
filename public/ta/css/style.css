@@ -170,15 +170,19 @@
 .kembali-btn {
     display: inline-block;
     padding: 10px 20px;
-    background-color: var(--all);
-    color: white;
+    background-color: transparent;
+    color: var(--all); /* Warna biru Bootstrap */
+    border: 1px solid var(--primary);
     border-radius: 4px;
     text-decoration: none;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
 }
+
 .kembali-btn:hover {
-    opacity: 0.9;
+    background-color: var(--primary);
+    color: white;
 }
+
 
 /*** Header ***/
 
@@ -665,8 +669,6 @@
 }
 
 
-
-
 /*** Footer ***/
 
 .footer {
@@ -751,7 +753,7 @@
     left: 50%;
     transform: translateX(-50%);
     z-index: 9999;
-    background-color: #007bff; /* atau warna yang kamu mau */
+    background-color: var(--all); /* atau warna yang kamu mau */
     color: white;
     border-radius: 8px;
     padding: 10px 15px;

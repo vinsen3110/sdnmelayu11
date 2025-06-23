@@ -62,12 +62,19 @@
                              class="w-100 rounded"
                              style="max-height: 500px; object-fit: cover; margin-top: 10px;"
                              alt="Foto Prestasi">
+                             {{-- Deskripsi --}}
+                        @if ($item->deskripsi)
+                            <p class="mt-3 px-3 text-start text-muted" style="font-size: 0.95rem;">
+                                {!! nl2br(e($item->deskripsi)) !!}
+                            </p>
+                        @endif
                     </div>
                 </div>
             </div>
         </div>
         @endforeach
     </div>
+    
 
     <div class="d-flex justify-content-center mt-4">
         {{ $prestasi->links() }}
