@@ -78,123 +78,149 @@
                 </tr>
 
                 <!-- Modal Edit -->
-                <div class="modal fade" id="editModal{{ $item->id_prestasi }}" tabindex="-1" aria-labelledby="editModalLabel{{ $item->id_prestasi }}" aria-hidden="true">
-                  <div class="modal-dialog">
-                    <form id="editForm{{ $item->id_prestasi }}"
-                    method="POST"
-                    action="{{ route('prestasi.update', $item->id_prestasi) }}"
-                    enctype="multipart/form-data"
-                    onsubmit="event.preventDefault(); showConfirmModal(this);">
-                    @csrf
-                    @method('PUT')
+<div class="modal fade" id="editModal{{ $item->id_prestasi }}" tabindex="-1" aria-labelledby="editModalLabel{{ $item->id_prestasi }}" aria-hidden="true">
+  <div class="modal-dialog">
+    <form id="editForm{{ $item->id_prestasi }}"
+          method="POST"
+          action="{{ route('prestasi.update', $item->id_prestasi) }}"
+          enctype="multipart/form-data">
+      @csrf
+      @method('PUT')
 
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title">Edit Prestasi</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                          </div>
-                          <div class="modal-body">
-                              <div class="mb-3">
-                                  <label>Nama Siswa</label>
-                                  <input type="text" name="nama_siswa" class="form-control" value="{{ $item->nama_siswa }}" required>
-                              </div>
-                              <div class="mb-3">
-                                  <label>Nama Prestasi</label>
-                                  <input type="text" name="nama_prestasi" class="form-control" value="{{ $item->nama_prestasi }}" required>
-                              </div>
-                              <div class="mb-3">
-                                  <label>Peringkat</label>
-                                  <input type="text" name="peringkat" class="form-control" value="{{ $item->peringkat }}" required>
-                              </div>
-                              <div class="mb-3">
-                                  <label>Jenis Prestasi</label>
-                                  <input type="text" name="jenis_prestasi" class="form-control" value="{{ $item->jenis_prestasi }}" required>
-                              </div>
-                              <div class="mb-3">
-                                  <label>Tingkat</label>
-                                  <input type="text" name="tingkat" class="form-control" value="{{ $item->tingkat }}" required>
-                              </div>
-                              <div class="mb-3">
-                                  <label>Tahun</label>
-                                  <input type="number" name="tahun" class="form-control" value="{{ $item->tahun }}" required>
-                              </div>
-                              <div class="form-group mb-3">
-                                    <label for="deskripsi">Deskripsi</label>
-                                    <textarea name="deskripsi" id="deskripsi" class="form-control" rows="4">{{ old('deskripsi') }}</textarea>
-                             </div>
-                              <div class="mb-3">
-                                  <label>Foto (boleh kosong)</label>
-                                  <input type="file" name="foto" class="form-control">
-                                  @if ($item->foto)
-                                      <img src="{{ asset('storage/' . $item->foto) }}" width="60" class="mt-2">
-                                  @endif
-                              </div>
-                          </div>
-                          <div class="modal-footer">
-                          <button type="button" class="btn btn-danger" onclick="showConfirmModal(document.getElementById('editForm{{ $item->id_prestasi }}'))">Simpan</button>
-                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Batal</button>
-                          </div>
-                        </div>
-                    </form>
-                  </div>
-                </div>
-            @endforeach
-        </tbody>
-    </table>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Edit Prestasi</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <div class="modal-body">
+          <div class="mb-3">
+            <label>Nama Siswa</label>
+            <input type="text" name="nama_siswa" class="form-control" value="{{ $item->nama_siswa }}" required>
+          </div>
+
+          <div class="mb-3">
+            <label>Nama Prestasi</label>
+            <input type="text" name="nama_prestasi" class="form-control" value="{{ $item->nama_prestasi }}" required>
+          </div>
+
+          <div class="mb-3">
+            <label>Peringkat</label>
+            <input type="text" name="peringkat" class="form-control" value="{{ $item->peringkat }}" required>
+          </div>
+
+          <div class="mb-3">
+            <label>Jenis Prestasi</label>
+            <select name="jenis_prestasi" class="form-control" required>
+              <option value="">-- Pilih Jenis Prestasi --</option>
+              <option value="akademik" {{ $item->jenis_prestasi == 'akademik' ? 'selected' : '' }}>Akademik</option>
+              <option value="non akademik" {{ $item->jenis_prestasi == 'non akademik' ? 'selected' : '' }}>Non Akademik</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label>Tingkat</label>
+            <input type="text" name="tingkat" class="form-control" value="{{ $item->tingkat }}" required>
+          </div>
+
+          <div class="mb-3">
+            <label>Tahun</label>
+            <input type="number" name="tahun" class="form-control" value="{{ $item->tahun }}" required>
+          </div>
+
+          <div class="mb-3">
+            <label>Deskripsi</label>
+            <textarea name="deskripsi" class="form-control" rows="4">{{ $item->deskripsi }}</textarea>
+          </div>
+
+          <div class="mb-3">
+            <label>Foto (boleh kosong)</label>
+            <input type="file" name="foto" class="form-control">
+            @if ($item->foto)
+              <img src="{{ asset('storage/' . $item->foto) }}" width="60" class="mt-2">
+            @endif
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success">Simpan</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+@endforeach
+</tbody>
+</table>
 </div>
 
 <!-- Modal Tambah -->
 <div class="modal fade" id="tambahModal" tabindex="-1" aria-labelledby="tambahModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <form method="POST" action="{{ route('prestasi.store') }}" enctype="multipart/form-data">
-        @csrf
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Tambah Prestasi</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      @csrf
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Tambah Prestasi</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <div class="modal-body">
+          <div class="mb-3">
+            <label>Nama Siswa</label>
+            <input type="text" name="nama_siswa" class="form-control" value="{{ old('nama_siswa') }}" required>
           </div>
-          <div class="modal-body">
-              <div class="mb-3">
-                  <label>Nama Siswa</label>
-                  <input type="text" name="nama_siswa" class="form-control" required>
-              </div>
-              <div class="mb-3">
-                  <label>Nama Prestasi</label>
-                  <input type="text" name="nama_prestasi" class="form-control" required>
-              </div>
-              <div class="mb-3">
-                  <label>Peringkat</label>
-                  <input type="text" name="peringkat" class="form-control" required>
-              </div>
-              <div class="mb-3">
-                  <label>Jenis Prestasi</label>
-                  <input type="text" name="jenis_prestasi" class="form-control" required>
-              </div>
-              <div class="mb-3">
-                  <label>Tingkat</label>
-                  <input type="text" name="tingkat" class="form-control" required>
-              </div>
-              <div class="mb-3">
-                  <label>Tahun</label>
-                  <input type="number" name="tahun" class="form-control" required>
-              </div>
-              <div class="form-group mb-3">
-                <label for="deskripsi">Deskripsi</label>
-                <textarea name="deskripsi" id="deskripsi" class="form-control" rows="4">{{ old('deskripsi') }}</textarea>
-              </div>
-              <div class="mb-3">
-                  <label>Foto (boleh kosong)</label>
-                  <input type="file" name="foto" class="form-control">
-              </div>
+
+          <div class="mb-3">
+            <label>Nama Prestasi</label>
+            <input type="text" name="nama_prestasi" class="form-control" value="{{ old('nama_prestasi') }}" required>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary" onclick="showConfirmModal(this.form)">Tambah</button>
-            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
+
+          <div class="mb-3">
+            <label>Peringkat</label>
+            <input type="text" name="peringkat" class="form-control" value="{{ old('peringkat') }}" required>
+          </div>
+
+          <div class="mb-3">
+            <label>Jenis Prestasi</label>
+            <select name="jenis_prestasi" class="form-control" required>
+              <option value="">-- Pilih Jenis Prestasi --</option>
+              <option value="akademik" {{ old('jenis_prestasi') == 'akademik' ? 'selected' : '' }}>Akademik</option>
+              <option value="non akademik" {{ old('jenis_prestasi') == 'non akademik' ? 'selected' : '' }}>Non Akademik</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label>Tingkat</label>
+            <input type="text" name="tingkat" class="form-control" value="{{ old('tingkat') }}" required>
+          </div>
+
+          <div class="mb-3">
+            <label>Tahun</label>
+            <input type="number" name="tahun" class="form-control" value="{{ old('tahun') }}" required>
+          </div>
+
+          <div class="mb-3">
+            <label>Deskripsi</label>
+            <textarea name="deskripsi" class="form-control" rows="3">{{ old('deskripsi') }}</textarea>
+          </div>
+
+          <div class="mb-3">
+            <label>Foto (boleh kosong)</label>
+            <input type="file" name="foto" class="form-control">
           </div>
         </div>
+
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Tambah</button>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
+        </div>
+      </div>
     </form>
   </div>
 </div>
+
 <!-- Modal Konfirmasi Simpan/Edit -->
 <div class="modal fade custom-slide-down" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">

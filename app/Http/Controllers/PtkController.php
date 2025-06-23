@@ -42,7 +42,7 @@ class PtkController extends Controller
             'status_kepegawaian' => 'required|in:ASN,P3K,Honorer',
             'pendidikan_terakhir' => 'required|string|max:255',
             'jenis_kelamin' => 'required|in:Laki-laki,Perempuan',
-            'no_hp' => 'required|string|max:20',
+            'no_hp' => 'nullable|string|max:20',
             'email' => 'nullable|email',
             'foto' => 'nullable|image|max:2048'
         ]);
@@ -83,7 +83,7 @@ class PtkController extends Controller
             'status_kepegawaian' => 'required|in:ASN,P3K,Honorer',
             'pendidikan_terakhir' => 'required|string|max:255',
             'jenis_kelamin' => 'required|in:Laki-laki,Perempuan',
-            'no_hp' => 'required|string|max:20',
+            'no_hp' => 'nullable|string|max:20',
             'email' => [
                 'nullable',
                 'email',

@@ -17,7 +17,7 @@ class PpdbController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'judul' => 'required|string|max:255',
+            'judul' => 'nullable|string|max:255',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'deskripsi' => 'required|string',
         ]);
@@ -47,7 +47,7 @@ class PpdbController extends Controller
         $ppdb = Ppdb::findOrFail($id);
 
         $request->validate([
-            'judul' => 'required|string|max:255',
+            'judul' => 'nullable|string|max:255',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'deskripsi' => 'required|string',
         ]);
