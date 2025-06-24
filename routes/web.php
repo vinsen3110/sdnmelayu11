@@ -30,6 +30,7 @@ use App\Http\Controllers\TentangKamiController;
 Route::get('/', [HomeController::class, 'index'])->name('homepage');
 Route::get('/beritasekolah', [HomeController::class, 'beritasekolah'])->name('beritasekolah');
 Route::get('/berita/{id}', [HomeController::class, 'showBerita'])->name('berita.show');
+Route::get('/tentang', [HomeController::class, 'tentang'])->name('tentang');
 Route::get('/visidanmisi', [HomeController::class, 'visidanmisi'])->name('visidanmisi');
 Route::get('/struktur', [HomeController::class, 'struktur'])->name('struktur');
 Route::get('/dataptk', [HomeController::class, 'dataptk'])->name('dataptk');

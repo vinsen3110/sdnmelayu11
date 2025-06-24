@@ -11,23 +11,29 @@ use App\Models\PPDB;
 use App\Models\VisiMisi;
 use App\Models\Ptk;
 use App\Models\StrukturOrganisasi;
+use App\Models\TentangKami;
 
 class HomeController extends Controller
 {
     public function index() {
-        $berita = Berita::latest()->take(6)->get(); // 3 berita terbaru di homepage
+        $berita = Berita::latest()->take(6)->get(); 
         return view('homepage', compact('berita'));
     }
 
     public function beritasekolah() {
-        $berita = Berita::latest()->paginate(10); // semua berita untuk user
+        $berita = Berita::latest()->paginate(10); 
         return view('beritasekolah', compact('berita'));
     }
 
-    // Tambahkan method baru untuk menampilkan detail berita
     public function showBerita($id) {
-        $berita = Berita::findOrFail($id); // cari berita berdasarkan id, jika tidak ditemukan 404
-        return view('beritadeskripsi', compact('berita')); // kirim data ke view berita_detail.blade.php
+        $berita = Berita::findOrFail($id); 
+        return view('beritadeskripsi', compact('berita')); 
+    }
+
+    public function tentang()
+    {
+    $tentangkami = TentangKami::all();
+    return view('tentang', compact('tentangkami'));
     }
 
     public function visidanmisi()

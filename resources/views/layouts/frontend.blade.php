@@ -68,6 +68,7 @@
     <div class="nav-item dropdown">
         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Profil Sekolah</a>
         <div class="dropdown-menu fade-down m-0">
+            <a href="{{ route('tentang') }}" class="dropdown-item {{ Request::is('tentang') ? 'active' : '' }}">Tentang Kami</a>
             <a href="{{ route('visidanmisi') }}" class="dropdown-item {{ Request::is('visidanmisi') ? 'active' : '' }}">Visi & Misi</a>
             <a href="{{ route('struktur') }}" class="dropdown-item {{ Request::is('struktur') ? 'active' : '' }}">Struktur Organisasi</a>
             <a href="{{ route('dataptk') }}" class="dropdown-item {{ Request::is('dataptk') ? 'active' : '' }}">Data PTK</a>

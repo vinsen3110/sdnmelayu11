@@ -43,7 +43,7 @@ class EkskulController extends Controller
             'hari_kegiatan' => $request->hari_kegiatan,
             'waktu_kegiatan' => $request->waktu_kegiatan,
             'deskripsi' => $request->deskripsi,
-            'ruangan' => $request->deskripsi,
+            'ruangan' => $request->ruangan,
             'foto' => $fotoPath,
         ]);
 
@@ -80,7 +80,7 @@ class EkskulController extends Controller
         $ekskul->hari_kegiatan = $request->hari_kegiatan;
         $ekskul->waktu_kegiatan = $request->waktu_kegiatan;
         $ekskul->deskripsi = $request->deskripsi;
-        $ekskul->ruangan = $request->deskripsi;
+        $ekskul->ruangan = $request->ruangan;
 
         if ($request->hasFile('foto')) {
             if ($ekskul->foto && Storage::disk('public')->exists($ekskul->foto)) {
