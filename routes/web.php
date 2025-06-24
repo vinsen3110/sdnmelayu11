@@ -14,6 +14,8 @@ use App\Http\Controllers\PtkController;
 use App\Http\Controllers\VisiMisiController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\StrukturOrganisasiController;
+use App\Http\Controllers\TentangKamiController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -91,6 +93,12 @@ Route::post('/admin/strukturorganisasi', [StrukturOrganisasiController::class, '
 Route::get('/admin/strukturorganisasi/{id}/edit', [StrukturOrganisasiController::class, 'edit'])->name('strukturorganisasi.edit');
 Route::put('/admin/strukturorganisasi/{id}', [StrukturOrganisasiController::class, 'update'])->name('strukturorganisasi.update');
 Route::delete('/admin/strukturorganisasi/{id}', [StrukturOrganisasiController::class, 'destroy'])->name('strukturorganisasi.destroy');
+//TentangKami
+Route::get('/admin/tentangkami', [TentangKamiController::class, 'index'])->name('tentangkami')->middleware('auth');
+Route::post('/admin/tentangkami', [TentangKamiController::class, 'store'])->name('tentangkami.store');
+Route::get('/admin/tentangkami/{id}/edit', [TentangKamiController::class, 'edit'])->name('tentangkami.edit');
+Route::put('/admin/tentangkami/{id}', [TentangKamiController::class, 'update'])->name('tentangkami.update');
+Route::delete('/admin/tentangkami/{id}', [TentangKamiController::class, 'destroy'])->name('tentangkami.destroy');
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);

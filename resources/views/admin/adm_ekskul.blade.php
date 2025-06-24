@@ -25,6 +25,7 @@
                     <th>Pembina</th>
                     <th>Hari Kegiatan</th>
                     <th>Waktu</th>
+                    <th>ruangan</th>
                     <th>Deskripsi</th>
                     <th>Foto</th>
                     <th>Aksi</th>
@@ -37,6 +38,7 @@
                         <td>{{ $item->pembina }}</td>
                         <td>{{ $item->hari_kegiatan }}</td>
                         <td>{{ \Carbon\Carbon::parse($item->waktu_kegiatan)->format('H:i') }}</td>
+                        <td>{{ $item->ruangan ?? '-' }}</td>
                         <td>{{ \Illuminate\Support\Str::limit($item->deskripsi, 50) }}</td>
                         <td>
                         <img src="{{ $item->foto ? Storage::url($item->foto) : asset('img/foto-tidak-ada.png') }}"
@@ -78,6 +80,10 @@
                                                 <div class="mb-3">
                                                     <label class="form-label">Waktu Kegiatan</label>
                                                     <input type="time" name="waktu_kegiatan" value="{{ \Carbon\Carbon::parse($item->waktu_kegiatan)->format('H:i') }}" class="form-control" required>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="ruangan" class="form-label">Ruangan</label>
+                                                    <input type="text" class="form-control" id="ruangan" name="ruangan" value="{{ old('ruangan') }}">
                                                 </div>
                                                 <div class="mb-3">
                                                     <label class="form-label">Deskripsi</label>
@@ -172,6 +178,10 @@
                 <div class="mb-3">
                     <label class="form-label">Waktu Kegiatan</label>
                     <input type="time" name="waktu_kegiatan" class="form-control" required>
+                </div>
+                 <div class="mb-3">
+                    <label for="ruangan" class="form-label">Ruangan</label>
+                    <input type="text" class="form-control" id="ruangan" name="ruangan" value="{{ old('ruangan') }}">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Deskripsi</label>

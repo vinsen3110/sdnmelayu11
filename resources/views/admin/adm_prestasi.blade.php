@@ -154,7 +154,7 @@
 </tbody>
 </table>
 </div>
-
+ 
 <!-- Modal Tambah -->
 <div class="modal fade" id="tambahModal" tabindex="-1" aria-labelledby="tambahModalLabel" aria-hidden="true">
   <div class="modal-dialog">

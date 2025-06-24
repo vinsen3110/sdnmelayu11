@@ -150,6 +150,13 @@
         <p>Struktur Organisasi</p>
       </a>
     </li>
+
+    <li class="nav-item {{ request()->is('admin/tentangkami*') ? 'active' : '' }}">
+  <a href="{{ route('tentangkami') }}" class="nav-link {{ request()->is('admin/tentangkami*') ? 'active' : '' }}">
+    <i class="fas fa-info-circle me-2"></i>
+    <p>Tentang Kami</p>
+      </a>
+    </li>
     </ul>
 
     <!-- Tombol Logout di bagian bawah sidebar -->

@@ -28,6 +28,7 @@ class EkskulController extends Controller
             'hari_kegiatan' => 'required|string',
             'waktu_kegiatan' => 'required',
             'deskripsi' => 'required|string',
+            'ruangan' => 'nullable|string',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
@@ -42,6 +43,7 @@ class EkskulController extends Controller
             'hari_kegiatan' => $request->hari_kegiatan,
             'waktu_kegiatan' => $request->waktu_kegiatan,
             'deskripsi' => $request->deskripsi,
+            'ruangan' => $request->deskripsi,
             'foto' => $fotoPath,
         ]);
 
@@ -68,6 +70,7 @@ class EkskulController extends Controller
             'hari_kegiatan' => 'required',
             'waktu_kegiatan' => 'required',
             'deskripsi' => 'required',
+            'ruangan' => 'nullable|string',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
@@ -77,6 +80,7 @@ class EkskulController extends Controller
         $ekskul->hari_kegiatan = $request->hari_kegiatan;
         $ekskul->waktu_kegiatan = $request->waktu_kegiatan;
         $ekskul->deskripsi = $request->deskripsi;
+        $ekskul->ruangan = $request->deskripsi;
 
         if ($request->hasFile('foto')) {
             if ($ekskul->foto && Storage::disk('public')->exists($ekskul->foto)) {

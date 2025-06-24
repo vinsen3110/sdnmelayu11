@@ -5,18 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Ekskul extends Model
+class TentangKami extends Model
 {
     use HasFactory;
 
+    protected $table = 'tentang_kami';
+
     protected $fillable = [
-        'nama_ekskul',
-        'pembina',
-        'hari_kegiatan',
-        'waktu_kegiatan',
-        'deskripsi',
+        'judul',
         'foto',
-        'ruangan',
-       
+        'deskripsi',
     ];
 }
