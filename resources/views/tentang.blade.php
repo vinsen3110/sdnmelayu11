@@ -21,15 +21,14 @@
 </div>
 <!-- Header End -->
 
-        <!-- Konten Pengumuman PPDB -->
-        <div class="container">
-            @foreach ($tentangkami as $item)
-                <!-- Judul & Tanggal -->
-                <div class="row mb-2">
-                    <div class="col-md-12">
-                        <h3 class="mb-1">{{ $item->judul }}</h3>
-                    </div>
-                </div>
+        <div class="container py-4">
+    @foreach ($tentangkami as $item)
+        <!-- Judul -->
+        <div class="row mb-3">
+            <div class="col-12 text-center">
+                <h3 class="mb-1">{{ $item->judul }}</h3>
+            </div>
+        </div>
 
         <!-- Gambar -->
         <div class="text-center mb-4">

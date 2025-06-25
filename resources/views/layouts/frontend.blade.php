@@ -153,11 +153,11 @@
         <div class="copyright mt-3 border-top pt-3">
             <div class="row d-flex align-items-center justify-content-between">
                 <div class="col-md-6 text-center text-md-start mb-2 mb-md-0">
-                    <a class="border-bottom" href="#">Maisya Alifa</a> &copy;  All Right Reserved.
+                    <a class="border-bottom" href="#">copyright</a> &copy;  All Right Reserved.
                 </div>
                 <div class="col-md-6 text-center text-md-end">
-                    Designed By <a class="border-bottom" href="#">HTML Maisya</a> |
-                    Distributed By <a class="border-bottom" href="#">Maisya Alifa</a>
+                    Designed By <a class="border-bottom" href="#">HTML copyright</a> |
+                    Distributed By <a class="border-bottom" href="#">copyright</a>
                 </div>
             </div>
         </div>

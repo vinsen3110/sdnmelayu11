@@ -77,7 +77,7 @@
                             {{ \Carbon\Carbon::createFromFormat('H:i:s', $item->waktu_kegiatan)->format('H:i') }}
                         </li>
                         <li><strong>Pembina:</strong> {{ $item->pembina ?? '-' }}</li>
-                        <li><strong>Ruangan Kegiatan:</strong> {{ $item->ruangan }}</li>
+                        <li><strong>Ruangan Kegiatan:</strong> {{ $item->ruangan ?? 'Belum ditentukan' }}</li>
                     </ul>
                 </div>
             </div>
