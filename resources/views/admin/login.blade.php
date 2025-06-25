@@ -5,34 +5,66 @@
     <title>Login</title>
     <style>
         body {
-            background: #f0f2f5;
+             margin: 0;
+             padding: 0;
             font-family: Arial, sans-serif;
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            background-color: #357194; /* Biru tua */
         }
 
+       
         .login-container {
+            position: relative;
+            z-index: 1;
             background: white;
-            padding: 30px 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 30px 35px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
             width: 100%;
             max-width: 400px;
+            text-align: center;
+            
+        }
+        .button-link {
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            margin-top: 10px;
+            padding: 10px;
+            background: #357194;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            text-decoration: none;
+            font-family: inherit;
+            box-sizing: border-box;
+        }
+
+        .button-link:hover {
+         background: #5ba3cd;
+        }
+
+
+        .login-container img {
+            width: 90px;
+            margin-bottom: 10px;
         }
 
         h2 {
-            text-align: center;
             margin-bottom: 20px;
-            color: #333;
+            color: #003366;
         }
 
         label {
             font-weight: bold;
             display: block;
             margin-top: 15px;
-            color: #555;
+            text-align: left;
+            color: #333;
         }
 
         input[type="email"],
@@ -40,46 +72,56 @@
             width: 100%;
             padding: 10px;
             margin-top: 5px;
-            border-radius: 5px;
+            border-radius: 6px;
             border: 1px solid #ccc;
             box-sizing: border-box;
+            background: #f7f9fc;
         }
 
         button {
             margin-top: 20px;
             width: 100%;
             padding: 10px;
-            background: #4CAF50;
+            background: #357194;
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 6px;
             font-size: 16px;
             cursor: pointer;
         }
 
         button:hover {
-            background: #45a049;
+            background: #5ba3cd;
         }
 
         .error-message {
             color: red;
             margin-top: 10px;
+            text-align: left;
         }
 
-        ul {
-            padding-left: 20px;
+        a.back-link {
+            display: block;
+            margin-top: 15px;
+            color: #003366;
+            text-decoration: none;
+        }
+
+        a.back-link:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
     <div class="login-container">
-        <h2>Login</h2>
+        <img src="{{ asset('logo_sekolah.png') }}" alt="Logo Sekolah" style="width: 70px;">
+        <h2 style="margin-top: 5px;">Login</h2>
 
         @if ($errors->any())
             <div class="error-message">
                 <ul>
                     @foreach ($errors->all() as $error)
-                      <li>{{ $error }}</li>
+                        <li>{{ $error }}</li>
                     @endforeach
                 </ul>
             </div>
@@ -95,18 +137,9 @@
 
             <button type="submit">Login</button>
         </form>
-        <!-- Tombol Go Back -->
-        <a href="{{ url('/') }}" style="display: block; text-align: center; margin-top: 15px; color: #4CAF50; text-decoration: none;">
-            &larr; Kembali ke Beranda
-        </a>
+
+       <a href="{{ url('/') }}" class="button-link">&larr; Kembali ke Beranda</a>
+
     </div>
-    <script>
-    if (window.history && window.history.pushState) {
-        window.history.pushState(null, null, window.location.href);
-        window.onpopstate = function () {
-            window.location.href = "/";
-        };
-    }
-</script>
 </body>
 </html>
