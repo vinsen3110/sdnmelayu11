@@ -73,7 +73,7 @@
             <a href="{{ route('struktur') }}" class="dropdown-item {{ Request::is('struktur') ? 'active' : '' }}">Struktur Organisasi</a>
             <a href="{{ route('dataptk') }}" class="dropdown-item {{ Request::is('dataptk') ? 'active' : '' }}">Data PTK</a>
             <a href="{{ route('fasilitassekolah') }}" class="dropdown-item {{ Request::is('fasilitassekolah') ? 'active' : '' }}">Fasilitas</a>
-            <a href="{{ route('ekstrakulikuler') }}" class="dropdown-item {{ Request::is('ekstrakulikuler') ? 'active' : '' }}">Ekstrakulikuler</a>
+            <a href="{{ route('ekstrakulikuler') }}" class="dropdown-item {{ Request::is('ekstrakulikuler') ? 'active' : '' }}">Ekstrakurikuler</a>
         </div>
     </div>
 
