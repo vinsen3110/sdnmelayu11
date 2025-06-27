@@ -821,3 +821,154 @@
     width: 100%;               /* ⬅ FULL WIDTH */
     text-align: center;        /* ⬅ TENGAH */
 }
+.wa-chat-container {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    padding: 4px 8px;
+    display: flex;
+    align-items: center;
+    z-index: 9999;
+}
+
+.wa-chat-text {
+    font-size: 12px;
+    margin-right: 6px;
+    color: #000; /* teks hitam */
+}
+
+.wa-chat-icon img {
+    width: 32px;
+    height: 32px;
+}
+
+@media (max-width: 576px) {
+    .wa-chat-text {
+        display: none;
+    }
+}
+.text-justify {
+    text-align: justify;
+}
+
+@media (max-width: 576px) {
+    .deskripsi-sekolah {
+        font-size: 0.95rem;
+    }
+}
+@media (max-width: 768px) {
+    .card-img-top {
+        height: 160px !important;
+    }
+
+    .modal-dialog.modal-lg {
+        max-width: 95% !important;
+        margin: auto;
+    }
+
+    .modal-body img {
+        height: auto !important;
+        max-height: 300px;
+    }
+
+    .modal-body p {
+        font-size: 0.9rem !important;
+    }
+
+    .card-body .card-title {
+        font-size: 1rem !important;
+    }
+
+    .card-body .card-text {
+        font-size: 0.85rem !important;
+    }
+}
+@media (max-width: 768px) {
+    .card-img-top {
+        height: 160px !important;
+    }
+
+    .modal-dialog.modal-lg {
+        max-width: 95% !important;
+        margin: auto;
+    }
+
+    .modal-body img {
+        height: auto !important;
+        max-height: 300px;
+    }
+
+    .modal-body p,
+    .modal-body ul {
+        font-size: 0.9rem !important;
+    }
+
+    .card-title {
+        font-size: 1rem !important;
+    }
+
+    .card-text {
+        font-size: 0.85rem !important;
+    }
+}
+@media (max-width: 768px) {
+    .card-title {
+        font-size: 1rem;
+    }
+
+    .card-img-top {
+        height: auto;
+        max-height: 250px;
+        object-fit: cover;
+    }
+
+    .card-body p {
+        font-size: 0.9rem;
+    }
+}
+@media (max-width: 768px) {
+    .card-title {
+        font-size: 1rem;
+    }
+
+    .card-img-top {
+        height: auto !important;
+        max-height: 250px;
+        object-fit: cover;
+    }
+
+    .modal-body img {
+        max-height: 300px !important;
+    }
+
+    .modal-header h5 {
+        font-size: 1.1rem;
+    }
+
+    .modal-header .text-muted {
+        font-size: 0.85rem;
+    }
+
+    .modal-body p {
+        font-size: 0.9rem;
+    }
+}
+.modal-body p.text-muted {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    .deskripsi-prestasi {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        text-align: justify;
+    }
+
+    @media (max-width: 576px) {
+        .deskripsi-prestasi {
+            font-size: 0.9rem;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            line-height: 1.5;
+        }
+    }

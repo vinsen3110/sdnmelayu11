@@ -27,7 +27,7 @@
 
     <div class="row">
         @forelse ($ekskul as $item)
-            <div class="col-md-4 mb-4">
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                 <div class="card h-100 shadow-sm" role="button" data-bs-toggle="modal" data-bs-target="#modalEkskul{{ $item->id }}">
                     @if ($item->foto)
                         <img src="{{ asset('storage/' . $item->foto) }}" class="card-img-top" alt="{{ $item->nama_ekskul }}" style="height: 200px; object-fit: cover;">
@@ -43,28 +43,28 @@
             </div>
 
            <!-- Modal Ekstrakurikuler -->
-<div class="modal fade" id="modalEkskul{{ $item->id }}" tabindex="-1" aria-labelledby="modalLabel{{ $item->id }}" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content border-0 shadow-sm">
-            <div class="modal-header border-0 flex-column align-items-start pb-1">
-                <h2 class="modal-title fs-2 mb-2" id="modalLabel{{ $item->id }}">
-                    Ekstrakurikuler {{ $item->nama_ekskul }}
-                </h2>
-                <button type="button" class="btn-close position-absolute top-0 end-0 mt-3 me-3" data-bs-dismiss="modal" aria-label="Tutup"></button>
-            </div>
+            <div class="modal fade" id="modalEkskul{{ $item->id }}" tabindex="-1" aria-labelledby="modalLabel{{ $item->id }}" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content border-0 shadow-sm">
+                        <div class="modal-header border-0 flex-column align-items-start pb-1">
+                            <h2 class="modal-title fs-2 mb-2" id="modalLabel{{ $item->id }}">
+                                Ekstrakurikuler {{ $item->nama_ekskul }}
+                            </h2>
+                            <button type="button" class="btn-close position-absolute top-0 end-0 mt-3 me-3" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                        </div>
 
-            <div class="modal-body pt-0 pb-3">
-                @if ($item->foto)
-                    <div class="text-center">
-                        <img src="{{ asset('storage/' . $item->foto) }}" class="img-fluid rounded mt-2" alt="{{ $item->nama_ekskul }}">
-                    </div>
-                @endif
+                        <div class="modal-body pt-0 pb-3">
+                            @if ($item->foto)
+                                <div class="text-center">
+                                    <img src="{{ asset('storage/' . $item->foto) }}" class="img-fluid rounded mt-2" alt="{{ $item->nama_ekskul }}">
+                                </div>
+                            @endif
 
-                @if ($item->deskripsi)
-                    <p class="mt-4 px-3 text-start text-muted" style="font-size: 0.95rem;">
-                        {!! nl2br(e($item->deskripsi)) !!}
-                    </p>
-                @endif
+                            @if ($item->deskripsi)
+                                <p class="mt-4 px-3 text-start text-muted" style="font-size: 0.95rem;">
+                                    {!! nl2br(e($item->deskripsi)) !!}
+                                </p>
+                            @endif
 
                 <!-- Informasi tambahan -->
                 <div class="px-3 mt-4">

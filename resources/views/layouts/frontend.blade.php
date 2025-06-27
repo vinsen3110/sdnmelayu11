@@ -51,46 +51,61 @@
     <!-- Spinner End -->
 
 
-    <!-- Navbar Start -->
+        <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
-        <a href="{{ route('homepage') }}" class="navbar-brand d-flex align-items-center px-4 px-lg-5 mb-1">
-            <img class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2 logo-img" src="{{ asset('ta/img/logo.png') }}" alt="">
-            <p class="text-md mb-0 text-primary text-15">
-                SD NEGERI MELAYU 11<br>BANJARMASIN
-            </p>
-        </a>
+        <div class="container-fluid">
+            <!-- Logo dan Nama -->
+            <a href="{{ route('homepage') }}" class="navbar-brand d-flex align-items-center px-4 px-lg-5 mb-1">
+                <img class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2 logo-img" src="{{ asset('ta/img/logo.png') }}" alt="">
+                <p class="text-md mb-0 text-primary text-15">
+                    SD NEGERI MELAYU 11<br>BANJARMASIN
+                </p>
+            </a>
 
-        <div class="collapse navbar-collapse" id="navbarCollapse" style="justify-content: end">
-            <div class="navbar-nav justify-content-end py-0">
-                <a href="{{ route('homepage') }}" class="nav-item nav-link ">Beranda</a>
+            <!-- Tombol Toggle -->
+            <button class="navbar-toggler me-4" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-    {{-- dropdown profil sekolah --}}
-    <div class="nav-item dropdown">
-        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Profil Sekolah</a>
-        <div class="dropdown-menu fade-down m-0">
-            <a href="{{ route('tentang') }}" class="dropdown-item {{ Request::is('tentang') ? 'active' : '' }}">Tentang Kami</a>
-            <a href="{{ route('visidanmisi') }}" class="dropdown-item {{ Request::is('visidanmisi') ? 'active' : '' }}">Visi & Misi</a>
-            <a href="{{ route('struktur') }}" class="dropdown-item {{ Request::is('struktur') ? 'active' : '' }}">Struktur Organisasi</a>
-            <a href="{{ route('dataptk') }}" class="dropdown-item {{ Request::is('dataptk') ? 'active' : '' }}">Data PTK</a>
-            <a href="{{ route('fasilitassekolah') }}" class="dropdown-item {{ Request::is('fasilitassekolah') ? 'active' : '' }}">Fasilitas</a>
-            <a href="{{ route('ekstrakulikuler') }}" class="dropdown-item {{ Request::is('ekstrakulikuler') ? 'active' : '' }}">Ekstrakurikuler</a>
+            <!-- Menu Navigasi -->
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto pe-4">
+                    <a href="{{ route('homepage') }}" class="nav-item nav-link">Beranda</a>
+
+                    <!-- Dropdown Profil Sekolah -->
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Profil Sekolah</a>
+                        <div class="dropdown-menu fade-down m-0">
+                            <a href="{{ route('tentang') }}" class="dropdown-item">Tentang Kami</a>
+                            <a href="{{ route('visidanmisi') }}" class="dropdown-item">Visi & Misi</a>
+                            <a href="{{ route('struktur') }}" class="dropdown-item">Struktur Organisasi</a>
+                            <a href="{{ route('dataptk') }}" class="dropdown-item">Data PTK</a>
+                            <a href="{{ route('fasilitassekolah') }}" class="dropdown-item">Fasilitas</a>
+                            <a href="{{ route('ekstrakulikuler') }}" class="dropdown-item">Ekstrakurikuler</a>
+                        </div>
+                    </div>
+
+                    <!-- Berita -->
+                    <a href="{{ route('beritasekolah') }}" class="nav-item nav-link">Berita</a>
+
+                    <!-- Dropdown Informasi -->
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Informasi</a>
+                        <div class="dropdown-menu fade-down m-0">
+                            <a href="{{ route('pengumumanppdb') }}" class="dropdown-item">Pengumuman PPDB</a>
+                            <a href="{{ route('prestasisiswa') }}" class="dropdown-item">Prestasi Sekolah</a>
+                        </div>
+                    </div>
+
+                    <!-- Kontak -->
+                    <a href="{{ route('kontak') }}" class="nav-item nav-link">Kontak</a>
+                </div>
+            </div>
         </div>
-    </div>
+    </nav>
+    <!-- Navbar End -->
 
-            <a href="{{ route('beritasekolah') }}" class="nav-item nav-link {{ Request::is('beritasekolah') ? 'active' : '' }}">Berita</a>
-
-    <!-- Dropdown: Pages -->
-    <div class="nav-item dropdown">
-        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Informasi</a>
-        <div class="dropdown-menu fade-down m-0">
-            <a href="{{ route('pengumumanppdb') }}" class="dropdown-item {{ Request::is('pengumumanppdb') ? 'active' : '' }}">Pengumuman PPDB</a>
-            <a href="{{ route('prestasisiswa') }}" class="dropdown-item {{ Request::is('prestasisiswa') ? 'active' : '' }}">Prestasi Sekolah</a>
-        </div>
-    </div>
-
-            <a href="{{ route('kontak') }}" class="nav-item nav-link {{ Request::is('kontak') ? 'active' : '' }}">Kontak</a>
-            </nav>
-        <!-- Navbar End -->
 
 @yield('content')
 
@@ -116,7 +131,7 @@
             <div class="col-lg-6 col-md-12">
                 <div class="d-flex align-items-center mb-2">
                     <img src="{{ asset('ta/img/logo.png') }}" alt="Logo" class="footer-logo">
-                    <h2 class="text-white mb-0" style="font-weight: 800;">SDN MELAYU 11</h2>
+                    <h2 class="text-white mb-0" style="font-weight: 800;">SDN MELAYU 11 BJM</h2>
                 </div>
                 <p class="text-light mb-2">Sekolah yang membentuk karakter siswa, berkompetensi global, mandiri, peduli sosial dan peduli lingkungan.</p>
             </div>
@@ -126,7 +141,7 @@
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <h5 class="text-white mb-2">Quick Link</h5>
-                        <a class="btn btn-link" href="{{ route('homepage') }}">Beranda</a>
+                        <a class="btn btn-link" href="{{ route('tentang') }}">Tentang Kami</a>
                         <a class="btn btn-link" href="{{ route('beritasekolah') }}">Berita</a>
                         <a class="btn btn-link" href="{{ route('pengumumanppdb') }}">Pengumuman PPDB</a>
                         <a class="btn btn-link" href="{{ route('login') }}">Login</a>

@@ -26,21 +26,27 @@
         <!-- Judul -->
         <div class="row mb-3">
             <div class="col-12 text-center">
-                <h3 class="mb-1">{{ $item->judul }}</h3>
+                <h3 class="mb-1" style="font-weight: bold; font-size: 1.8rem;">
+                    {{ $item->judul }}
+                </h3>
             </div>
         </div>
 
         <!-- Gambar -->
-        <div class="text-center mb-4">
+        <div class="text-center mb-4 px-3">
             <img src="{{ Storage::url($item->foto) }}"
-                 alt="{{ $item->judul }}"
-                 class="img-fluid rounded shadow"
-                 style="max-width: 900px;">
+            alt="{{ $item->judul }}"
+            class="img-fluid rounded shadow"
+            style="max-width: 900px; width: 100%; height: auto;">
         </div>
 
-        <!-- Deskripsi -->
-        <p>{!! nl2br(e($item->deskripsi)) !!}</p>
 
+        <!-- Deskripsi -->
+        <div class="deskripsi-sekolah px-2 px-md-4">
+            <p class="text-justify">
+                {!! nl2br(e($item->deskripsi)) !!}
+            </p>
+        </div>
             @endforeach
         </div>
 

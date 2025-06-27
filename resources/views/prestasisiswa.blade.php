@@ -27,7 +27,7 @@
 
     <div class="row">
         @foreach ($prestasi as $item)
-        <div class="col-md-4 mb-4">
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
             <div class="card h-100 shadow-sm" role="button" data-bs-toggle="modal" data-bs-target="#modal{{ $item->id_prestasi }}">
                 <img src="{{ $item->foto ? Storage::url($item->foto) : asset('img/foto-tidak-ada.png') }}"
                      class="card-img-top"
@@ -64,9 +64,9 @@
                              alt="Foto Prestasi">
                              {{-- Deskripsi --}}
                         @if ($item->deskripsi)
-                            <p class="mt-3 px-3 text-start text-muted" style="font-size: 0.95rem;">
-                                {!! nl2br(e($item->deskripsi)) !!}
-                            </p>
+                            <div class="mt-3 px-3 text-muted deskripsi-prestasi">
+                            {!! nl2br(e($item->deskripsi)) !!}
+                        </div>
                         @endif
                     </div>
                 </div>

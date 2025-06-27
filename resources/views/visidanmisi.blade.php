@@ -25,13 +25,11 @@
 <div class="container">
     @foreach ($visimisi as $item)
 
-<!-- Tombol Unduh Foto -->
-<div class="row mb-2">
-    <div class="col-md-12 d-flex justify-content-between">
-        <div></div> <!-- Kolom kosong di kiri -->
+<!-- Tombol Unduh Foto (Responsif) -->
+<div class="row mb-3">
+    <div class="col-12 text-end text-md-end px-3">
         <a href="{{ Storage::url($item->foto) }}"
            class="btn btn-info text-white btn-sm"
-           style="margin-right: 310px;"
            download>
            <i class="bi bi-download"></i> Unduh Foto
         </a>
@@ -39,12 +37,13 @@
 </div>
 
 
+
 <!-- Gambar -->
-<div class="text-center mb-4">
+<div class="text-center mb-3 px-2">
     <img src="{{ Storage::url($item->foto) }}"
          alt="{{ $item->judul }}"
          class="img-fluid rounded shadow"
-         style="max-width: 500px;">
+         style="max-width: 600px; width: 100%; height: auto;">
 </div>
 
 

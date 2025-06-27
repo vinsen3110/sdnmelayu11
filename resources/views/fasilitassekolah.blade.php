@@ -27,7 +27,7 @@
     <h2 class="mb-4">Fasilitas Utama</h2>
     <div class="row">
         @forelse ($utama as $item)
-            <div class="col-md-4 mb-4">
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                 <div class="card h-100 shadow-sm" role="button" data-bs-toggle="modal" data-bs-target="#modalUtama{{ $item->id }}">
                     @php $gambar = $item->foto1 ?? $item->foto2 ?? $item->foto3; @endphp
                     @if($gambar)
@@ -85,7 +85,7 @@
     <h2 class="mb-4 mt-5">Fasilitas Pendukung</h2>
     <div class="row">
         @forelse ($pendukung as $item)
-            <div class="col-md-4 mb-4">
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                 <div class="card h-100 shadow-sm" role="button" data-bs-toggle="modal" data-bs-target="#modalPendukung{{ $item->id }}">
                     @php $gambar = $item->foto1 ?? $item->foto2 ?? $item->foto3; @endphp
                     @if($gambar)

@@ -32,22 +32,22 @@
         </div>
 
         <!-- Tombol Unduh Foto -->
-        <div class="row mb-2">
-            <div class="col-md-12 d-flex justify-content-end" style="padding-right: 120px;">
-                <a href="{{ Storage::url($item->foto) }}"
-                   class="btn btn-info text-white btn-sm"
-                   download>
-                   <i class="bi bi-download"></i> Unduh Foto
-                </a>
-            </div>
+        <div class="mb-4 text-end px-3">
+            <a href="{{ Storage::url($item->foto) }}"
+            class="btn btn-info text-white btn-sm"
+            download>
+            <i class="bi bi-download"></i> Unduh Foto
+            </a>
         </div>
 
-        <!-- Gambar -->
-        <div class="text-center mb-4">
-            <img src="{{ Storage::url($item->foto) }}"
-                 alt="{{ $item->judul }}"
-                 class="img-fluid rounded shadow"
-                 style="max-width: 900px;">
+         <!-- Gambar -->
+        <div class="row justify-content-center mb-2">
+            <div class="col-md-10 text-center px-3">
+                <img src="{{ Storage::url($item->foto) }}"
+                     alt="{{ $item->judul }}"
+                     class="img-fluid rounded shadow"
+                     style="max-width: 100%; height: auto;">
+            </div>
         </div>
 
         <!-- Deskripsi -->

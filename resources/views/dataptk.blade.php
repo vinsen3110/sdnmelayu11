@@ -36,9 +36,9 @@
     @endif
 
     {{-- Guru/Pegawai Lainnya --}}
-    <div class="row">
+    <div class="row justify-content-center">
         @foreach ($ptks->skip(1) as $ptk)
-            <div class="col-md-3 col-sm-6 mb-4 d-flex justify-content-center">
+            <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-10 mb-4 d-flex justify-content-center">
                 <div class="ptk-card text-center">
                     <img src="{{ asset('storage/' . $ptk->foto) }}" alt="{{ $ptk->nama_ptk }}"
                         style="width: 140px; height: 140px; object-fit: cover; border-radius: 50%; margin-bottom: 10px;">
@@ -51,6 +51,5 @@
         @endforeach
     </div>
 
-</div>
 
 @endsection

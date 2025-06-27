@@ -32,9 +32,9 @@
             </div>
         </div>
 
-        <!-- Tombol Unduh Foto -->
-        <div class="row mb-2">
-            <div class="col-md-12 d-flex justify-content-end" style="padding-right: 120px;">
+        <!-- Tombol Unduh -->
+        <div class="row mb-4">
+            <div class="col-12 text-end px-3">
                 <a href="{{ Storage::url($item->foto) }}"
                    class="btn btn-info text-white btn-sm"
                    download>
@@ -44,11 +44,13 @@
         </div>
 
         <!-- Gambar -->
-        <div class="text-center mb-4">
-            <img src="{{ Storage::url($item->foto) }}"
-                 alt="{{ $item->judul }}"
-                 class="img-fluid rounded shadow"
-                 style="max-width: 900px;">
+        <div class="row justify-content-center mb-2">
+            <div class="col-md-10 text-center px-3">
+                <img src="{{ Storage::url($item->foto) }}"
+                     alt="{{ $item->judul }}"
+                     class="img-fluid rounded shadow"
+                     style="max-width: 100%; height: auto;">
+            </div>
         </div>
 
         <!-- Deskripsi -->

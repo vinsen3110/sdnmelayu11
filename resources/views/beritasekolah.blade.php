@@ -27,7 +27,7 @@
     <h2 class="mb-4">Semua Berita</h2>
     <div class="row">
         @foreach ($berita as $item)
-            <div class="col-md-4 mb-4">
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                 <div class="card h-100">
                     <a href="{{ route('berita.show', $item->id) }}">
                         <img src="{{ $item->foto ? Storage::url($item->foto) : asset('img/foto-tidak-ada.png') }}" 
