@@ -57,7 +57,7 @@
             <div class="col-lg-4 mb-4 mb-lg-0 text-center">
                 <img src="{{ asset('ta/img/kepsek.png') }}" alt="Kepala Sekolah" class="img-fluid" style="max-width: 300px; height: auto; border-radius: 8px;">
                 <div class="mt-2">
-                    <h5 class="mb-0 text-dark">HJ. Khairiah S.pd.</h5>
+                    <h5 class="mb-0 text-dark">Khairiah S.Pd.</h5>
                     <small class="text-muted">Kepala Sekolah</small>
                 </div>
             </div>

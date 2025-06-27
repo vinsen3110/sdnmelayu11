@@ -50,64 +50,65 @@
                                 <i class="fas fa-edit me-1"></i> Edit
                             </button>
 
-                                {{-- Modal Edit --}}
-                                <div class="modal fade" id="editEkskulModal{{ $item->id }}" tabindex="-1" aria-labelledby="editEkskulLabel{{ $item->id }}" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <form id="formEditEkskul{{ $item->id }}" action="{{ route('ekskul.update', $item->id) }}" method="POST" enctype="multipart/form-data" class="modal-content">
-                                            @csrf
-                                            @method('PUT')
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="editEkskulLabel{{ $item->id }}">Edit Ekskul</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="mb-3">
-                                                    <label class="form-label">Nama Ekskul</label>
-                                                    <input type="text" name="nama_ekskul" value="{{ $item->nama_ekskul }}" class="form-control" required>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label class="form-label">Pembina</label>
-                                                    <input type="text" name="pembina" value="{{ $item->pembina }}" class="form-control" required>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label class="form-label">Hari Kegiatan</label>
-                                                    <select name="hari_kegiatan" class="form-select" required>
-                                                        @foreach(['Senin','Selasa','Rabu','Kamis','Jumat','Sabtu','Minggu'] as $hari)
-                                                            <option value="{{ $hari }}" {{ $item->hari_kegiatan == $hari ? 'selected' : '' }}>{{ $hari }}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label class="form-label">Waktu Kegiatan</label>
-                                                    <input type="time" name="waktu_kegiatan" value="{{ \Carbon\Carbon::parse($item->waktu_kegiatan)->format('H:i') }}" class="form-control" required>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="ruangan" class="form-label">Ruangan</label>
-                                                    <input type="text" class="form-control" id="ruangan" name="ruangan" value="{{ old('ruangan') }}">
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label class="form-label">Deskripsi</label>
-                                                    <textarea name="deskripsi" class="form-control" rows="3" required>{{ $item->deskripsi }}</textarea>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label class="form-label">Foto Ekskul (opsional)</label>
-                                                    <input type="file" name="foto" class="form-control" accept="image/*">
-                                                    @if($item->foto)
-                                                        <small class="text-muted d-block mt-2">Foto saat ini:
-                                                            <img src="{{ asset('storage/ekskul/' . $item->foto) }}" width="50">
-                                                        </small>
-                                                    @endif
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
-                                                <button type="button" class="btn btn-primary btn-konfirmasi-edit" data-form-id="formEditEkskul{{ $item->id }}">
-                                                    Simpan
-                                                </button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
+{{-- Modal Edit --}}
+<div class="modal fade" id="editEkskulModal{{ $item->id }}" tabindex="-1" aria-labelledby="editEkskulLabel{{ $item->id }}" aria-hidden="true">
+    <div class="modal-dialog">
+        <form id="formEditEkskul{{ $item->id }}" action="{{ route('ekskul.update', $item->id) }}" method="POST" enctype="multipart/form-data" class="modal-content">
+            @csrf
+            @method('PUT')
+            <div class="modal-header">
+                <h5 class="modal-title" id="editEkskulLabel{{ $item->id }}">Edit Ekskul</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label class="form-label">Nama Ekskul</label>
+                    <input type="text" name="nama_ekskul" value="{{ old('nama_ekskul', $item->nama_ekskul) }}" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Pembina</label>
+                    <input type="text" name="pembina" value="{{ old('pembina', $item->pembina) }}" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Hari Kegiatan</label>
+                    <select name="hari_kegiatan" class="form-select" required>
+                        @foreach(['Senin','Selasa','Rabu','Kamis','Jumat','Sabtu','Minggu'] as $hari)
+                            <option value="{{ $hari }}" {{ old('hari_kegiatan', $item->hari_kegiatan) == $hari ? 'selected' : '' }}>{{ $hari }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Waktu Kegiatan</label>
+                    <input type="time" name="waktu_kegiatan" value="{{ old('waktu_kegiatan', \Carbon\Carbon::parse($item->waktu_kegiatan)->format('H:i')) }}" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="ruangan">Ruangan</label>
+                    <input type="text" id="ruangan" name="ruangan" class="form-control" value="{{ old('ruangan', $item->ruangan ?? '') }}">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Deskripsi</label>
+                    <textarea name="deskripsi" class="form-control" rows="3" required>{{ old('deskripsi', $item->deskripsi) }}</textarea>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Foto Ekskul (opsional)</label>
+                    <input type="file" name="foto" class="form-control" accept="image/*">
+                    @if($item->foto)
+                        <small class="text-muted d-block mt-2">Foto saat ini:<br>
+                            <img src="{{ asset('storage/' . $item->foto) }}" width="100" class="mt-1">
+                        </small>
+                    @endif
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
+                <button type="button" class="btn btn-primary btn-konfirmasi-edit" data-form-id="formEditEkskul{{ $item->id }}">
+                    Simpan
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
                                 
                             {{-- Tombol Hapus --}}
                             <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#hapusEkskulModal{{ $item->id }}">

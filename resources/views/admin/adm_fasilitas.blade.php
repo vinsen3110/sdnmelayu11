@@ -124,9 +124,9 @@
                                   <label>Foto 3</label>
                                   <input type="file" name="foto3" class="form-control">
                               </div>
-                              <div class="form-group">
-                                <label for="deskripsi">Deskripsi</label>
-                                <textarea name="deskripsi" class="form-control" id="deskripsi">{{ old('deskripsi') }}</textarea>
+                             <div class="mb-3">
+                                <label for="deskripsi" class="form-label">Deskripsi</label>
+                                <textarea name="deskripsi" id="deskripsi" class="form-control" rows="4" required>{{ old('deskripsi', $item->deskripsi ?? '') }}</textarea>
                             </div>
                           </div>
                           <div class="modal-footer">
