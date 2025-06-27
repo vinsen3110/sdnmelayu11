@@ -289,6 +289,20 @@
     </div>
 @endsection
 
+@push('styles')
+<style>
+.ptk-clamp {
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Maksimal 2 baris */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    max-width: 180px; /* Sesuaikan dengan lebar kolom */
+}
+</style>
+@endpush
+
 @push('scripts')
     <script>
         document.addEventListener('DOMContentLoaded', function() {

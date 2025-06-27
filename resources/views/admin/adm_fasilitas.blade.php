@@ -27,6 +27,7 @@
     </div>
 
     <!-- Tabel Fasilitas -->
+    <div class="table-responsive">
 <table class="table table-bordered">
     <thead>
         <tr>
@@ -218,6 +219,56 @@
 </div>
 
 @endsection
+
+@push('styles')
+<style>
+/* Responsif tombol di tabel untuk layar kecil (≤576px) */
+@media (max-width: 576px) {
+    td button {
+        display: block;
+        width: 100%;
+        margin-bottom: 6px;
+    }
+
+    td .btn + .btn {
+        margin-left: 0;
+    }
+}
+
+/* Logo di navbar & sidebar responsif */
+.logo-header img.navbar-brand {
+    height: 40px;
+    max-height: 40px;
+    object-fit: contain;
+    width: auto;
+}
+
+/* Responsif untuk logo dan teks di logo-header */
+@media (max-width: 576px) {
+    .logo-header {
+        padding: 0 10px;
+        justify-content: center;
+    }
+
+    .logo-header .logo {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .logo-header img.navbar-brand {
+        height: 36px;
+    }
+
+    .logo-header span {
+        font-size: 13px;
+        font-weight: 600;
+        white-space: nowrap;
+    }
+}
+</style>
+@endpush
+
 
 @push('scripts')
 <script>

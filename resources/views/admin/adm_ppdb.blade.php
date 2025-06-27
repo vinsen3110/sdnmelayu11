@@ -18,6 +18,7 @@
 
 
    {{-- Tabel PPDB --}}
+<div class="table-responsive">
 <table class="table table-bordered">
     <thead>
         <tr>
@@ -38,7 +39,7 @@
                     <span class="text-muted">Tidak ada</span>
                 @endif
                 </td>
-                <td>{{ $item->deskripsi }}</td>
+                <td>{{ \Illuminate\Support\Str::limit($item->deskripsi, 100) }}</td>
                 <td>
                 {{-- Tombol Edit --}}
                 <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editModal{{ $item->id }}">
@@ -147,6 +148,29 @@
   </div>
 </div>
 
+@push('styles')
+<style>
+/* Responsif tombol aksi di mobile */
+@media (max-width: 576px) {
+    td button {
+        display: block;
+        width: 100%;
+        margin-bottom: 6px;
+    }
+
+    td .btn + .btn {
+        margin-left: 0;
+    }
+}
+
+/* Pastikan wrapper tabel scroll horizontal di mobile */
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+</style>
+@endpush
 
 @push('scripts')
 <script>

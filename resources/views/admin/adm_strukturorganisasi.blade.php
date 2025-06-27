@@ -13,6 +13,7 @@
         <i class="fas fa-plus me-2"></i>Tambah Struktur
     </button>
 
+    <div class="table-responsive">
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -33,7 +34,7 @@
                         <span class="text-muted">Tidak ada</span>
                     @endif
                 </td>
-                <td>{{ $item->deskripsi }}</td>
+                <td>{{ \Illuminate\Support\Str::limit($item->deskripsi, 100) }}</td>
                 <td>
                     <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editModal{{ $item->id }}">
                         <i class="fas fa-edit me-1"></i>Edit
@@ -137,6 +138,20 @@
         </div>
     </div>
 </div>
+
+@push('styles')
+<style>
+    .clamp-deskripsi {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: normal;
+        max-width: 300px;
+    }
+</style>
+@endpush
 
 @push('scripts')
 <script>

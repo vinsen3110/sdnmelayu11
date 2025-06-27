@@ -14,8 +14,8 @@
     <button class="btn btn-primary mb-3 ms-3" data-bs-toggle="modal" data-bs-target="#modalTambah">
         <i class="fas fa-plus me-2"></i>Tambah Visi Misi
     </button>
-
-    <table class="table table-bordered">
+     <div class="table-responsive">
+     <table class="table table-bordered">
         <thead>
             <tr>
                 <th>Judul</th>
@@ -35,7 +35,7 @@
                         <span class="text-muted">Tidak ada</span>
                     @endif
                 </td>
-                <td>{{ $item->deskripsi }}</td>
+                <td>{{ \Illuminate\Support\Str::limit($item->deskripsi, 100) }}</td>
                 <td>
                     <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editModal{{ $item->id }}">
                         <i class="fas fa-edit me-1"></i>Edit
@@ -52,6 +52,7 @@
             @endforeach
         </tbody>
     </table>
+    </div>
 </div>
 
 <!-- Modal Tambah -->
@@ -140,6 +141,20 @@
     </div>
   </div>
 </div>
+
+@push('styles')
+<style>
+.clamp-deskripsi {
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Maksimal 2 baris */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    max-width: 300px; /* Sesuaikan lebar kolom */
+}
+</style>
+@endpush
 
 @push('scripts')
 <script>

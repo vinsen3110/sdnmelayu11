@@ -267,11 +267,7 @@
                           <div class="u-text">
                             <h4>Rita Meilani</h4>
                             <p class="text-muted">ritameilani@gmail.com</p>
-                            <a
-                              href="profile.html"
-                              class="btn btn-xs btn-secondary btn-sm"
-                              >View Profile</a
-                            >
+                        
                           </div>
                         </div>
                       </li>

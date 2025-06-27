@@ -39,7 +39,7 @@
                         <td>{{ $item->hari_kegiatan }}</td>
                         <td>{{ \Carbon\Carbon::parse($item->waktu_kegiatan)->format('H:i') }}</td>
                         <td>{{ $item->ruangan}}</td>
-                        <td>{{ \Illuminate\Support\Str::limit($item->deskripsi, 50) }}</td>
+                        <td class="text-break">{{ \Illuminate\Support\Str::limit($item->deskripsi, 50) }}</td>
                         <td>
                         <img src="{{ $item->foto ? Storage::url($item->foto) : asset('img/foto-tidak-ada.png') }}"
                             alt="Foto Ekskul" style="width: 100px; height: auto;">
@@ -239,8 +239,18 @@
     </div>
   </div>
 </div>
-
 @endsection
+
+@push('styles')
+<style>
+@media (max-width: 576px) {
+    td button {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+}
+</style>
+@endpush
 
 @push('scripts')
 <script>

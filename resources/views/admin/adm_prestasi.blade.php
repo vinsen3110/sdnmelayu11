@@ -28,6 +28,7 @@
     </div>
 
     <!-- Tabel Prestasi -->
+    <div class="table-responsive">
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -260,6 +261,23 @@
 </div>
 
 @endsection
+
+@push('styles')
+<style>
+@media (max-width: 576px) {
+    td button {
+        display: block;
+        width: 100%;
+        margin-bottom: 6px;
+    }
+
+    td .btn + .btn {
+        margin-left: 0;
+    }
+}
+</style>
+@endpush
+
 @push('scripts')
 <script>
     let currentForm = null;

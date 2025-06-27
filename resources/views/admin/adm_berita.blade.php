@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 <div class="container py-4">
-    <h2 style="margin-left:20px;" class="mb-4">Daftar Berita</h2>
+<h2 class="mb-4 ms-3">Daftar Berita</h2>
 
     {{-- Flash Message --}}
     @if (session('success'))
@@ -11,7 +11,7 @@
     @endif
 
     {{-- Tombol Tambah --}}
-    <button style="margin-left:20px;" class="btn btn-primary mb-3" data-bs-toggle="modal"
+    <button class="btn btn-primary mb-3 ms-3" data-bs-toggle="modal"
         data-bs-target="#tambahModal">
         <i class="fas fa-plus me-2"></i>Tambah Berita 
     </button>
@@ -27,46 +27,44 @@
     </div>
 
     {{-- Tabel --}}
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>Judul</th>
-                <th>Deskripsi</th>
-                <th>Foto</th>
-                <th>Jam</th>
-                <th>Tanggal</th>
-                <th>Aksi</th>
-            </tr>
-        </thead>
-        <tbody>
-           @foreach ($berita as $item)
-                <tr>
-                    <td>{{ $item->judul_berita }}</td>
-                    <td>{{ \Illuminate\Support\Str::limit(strip_tags($item->deskripsi), 80) }}</td>
-                    <td>
-                        <img src="{{ $item->foto ? Storage::url($item->foto) : asset('img/foto-tidak-ada.png') }}"
-                            alt="Foto Berita" style="width: 100px; height: auto;">
-                    </td>
-                    <td>{{ $item->jam }}</td>
-                    <td>{{ $item->tanggal }}</td>
-                    <td>
-                    <!-- Tombol Edit -->
-                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal"
-                    data-bs-target="#editModal{{ $item->id }}">
-                    <i class="fas fa-edit me-1"></i> Edit
-                    </button>
-
-                    <!-- Tombol Hapus -->
-                    <button type="button" class="btn btn-danger btn-sm"
-                    onclick="konfirmasiHapus('{{ route('berita.hapus', $item->id) }}')">
-                    <i class="fas fa-trash-alt me-1"></i> Hapus
-                    </button>
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
+<div class="table-responsive">
+  <table class="table table-bordered align-middle text-center">
+      <thead class="table-light">
+          <tr>
+              <th>Judul</th>
+              <th>Deskripsi</th>
+              <th>Foto</th>
+              <th>Jam</th>
+              <th>Tanggal</th>
+              <th>Aksi</th>
+          </tr>
+      </thead>
+      <tbody>
+         @foreach ($berita as $item)
+              <tr>
+                  <td>{{ $item->judul_berita }}</td>
+                  <td class="text-start">{{ \Illuminate\Support\Str::limit(strip_tags($item->deskripsi), 80) }}</td>
+                  <td>
+                      <img src="{{ $item->foto ? Storage::url($item->foto) : asset('img/foto-tidak-ada.png') }}"
+                          alt="Foto Berita" class="img-fluid rounded" style="max-width: 100px;">
+                  </td>
+                  <td>{{ $item->jam }}</td>
+                  <td>{{ $item->tanggal }}</td>
+                  <td>
+                      <button type="button" class="btn btn-sm btn-primary mb-1" data-bs-toggle="modal"
+                          data-bs-target="#editModal{{ $item->id }}">
+                          <i class="fas fa-edit me-1"></i> Edit
+                      </button>
+                      <button type="button" class="btn btn-sm btn-danger" onclick="konfirmasiHapus('{{ route('berita.hapus', $item->id) }}')">
+                          <i class="fas fa-trash-alt me-1"></i> Hapus
+                      </button>
+                  </td>
+              </tr>
+          @endforeach
+      </tbody>
+  </table>
 </div>
+
 
 {{-- Modal Tambah --}}
 <div class="modal fade" id="tambahModal" tabindex="-1" aria-labelledby="tambahModalLabel" aria-hidden="true">
@@ -211,11 +209,20 @@
 </div>
 @push('styles')
 <style>
+/* Modal hapus muncul dari atas */
 .modal-top .modal-dialog {
     top: 10%;
     margin: 0 auto;
     position: absolute;
     transform: translateY(0%);
+}
+
+/* Responsive tombol aksi di HP */
+@media (max-width: 576px) {
+    td button {
+        width: 100%;
+        margin-bottom: 5px;
+    }
 }
 </style>
 @endpush
