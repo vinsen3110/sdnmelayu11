@@ -92,7 +92,7 @@
         <span class="sidebar-mini-icon">
           <i class="fa fa-ellipsis-h"></i>
         </span>
-        <h4 class="text-section">Components</h4>
+        <h4 class="text-section">Menu</h4>
       </li>
 
       <li class="nav-item {{ request()->is('admin/berita*') ? 'active' : '' }}">
@@ -105,7 +105,7 @@
       <li class="nav-item {{ request()->is('admin/ekskul*') ? 'active' : '' }}">
         <a href="{{ url('admin/ekskul') }}" class="nav-link {{ request()->is('admin/ekskul*') ? 'active' : '' }}">
           <i class="fas fa-users"></i>
-          <p>EKSKUL</p>
+          <p>EKSTRAKURIKULER</p>
         </a>
       </li>
 

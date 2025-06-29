@@ -972,3 +972,18 @@
             line-height: 1.5;
         }
     }
+
+    .center-cards .row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .center-cards .card {
+        margin: auto;
+    }
+    
+      .section-title.text-primary {
+    color: black !important;
+  }
+

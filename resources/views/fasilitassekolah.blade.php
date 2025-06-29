@@ -22,13 +22,18 @@
 </div>
 <!-- Header End -->
 
+<style>
+    .row {
+        justify-content: center;
+    }
+</style>
+
 <div class="container py-5">
-    {{-- Fasilitas Utama --}}
-    <h2 class="mb-4">Fasilitas Utama</h2>
+    <h2 class="mb-4 text-left">Fasilitas Utama</h2>
     <div class="row">
         @forelse ($utama as $item)
-            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-                <div class="card h-100 shadow-sm" role="button" data-bs-toggle="modal" data-bs-target="#modalUtama{{ $item->id }}">
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4 d-flex justify-content-center">
+                <div class="card h-100 shadow-sm" role="button" data-bs-toggle="modal" data-bs-target="#modalUtama{{ $item->id }}" style="max-width: 100%;">
                     @php $gambar = $item->foto1 ?? $item->foto2 ?? $item->foto3; @endphp
                     @if($gambar)
                         <img src="{{ asset('storage/' . $gambar) }}" class="card-img-top" alt="{{ $item->nama }}" style="height: 200px; object-fit: cover;">
@@ -64,7 +69,6 @@
                                 </div>
                                 <div class="swiper-pagination"></div>
                             </div>
-                            {{-- Deskripsi --}}
                             @if ($item->deskripsi)
                                 <p class="mt-3 px-3 text-start text-muted" style="font-size: 0.95rem;">
                                     {!! nl2br(e($item->deskripsi)) !!}
@@ -81,12 +85,11 @@
 </div>
 
 <div class="container py-5">
-    {{-- Fasilitas Pendukung --}}
-    <h2 class="mb-4 mt-5">Fasilitas Pendukung</h2>
+    <h2 class="mb-4 text-left">Fasilitas Pendukung</h2>
     <div class="row">
         @forelse ($pendukung as $item)
-            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-                <div class="card h-100 shadow-sm" role="button" data-bs-toggle="modal" data-bs-target="#modalPendukung{{ $item->id }}">
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4 d-flex justify-content-center">
+                <div class="card h-100 shadow-sm" role="button" data-bs-toggle="modal" data-bs-target="#modalPendukung{{ $item->id }}" style="max-width: 100%;">
                     @php $gambar = $item->foto1 ?? $item->foto2 ?? $item->foto3; @endphp
                     @if($gambar)
                         <img src="{{ asset('storage/' . $gambar) }}" class="card-img-top" alt="{{ $item->nama }}" style="height: 200px; object-fit: cover;">
@@ -122,7 +125,6 @@
                                 </div>
                                 <div class="swiper-pagination"></div>
                             </div>
-                            {{-- Deskripsi --}}
                             @if ($item->deskripsi)
                                 <p class="mt-3 px-3 text-start text-muted" style="font-size: 0.95rem;">
                                     {!! nl2br(e($item->deskripsi)) !!}

@@ -29,7 +29,7 @@
             @php
                 $cards = [
                     ['title' => 'Berita', 'icon' => 'fas fa-newspaper', 'color' => 'icon-warning', 'value' => $jumlahBerita, 'route' => route('berita')],
-                    ['title' => 'Ekskul', 'icon' => 'fas fa-users', 'color' => 'icon-primary', 'value' => $jumlahEkskul, 'route' => route('ekskul')],
+                    ['title' => 'Ekstrakurikuler', 'icon' => 'fas fa-users', 'color' => 'icon-primary', 'value' => $jumlahEkskul, 'route' => route('ekskul')],
                     ['title' => 'Fasilitas', 'icon' => 'fas fa-building', 'color' => 'icon-info', 'value' => $jumlahFasilitas, 'route' => route('fasilitas')],
                     ['title' => 'PPDB', 'icon' => 'fas fa-file-alt', 'color' => 'icon-danger', 'value' => $jumlahPpdb, 'route' => route('ppdb')],
                     ['title' => 'Prestasi', 'icon' => 'fas fa-trophy', 'color' => 'icon-success', 'value' => $jumlahPrestasi, 'route' => route('prestasi.index')],

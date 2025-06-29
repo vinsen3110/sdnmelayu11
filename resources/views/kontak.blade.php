@@ -21,13 +21,6 @@
 </div>
 <!-- Header End -->
 
-<style>
-  /* Ubah warna teks dalam h4 ke hitam, tapi biarkan garis tetap biru */
-  .section-title.text-primary {
-    color: black !important;
-  }
-</style>
-
 <!-- Kontak Section Start -->
 <div class="container-fluid py-5">
   <div class="row justify-content-center">

@@ -23,72 +23,50 @@
 <!-- Header End -->
 
 <div class="container py-5">
-    <h2 class="mb-4">Daftar Ekstrakurikuler</h2>
+    
 
-    <div class="row">
+    <div class="row justify-content-center">
         @forelse ($ekskul as $item)
-            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-                <div class="card h-100 shadow-sm" role="button" data-bs-toggle="modal" data-bs-target="#modalEkskul{{ $item->id }}">
-                    @if ($item->foto)
-                        <img src="{{ asset('storage/' . $item->foto) }}" class="card-img-top" alt="{{ $item->nama_ekskul }}" style="height: 200px; object-fit: cover;">
-                    @endif
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $item->nama_ekskul }}</h5>
-                        <p class="text-muted mb-1" style="font-size: 0.9rem;">
-                            <strong>Jadwal :</strong> {{ $item->hari_kegiatan }},
-                                {{ \Carbon\Carbon::createFromFormat('H:i:s', $item->waktu_kegiatan)->format('H:i') }}
-                        </p>
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4 d-flex justify-content-center">
+                <div class="card h-100 shadow-sm" role="button" data-bs-toggle="modal" data-bs-target="#modalEks{{ $item->id }}" style="width: 100%; max-width: 350px;">
+                    <img src="{{ $item->foto ? asset('storage/' . $item->foto) : asset('img/foto-tidak-ada.png') }}"
+                         class="card-img-top"
+                         alt="{{ $item->nama_ekstrakurikuler }}"
+                         style="height: 220px; object-fit: cover;">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">{{ $item->nama_ekstrakurikuler }}</h5>
+                        <p class="card-text text-muted" style="font-size: 0.95rem;">Pembina: {{ $item->pembina }}</p>
                     </div>
                 </div>
             </div>
 
-           <!-- Modal Ekstrakurikuler -->
-            <div class="modal fade" id="modalEkskul{{ $item->id }}" tabindex="-1" aria-labelledby="modalLabel{{ $item->id }}" aria-hidden="true">
+            <!-- Modal -->
+            <div class="modal fade" id="modalEks{{ $item->id }}" tabindex="-1" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-lg">
-                    <div class="modal-content border-0 shadow-sm">
-                        <div class="modal-header border-0 flex-column align-items-start pb-1">
-                            <h2 class="modal-title fs-2 mb-2" id="modalLabel{{ $item->id }}">
-                                Ekstrakurikuler {{ $item->nama_ekskul }}
-                            </h2>
-                            <button type="button" class="btn-close position-absolute top-0 end-0 mt-3 me-3" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                    <div class="modal-content text-start bg-white border-0">
+                        <div class="modal-header border-0 d-flex flex-column align-items-start w-100">
+                            <div class="w-100 d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0 ms-2">{{ $item->nama_ekstrakurikuler }}</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="ms-2 mt-1 text-muted" style="font-size: 0.9rem;">Pembina: {{ $item->pembina }}</div>
                         </div>
-
-                        <div class="modal-body pt-0 pb-3">
-                            @if ($item->foto)
-                                <div class="text-center">
-                                    <img src="{{ asset('storage/' . $item->foto) }}" class="img-fluid rounded mt-2" alt="{{ $item->nama_ekskul }}">
-                                </div>
-                            @endif
-
+                        <div class="modal-body pt-2 pb-3">
+                            <img src="{{ $item->foto ? asset('storage/' . $item->foto) : asset('img/foto-tidak-ada.png') }}"
+                                 class="w-100 rounded"
+                                 style="height: 400px; object-fit: cover; margin-top: 10px;"
+                                 alt="Foto Ekstrakurikuler">
                             @if ($item->deskripsi)
-                                <p class="mt-4 px-3 text-start text-muted" style="font-size: 0.95rem;">
+                                <p class="mt-3 px-3 text-muted" style="font-size: 0.95rem;">
                                     {!! nl2br(e($item->deskripsi)) !!}
                                 </p>
                             @endif
-
-                <!-- Informasi tambahan -->
-                <div class="px-3 mt-4">
-                    <p class="fw-semibold text-dark mb-2">
-                        <i class="bi bi-info-circle-fill me-1 text-info"></i>
-                        Informasi kegiatan ekskul:
-                    </p>
-                    <ul class="list-unstyled text-muted" style="font-size: 0.95rem;">
-                        <li><strong>Jadwal:</strong> {{ $item->hari_kegiatan }},
-                            {{ \Carbon\Carbon::createFromFormat('H:i:s', $item->waktu_kegiatan)->format('H:i') }}
-                        </li>
-                        <li><strong>Pembina:</strong> {{ $item->pembina ?? '-' }}</li>
-                        <li><strong>Ruangan Kegiatan:</strong> {{ $item->ruangan ?? 'Belum ditentukan' }}</li>
-                    </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
-
         @empty
-            <div class="col-12">
-                <p class="text-center">Belum ada data ekstrakurikuler.</p>
-            </div>
+            <p class="text-center">Belum ada data ekstrakurikuler.</p>
         @endforelse
     </div>
 </div>

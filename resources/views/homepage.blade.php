@@ -6,48 +6,27 @@
 <div class="container-fluid p-0 mb-5">
     <div class="owl-carousel header-carousel position-relative">
 
-        <!-- Slide 1 -->
+        <!-- Slide -->
+        @foreach ([
+            'ta/img/merahputih.jpg',
+            'ta/img/kelasbagus.jpg',
+            'ta/img/homepage-1.jpg'
+        ] as $image)
         <div class="owl-carousel-item position-relative">
-            <img class="img-fluid carousel-image" src="{{ asset('ta/img/kelas.jpg') }}" alt="">
-            <div class="position-absolute top-0 start-0 w-100 h-100" style="background: rgba(53, 113, 148, 0.438);">
+            <img class="img-fluid w-100 carousel-image" src="{{ asset($image) }}" alt="">
+            <div class="position-absolute top-0 start-0 w-100 h-100" style="background: rgba(53, 113, 148, 0.546);">
                 <div class="position-absolute bottom-0 start-0 w-100">
-                    <div style="background: rgb(43, 114, 149); padding: 20px 40px;">
-                        <h5 class="text-white text-uppercase mb-2">SELAMAT DATANG DI WEBSITE RESMI</h5>
-                        <h2 class="text-white fw-bold">SDN MELAYU 11 BANJARMASIN</h2>
-                    </div>
+                <div style="background: var(--all); color: white !important; position: relative; z-index: 2;" class="px-3 px-md-5 py-2 py-md-3">
+                    <h6 class="text-uppercase mb-1 mb-md-2 small" style="color: white !important;">SELAMAT DATANG DI WEBSITE RESMI</h6>
+                    <h3 class="fw-bold fs-5 fs-md-3" style="color: white !important;">SDN MELAYU 11 BANJARMASIN</h3>
+                </div>
                 </div>
             </div>
         </div>
-
-        <!-- Slide 2 -->
-        <div class="owl-carousel-item position-relative">
-            <img class="img-fluid carousel-image" src="{{ asset('ta/img/ptk-2.jpg') }}" alt="">
-            <div class="position-absolute top-0 start-0 w-100 h-100" style="background: rgba(53, 113, 148, 0.438);">
-                <div class="position-absolute bottom-0 start-0 w-100">
-                    <div style="background: rgb(43, 114, 149); padding: 20px 40px;">
-                        <h5 class="text-white text-uppercase mb-2">SELAMAT DATANG DI WEBSITE RESMI</h5>
-                        <h2 class="text-white fw-bold">SDN MELAYU 11 BANJARMASIN</h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 3 -->
-        <div class="owl-carousel-item position-relative">
-            <img class="img-fluid carousel-image" src="{{ asset('ta/img/homepage-1.jpg') }}" alt="">
-            <div class="position-absolute top-0 start-0 w-100 h-100" style="background: rgba(53, 113, 148, 0.438);">
-                <div class="position-absolute bottom-0 start-0 w-100">
-                    <div style="background: rgb(43, 114, 149); padding: 20px 40px;">
-                        <h5 class="text-white text-uppercase mb-2">SELAMAT DATANG DI WEBSITE RESMI</h5>
-                        <h2 class="text-white fw-bold">SDN MELAYU 11 BANJARMASIN</h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+        @endforeach
     </div>
 </div>
-<!-- Carousel End -->
+
 
 <!-- Sambutan Kepala Sekolah Start -->
 <div class="container-xxl py-5">
