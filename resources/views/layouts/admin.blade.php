@@ -50,7 +50,6 @@
         <div class="sidebar-logo">
           <!-- Logo Header -->
           <div class="logo-header d-flex align-items-center" data-background-color="dark">
-          <a href="{{ url('/dashboard') }}" class="logo d-flex align-items-center">
              <img
             src="{{ asset('assets/img/logo_sekolah.png') }}"
             alt="navbar brand"
@@ -253,26 +252,6 @@
                        <span class="fw-bold">Hi Admin </span>
                    </span>
                   </a>
-                  <ul class="dropdown-menu dropdown-user animated fadeIn">
-                    <div class="dropdown-user-scroll scrollbar-outer">
-                      <li>
-                        <div class="user-box">
-                          <div class="avatar-lg">
-                            <img
-                              src="assets/img/profile.jpg"
-                              alt="image profile"
-                              class="avatar-img rounded"
-                            />
-                          </div>
-                          <div class="u-text">
-                            <h4>Rita Meilani</h4>
-                            <p class="text-muted">ritameilani@gmail.com</p>
-                        
-                          </div>
-                        </div>
-                      </li>
-                    </div>
-                  </ul>
                 </li>
               </ul>
             </div>
