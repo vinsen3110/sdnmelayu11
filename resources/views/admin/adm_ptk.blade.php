@@ -3,14 +3,14 @@
 @section('content')
 
     <div class="container py-4">
-        <h2 class="mb-4 ms-3">Daftar PTK</h2>
+        <h2 class="mb-4 ms-3">Daftar GTK</h2>
 
         @if (session('success'))
             <div class="alert alert-success">{{ session('success') }}</div>
         @endif
 
         <button class="btn btn-primary mb-3 ms-3" data-bs-toggle="modal" data-bs-target="#modalTambah">
-            <i class="fas fa-plus me-1"></i> Tambah PTK
+            <i class="fas fa-plus me-1"></i> Tambah GTK
         </button>
         @if ($errors->any())
             <div class="alert alert-danger alert-dismissible text-black" role="alert">
@@ -25,7 +25,7 @@
         {{-- Form Search --}}
         <div class="mb-3 px-3">
             <form method="GET" action="{{ route('ptk.index') }}" class="d-flex" style="max-width: 100%;">
-                <input type="text" name="search" class="form-control me-2" placeholder="Cari PTK..."
+                <input type="text" name="search" class="form-control me-2" placeholder="Cari GTK..."
                     value="{{ request('search') }}">
                 <button type="submit" class="btn btn-outline-primary">
                     <i class="fas fa-search me-1"></i>Search

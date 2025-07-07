@@ -7,7 +7,7 @@ use App\Models\Berita;
 use App\Models\Fasilitas;
 use App\Models\Ekskul;
 use App\Models\Prestasi;
-use App\Models\PPDB;
+use App\Models\Ppdb;
 use App\Models\VisiMisi;
 use App\Models\Ptk;
 use App\Models\StrukturOrganisasi;

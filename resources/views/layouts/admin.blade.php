@@ -133,7 +133,7 @@
       <li class="nav-item {{ request()->is('admin/ptk*') ? 'active' : '' }}">
         <a href="{{ url('admin/ptk') }}" class="nav-link {{ request()->is('admin/ptk*') ? 'active' : '' }}">
           <i class="fas fa-chalkboard-teacher"></i>
-          <p>PTK</p>
+          <p>GTK</p>
         </a>
       </li>
 

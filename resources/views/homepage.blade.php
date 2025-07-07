@@ -182,13 +182,13 @@
     <div class="container">
         <h2 class="text-white text-center mb-5 wow fadeInUp"
             style="background-color: #357194; padding: 12px 40px; border-radius: 100px;">
-            DATA PTK DAN SISWA
+            DATA GTK DAN SISWA
         </h2>
 
         <div class="row justify-content-center">
             <!-- Diagram PTK -->
             <div class="col-md-6 mb-4 wow fadeInUp" data-wow-delay="0.2s">
-                <h5 class="mb-4 text-center">Data PTK</h5>
+                <h5 class="mb-4 text-center">Data GTK</h5>
                 <div class="mx-auto" style="position: relative; height:300px; width:100%; max-width:400px;">
                     <canvas id="ptkChart"></canvas>
                 </div>
